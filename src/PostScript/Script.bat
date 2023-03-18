@@ -526,18 +526,9 @@ powercfg -h off
 label C: RaxOS
 bcdedit /set {current} description "RaxOS"
 bcdedit /set disabledynamictick yes 
-bcdedit /set useplatformtick yes 
-bcdedit /deletevalue useplatformclock 
-bcdedit /set debug No
-bcdedit /set hypervisorlaunchtype off 
-bcdedit /set tpmbootentropy forcedisable 
+bcdedit /deletevalue useplatformclock
 bcdedit /set isolatedcontext No
-bcdedit /set bootux disabled 
-bcdedit /set pae ForceDisable
-bcdedit /set recoveryenabled no 
-bcdedit /set quietboot yes 
 bcdedit /set bootmenupolicy legacy 
-bcdedit /set pae ForceEnable
 bcdedit /set {globalsettings} custom:16000067 true 
 bcdedit /set {globalsettings} custom:16000068 true 
 bcdedit /set {globalsettings} custom:16000069 true 
@@ -559,14 +550,6 @@ for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersi
 for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Capture') do PowerRun.exe /SW:0 Reg.exe add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},4" /t REG_DWORD /d "0" /f >nul 2>&1
 for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Render') do PowerRun.exe /SW:0 Reg.exe add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},3" /t REG_DWORD /d "0" /f >nul 2>&1
 for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Render') do PowerRun.exe /SW:0 Reg.exe add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},4" /t REG_DWORD /d "0" /f >nul 2>&1
-cls
-
-Echo "Disabling Reserved Storage"
-dism /online /set-reservedstoragestate /state:disabled >nul 2>&1
-cls
-
-echo "Disabling Loggers and Useless Network Adapters"
-powershell disable-netadapterbinding -name "*" -componentid vmware_bridge, ms_lldp, ms_lltdio, ms_implat, ms_tcpip6, ms_rspndr, ms_server, ms_msclient
 cls
 
 echo "editing POW & power tweaks"
@@ -597,10 +580,7 @@ cls
 echo "Changing fsutil behaviors"
 ::Thanks to AMITXV
 fsutil behavior set disable8dot3 1
-fsutil behavior set disablecompression 1
-fsutil behavior set disableencryption 1
 fsutil behavior set disablelastaccess 1
-fsutil behavior set encryptpagingfile 0
 cls
 
 echo "Disabling powersaving features"
@@ -655,6 +635,9 @@ Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\kbdclass\Param
 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\mouclass\Parameters" /v "MouseDataQueueSize" /t Reg_DWORD /d "32" /f
 cls
 
+echo "Uinstalling Edge"
+PowerShell -ExecutionPolicy Unrestricted -Command "$installer = (Get-ChildItem "^""$env:ProgramFiles*\Microsoft\Edge\Application\*\Installer\setup.exe"^""); if (!$installer) {; Write-Host 'Could not find the installer'; } else {; & $installer.FullName -Uninstall -System-Level -Verbose-Logging -Force-Uninstall; }"
+cls
 
 del /q/f/s %TEMP%\*
 
