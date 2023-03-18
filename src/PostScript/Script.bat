@@ -521,7 +521,7 @@ Reg.exe add "HKCU\Control Panel\Mouse" /v "MouseHoverTime" /t REG_SZ /d "0" /f >
 cls
 
 echo "Editing BCDEDIT"
-bcdedit /set nx alwaysoff
+bcdedit /set {current} nx optin
 powercfg -h off
 label C: RaxOS
 bcdedit /set {current} description "RaxOS"
