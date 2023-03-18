@@ -552,6 +552,10 @@ for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersi
 for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Render') do PowerRun.exe /SW:0 Reg.exe add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},4" /t REG_DWORD /d "0" /f >nul 2>&1
 cls
 
+echo "Disabling Loggers and Useless Network Adapters"
+powershell disable-netadapterbinding -name "*" -componentid vmware_bridge, ms_lldp, ms_lltdio, ms_implat, ms_tcpip6, ms_rspndr, ms_server, ms_msclient
+cls
+
 echo "editing POW & power tweaks"
 powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 powercfg /delete 381b4222-f694-41f0-9685-ff5bb260df2e
