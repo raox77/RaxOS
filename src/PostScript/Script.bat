@@ -579,6 +579,10 @@ powercfg /setacvalueindex scheme_current 2a737441-1930-4402-8d77-b2bebba308a3 48
 powercfg /setacvalueindex scheme_current 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 0
 powercfg /setacvalueindex scheme_current 2a737441-1930-4402-8d77-b2bebba308a3 d4e98f31-5ffe-4ce1-be31-1b38b384c009 0
 powercfg -setacvalueindex scheme_current sub_processor THROTTLING 0
+powercfg -setacvalueindex scheme_current sub_none DEVICEIDLE 0
+powercfg -setacvalueindex scheme_current SUB_SLEEP AWAYMODE 0 
+powercfg -setacvalueindex scheme_current SUB_SLEEP ALLOWSTANDBY 0 
+powercfg -setacvalueindex scheme_current SUB_SLEEP HYBRIDSLEEP 0
 powercfg /setactive scheme_current
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t Reg_DWORD /d "0" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t Reg_DWORD /d "0" /f 
@@ -588,12 +592,6 @@ Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "Po
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowHibernateOption" /t Reg_DWORD /d "0" /f 
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowLockOption" /t Reg_DWORD /d "0" /f 
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowSleepOption" /t Reg_DWORD /d "0" /f
-powercfg -setacvalueindex scheme_current sub_none DEVICEIDLE 0
-powercfg -setacvalueindex scheme_current SUB_SLEEP AWAYMODE 0 
-powercfg -setacvalueindex scheme_current SUB_SLEEP ALLOWSTANDBY 0 
-powercfg -setacvalueindex scheme_current SUB_SLEEP HYBRIDSLEEP 0
-powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTMODE 1 
-powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTPOL 100 
 cls
 
 echo "Changing fsutil behaviors"
