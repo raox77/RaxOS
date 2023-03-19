@@ -1,5 +1,7 @@
 Windows Registry Editor Version 5.00
 
+;credtis to Phlegm
+
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar]
 "AllowAutoGameMode"=-
 "AutoGameModeEnabled"=-
