@@ -502,13 +502,13 @@ cls
 
 echo "Editing BCDEDIT"
 bcdedit /set {current} nx optin
-powercfg -h off
 label C: RaxOS
 bcdedit /set {current} description "RaxOS"
-bcdedit /set disabledynamictick yes 
+bcdedit /set disabledynamictick yes
 bcdedit /deletevalue useplatformclock
 bcdedit /set isolatedcontext No
-bcdedit /set bootmenupolicy legacy 
+bcdedit /set bootmenupolicy legacy
+bcdedit /set hypervisorlaunchtype off
 bcdedit /set {globalsettings} custom:16000067 true 
 bcdedit /set {globalsettings} custom:16000068 true 
 bcdedit /set {globalsettings} custom:16000069 true 
@@ -551,6 +551,7 @@ powercfg -setacvalueindex scheme_current SUB_SLEEP AWAYMODE 0
 powercfg -setacvalueindex scheme_current SUB_SLEEP ALLOWSTANDBY 0 
 powercfg -setacvalueindex scheme_current SUB_SLEEP HYBRIDSLEEP 0
 powercfg /setactive scheme_current
+powercfg -h off
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t Reg_DWORD /d "0" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t Reg_DWORD /d "0" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t Reg_DWORD /d "0" /f 
