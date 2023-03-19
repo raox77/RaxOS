@@ -614,11 +614,6 @@ takeown /f "%WinDir%\System32\mcupdate_GenuineIntel.dll" /a  & icacls "%WinDir%\
 del "%WinDir%\System32\mcupdate_GenuineIntel.dll" /s /f /q 
 cls
 
-echo "Keyboard and Mouse DataQueueSize to 50"
-Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t Reg_DWORD /d "32" /f
-Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\mouclass\Parameters" /v "MouseDataQueueSize" /t Reg_DWORD /d "32" /f
-cls
-
 echo "Uninstalling Edge"
 PowerShell -ExecutionPolicy Unrestricted -Command "$installer = (Get-ChildItem "^""$env:ProgramFiles*\Microsoft\Edge\Application\*\Installer\setup.exe"^""); if (!$installer) {; Write-Host 'Could not find the installer'; } else {; & $installer.FullName -Uninstall -System-Level -Verbose-Logging -Force-Uninstall; }"
 cls
