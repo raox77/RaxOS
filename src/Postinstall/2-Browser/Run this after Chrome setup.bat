@@ -1,7 +1,10 @@
 @echo off
 
-sc delete gupdatem >nul 2>&1
-sc delete googlechromeelevationservice >nul 2>&1
-sc delete gupdate >nul 2>&1
-rmdir /s /q "C:\Program Files\Google\GoogleUpdater" >nul 2>&1
-rmdir /s /q "C:\Program Files (x86)\Google\Update" >nul 2>&1
+del "C:\Program Files\Mozilla Firefox\maintenanceservice_installer.exe" /f /q >nul 2>&1
+del "C:\Program Files\Mozilla Firefox\minidump-analyzer.exe" /f /q >nul 2>&1
+del "C:\Program Files\Mozilla Firefox\pingsender.exe" /f /q >nul 2>&1
+del "C:\Program Files\Mozilla Firefox\updater.exe" /f /q >nul 2>&1
+del "C:\Program Files\Mozilla Firefox\crashreporter.ini" /f /q >nul 2>&1
+del "C:\Program Files\Mozilla Firefox\maintenanceservice.exe" /f /q >nul 2>&1
+del "C:\Program Files\Mozilla Firefox\crashreporter.exe" /f /q >nul 2>&1
+
