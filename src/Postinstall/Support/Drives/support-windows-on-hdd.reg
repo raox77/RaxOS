@@ -1,5 +1,7 @@
 Windows Registry Editor Version 5.00
 
+;credtis to Phlegm
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
 "EnableBootTrace"=-
 "EnablePrefetcher"=dword:00000003
