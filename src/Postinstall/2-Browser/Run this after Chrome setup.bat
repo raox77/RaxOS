@@ -1,13 +1,7 @@
 @echo off
-net stop gupdate
-sc delete gupdate
-net stop googlechromeelevationservice
-sc delete googlechromeelevationservice
-net stop gupdatem
-sc delete gupdatem
-taskkill /f /im GoogleUpdate.exe 
-rmdir "C:\Program Files (x86)\Google\Update" /s /q
-cd /d "C:\Program Files\Google\Chrome\Application\"
-dir chrmstp.exe /a /b /s
-del chrmstp.exe /a /s
-pause
+
+sc delete gupdatem >nul 2>&1
+sc delete googlechromeelevationservice >nul 2>&1
+sc delete gupdate >nul 2>&1
+rmdir /s /q "C:\Program Files\Google\GoogleUpdater" >nul 2>&1
+rmdir /s /q "C:\Program Files (x86)\Google\Update" >nul 2>&1
