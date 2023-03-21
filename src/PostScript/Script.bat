@@ -575,6 +575,68 @@ PowerRun.exe /SW:0 "Reg.exe" delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windo
 PowerRun.exe /SW:0 "Reg.exe" delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v "Open-Shell Start Menu" /f
 cls
 
+echo "Disable Scheduled Tasks"
+schtasks /change /disable /TN "\Microsoft\Windows\AppID\EDP Policy Manager" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\AppID\PolicyConverter" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\AppID\VerifiedPublisherCertStoreCheck" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Application Experience\PcaPatchDbTask" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Application Experience\StartupAppTask" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\ApplicationData\appuriverifierdaily" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\ApplicationData\appuriverifierinstall" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\ApplicationData\DsSvcCleanup" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\BrokerInfrastructure\BgTaskregistrationMaintenanceTask" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\CertificateServicesClient\AikCertEnrollTask" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\CertificateServicesClient\KeyPregenTask" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Clip\License Validation" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\HandleCommand" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\HandleWnsCommand" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\IntegrityCheck" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\LocateCommandUserSession" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\registerDeviceAccountChange" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\registerDeviceLocationRightsChange" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\registerDevicePeriodic24" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\registerDevicePolicyChange" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\registerDeviceProtectionStateChanged" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\registerDeviceSettingChange" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DeviceDirectoryClient\registerUserDevice" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Diagnosis\Scheduled" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\DiskFootprint\Diagnostics" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\InstallService\ScanForUpdates" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\InstallService\ScanForUpdatesAsUser" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\InstallService\SmartRetry" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Management\Provisioning\Cellular" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\MUI\LPRemove" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\SoftwareProtectionPlatform\SvcRestartTaskNetwork" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\StateRepository\MaintenanceTasks" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Subscription\EnableLicenseAcquisition" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Subscription\LicenseAcquisition" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Sysmain\ResPriStaticDbSync" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Sysmain\WsSwapAssessmentTask" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Windows Error Reporting\QueueReporting" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Windows Filtering Platform\BfeOnServiceStartTypeChange" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Windows Media Sharing\UpdateLibrary" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Wininet\CacheTask" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\XblGameSave\XblGameSaveTask" >nul 2>&1
+schtasks /change /disable /TN "\Microsoft\Windows\Device Setup\Metadata Refresh" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\PLA\System" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\PLA" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\RetailDemo\CleanupOfflineContent" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\RetailDemo" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\SyncCenter" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\TaskScheduler" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\Windows Activation Technologies" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\WindowsUpdate" >nul 2>&1
+schtasks /delete /f /tn "\Microsoft\Windows\WaaSMedic" >nul 2>&1
+cls
+
 echo "Changing Time Provider to ntp.org"
 ::Credits to privacy.sexy
 w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org"
