@@ -537,6 +537,7 @@ echo "Changing fsutil behaviors"
 ::Thanks to AMITXV
 fsutil behavior set disable8dot3 1
 fsutil behavior set disablelastaccess 1
+fsutil behavior set DisableDeleteNotify 0
 cls
 
 echo "Disabling powersaving features"
