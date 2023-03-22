@@ -521,6 +521,10 @@ powercfg -setacvalueindex scheme_current sub_none DEVICEIDLE 0
 powercfg -setacvalueindex scheme_current SUB_SLEEP AWAYMODE 0 
 powercfg -setacvalueindex scheme_current SUB_SLEEP ALLOWSTANDBY 0 
 powercfg -setacvalueindex scheme_current SUB_SLEEP HYBRIDSLEEP 0
+powercfg -setacvalueindex scheme_current sub_processor PERFINCPOL 2
+powercfg -setacvalueindex scheme_current sub_processor PERFDECPOL 1
+powercfg -setacvalueindex scheme_current sub_processor PERFINCTHRESHOLD 10
+powercfg -setacvalueindex scheme_current sub_processor PERFDECTHRESHOLD 8
 powercfg /setactive scheme_current
 powercfg -h off
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t Reg_DWORD /d "0" /f 
