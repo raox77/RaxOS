@@ -1,3 +1,0 @@
-bcdedit /set bootmenupolicy legacy
-
-
