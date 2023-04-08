@@ -361,7 +361,6 @@
 		<c>ntvdm 'NTVDM 16 bit subsystem'</c>
 		<c>offlinefiles 'Offline Files'</c>
 		<c>onedrive</c>
-		<c>opengl32 'OpenGL API - 32 bit'</c>
 		<c>openssh</c>
 		<c>osk 'On-Screen Keyboard (Tablet PC)'</c>
 		<c>osk_acc 'On-Screen Keyboard (Accessibility tools)'</c>
@@ -893,7 +892,6 @@
 		</Add>
 	</Execution>
 	<Registry>
-		<File>C:\Users\rax\Desktop\7ZIP.reg</File>
 		<File>C:\Users\rax\Desktop\RaxOS.reg</File>
 	</Registry>
 </Preset>
