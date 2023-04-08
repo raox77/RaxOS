@@ -10,6 +10,12 @@ Echo "Installing 7zip"
 start /b /wait "" "C:\Modules\7z2201-x64.msi" /passive >nul 2>&1
 cls
 
+Echo "7zip settings"
+Regedit.exe /s "C:\Windows\Modules\7ZIP.reg"
+PowerRun.exe /SW:0 regedit.exe /s "C:\Windows\Modules\7ZIP.reg"
+del /f /q "C:\Windows\Modules\7ZIP.reg" > NUL 2>&1
+cls
+
 Echo "Installing LowAudioLatency"
 start /b /wait "" "C:\Modules\LowAudioLatency_2.0.0.0.msi" /passive >nul 2>&1
 cls
