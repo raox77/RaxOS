@@ -163,6 +163,19 @@ for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /format:v
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "%RAM%" /f > NUL 2>&1
 cls
 
+Echo "Disabling Memory Compression"
+PowerShell -Command "Disable-MMAgent -MemoryCompression"
+cls
+
+Echo "Disabling Page Combining"
+PowerShell -Command "Disable-MMAgent -PageCombining"
+cls
+
+Echo "Disabling Paging Executive"
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DpiMapIommuContiguous" /t REG_DWORD /d "1" /f
+cls
+
 Echo "Disabling Device Manager Devices"
 devmanview /disable "UMBus Root Bus Enumerator" > NUL 2>&1
 devmanview /disable "Root Print Queue" > NUL 2>&1
