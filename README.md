@@ -85,6 +85,7 @@ Biometric Devices (finger print etc)
 > Download
 
 https://drive.google.com/file/d/1m5opW_utkSld8rldngwUwYLFH9IMLvgG/view?usp=sharing
+
 Always have a backup USB with default Windows 10 if something goes wrong
 
 SHA-256:f464a171b481e90928ce6f5af41f11dc969091ce31688625ec8eb14a0f73f86e
