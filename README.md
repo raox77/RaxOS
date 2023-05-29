@@ -12,7 +12,7 @@ Atlas team
 Cynar
 Calypto
 
-# Server Link https://discord.gg/6Y5CZqWHFa
+## Server Link https://discord.gg/6Y5CZqWHFa
 
 ## Stripped / Not Working Features:
 Windows installation from setup.exe
