@@ -26,34 +26,61 @@ Cortana
 SmartScreen
 
 Input Method Editor
+
 OneDrive
+
 Windows Backup / Restore
+
 Narrator
+
 Speech TTS & Recognition
+
 Windows Sounds
+
 Windows Help Content
+
 OpenSSH
+
 Shared Experiences
+
 SFC
+
 Share Media Control Panel
+
 Easy Transfer & Sync Host
+
 CEIP
+
 Windows To Go
+
 AutoPlay
+
 Webcam on Discord
+
 Mobile Hotspot
+
 Telephony
+
 
 ## Stripped Devices & Drivers:
 TPM
+
 Printing
+
 Floppy Disks
+
 Smart Cards
+
 TabletPC Components
+
 POS
+
 NFC
+
 VR Headsets
+
 Biometric Devices (finger print etc)
+
 
 > Download
 
