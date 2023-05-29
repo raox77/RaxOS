@@ -16,10 +16,15 @@ Calypto
 
 ## Stripped / Not Working Features:
 Windows installation from setup.exe
+
 BitLocker Drive Encryption (Affects diskmgmt.msc & msconfig)
+
 Windows Defender
+
 Cortana
+
 SmartScreen
+
 Input Method Editor
 OneDrive
 Windows Backup / Restore
