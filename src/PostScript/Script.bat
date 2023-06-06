@@ -754,6 +754,7 @@ PowerShell -NoP -C "$usb_devices = @('Win32_USBController', 'Win32_USBController
             reg add "%%b" /v "%%~a" /t REG_DWORD /d "0" /f
         )
     )
+powershell.exe C:\Modules\:!disable-pnp-powersaving.ps1
 cls
 
 Echo "Enabling MSI mode & set to undefined"
@@ -977,6 +978,10 @@ for %%z in (
 	bthserv
 	BluetoothUserService
 	BthAvctpSvc
+        BthMini
+        BTHPORT
+        BTHUSB
+        bttflt
 	vmickvpexchange
 	vmicguestinterface
 	vmicshutdown
