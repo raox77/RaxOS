@@ -14,6 +14,7 @@ Calypto
 
 ## Server Link https://discord.gg/6Y5CZqWHFa
 
+# 22H2
 ## Stripped / Not Working Features:
 Windows installation from setup.exe
 
