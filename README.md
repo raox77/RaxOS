@@ -16,72 +16,41 @@ Calypto
 
 # 22H2
 ## Stripped / Not Working Features:
-Windows installation from setup.exe
-
-BitLocker Drive Encryption (Affects diskmgmt.msc & msconfig)
-
-Windows Defender
-
-Cortana
-
-SmartScreen
-
-Input Method Editor
-
-OneDrive
-
-Windows Backup / Restore
-
-Narrator
-
-Speech TTS & Recognition
-
-Windows Sounds
-
-Windows Help Content
-
-OpenSSH
-
-Shared Experiences
-
-SFC
-
-Share Media Control Panel
-
-Easy Transfer & Sync Host
-
-CEIP
-
-Windows To Go
-
-AutoPlay
-
-Webcam on Discord
-
-Mobile Hotspot
-
-Telephony
+- Windows installation from setup.exe
+- BitLocker Drive Encryption (Affects diskmgmt.msc & msconfig)
+- Windows Defender
+- Cortana
+- SmartScreen
+- Input Method Editor
+- OneDrive
+- Windows Backup / Restore
+- Narrator
+- Speech TTS & Recognition
+- Windows Sounds
+- Windows Help Content
+- OpenSSH
+- Shared Experiences
+- SFC
+- Share Media Control Panel
+- Easy Transfer & Sync Host
+- CEIP
+- Windows To Go
+- AutoPlay
+- Webcam on Discord
+- Mobile Hotspot
+- Telephony
 
 
 ## Stripped Devices & Drivers:
-TPM
-
-Printing
-
-Floppy Disks
-
-Smart Cards
-
-TabletPC Components
-
-POS
-
-NFC
-
-VR Headsets
-
-Biometric Devices (finger print etc)
-
+- TPM
+- Printing
+- Floppy Disks
+- Smart Cards
+- TabletPC Components
+- POS
+- NFC
+- VR Headsets
+- Biometric Devices (finger print etc)
 
 > Download
 
@@ -125,6 +94,7 @@ SHA-1: b815eda793ac9d1c09f3f29aee7df62bf291740d
 - Microsoft Store
 - Microsoft Update
 - Kernel Debugging
+- Accessibility tools (Ease of Access)
 
 
 ## Stripped Devices & Drivers:
@@ -138,12 +108,9 @@ SHA-1: b815eda793ac9d1c09f3f29aee7df62bf291740d
 - VR Headsets
 - Biometric Devices (finger print etc)
 
-
 > Download
 
 https://drive.google.com/file/d/11-ebl-xpiZhEbr1iW0n_7DmupDb7Dq5R/view?usp=sharing
-
-https://drive.google.com/file/d/1m5opW_utkSld8rldngwUwYLFH9IMLvgG/view?usp=sharing
 
 ### Always have a backup USB with default Windows 10 if something goes wrong
 
