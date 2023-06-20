@@ -54,7 +54,7 @@ Calypto
 
 > Download
 
-https://drive.google.com/file/d/1m5opW_utkSld8rldngwUwYLFH9IMLvgG/view?usp=sharing
+## Down For Maintenance
 
 ### Always have a backup USB with default Windows 10 if something goes wrong
 
