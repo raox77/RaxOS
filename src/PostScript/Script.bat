@@ -773,11 +773,6 @@ reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}" /t REG_SZ /d "" /f > nul
 cls
 
-Echo "Removing all WMI autologgers"
-PowerRun.exe /SW:0 Reg.exe delete "HKLM\System\CurrentControlSet\Control\WMI\Autologger" /f > NUL 2>&1
-PowerRun.exe /SW:0 Reg.exe add "HKLM\System\CurrentControlSet\Control\WMI\Autologger" /f > NUL 2>&1
-cls
-
 Echo "Remove Share from context menu"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
