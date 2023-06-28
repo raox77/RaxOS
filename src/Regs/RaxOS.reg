@@ -691,11 +691,10 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability
 @="\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \"%1\""
 
 ; disable page combining
-; disable meltdown and spectre
+; disable spectre
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "FeatureSettingsOverride"=dword:00000003
-"FeatureSettingsOverrideMask"=dword:00000003
 "EnableCfg"=dword:00000000
 "EnableLowVaAccess"=dword:00000000
 "EnablePrefetcher"=dword:00000000
