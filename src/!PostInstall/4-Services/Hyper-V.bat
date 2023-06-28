@@ -66,6 +66,7 @@ if "%option%"=="2" (
     devmanview /disable "Remote Desktop Device Redirector Bus"
     devmanview /disable "Microsoft Hyper-V Virtualization Infrastructure Driver"
     dism.exe /Online /Disable-Feature:Microsoft-Hyper-V-All
+    bcdedit /set hypervisorlaunchtype off
     echo Hyper-V has been disabled.
     goto end
 )
