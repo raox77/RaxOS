@@ -5,7 +5,7 @@ echo.
 :menu
 echo Choose an option:
 echo 1. Enable Xbox
-echo 2. Disable Xbox (Default)
+echo 2. Disable Xbox
 echo 0. Exit
 echo.
 
