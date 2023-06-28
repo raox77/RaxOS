@@ -714,6 +714,8 @@ cls
 
 Echo "Disabling Device Manager Devices"
 devmanview /disable "Microsoft GS Wavetable Synth" > NUL 2>&1
+devmanview /disable "Remote Desktop Device Redirector Bus"
+devmanview /disable "Microsoft Hyper-V Virtualization Infrastructure Driver"
 devmanview /disable "Microsoft Device Association Root Enumerator" > NUL 2>&1
 devmanview /disable "High precision event timer" > NUL 2>&1
 devmanview /disable "System Speaker" > NUL 2>&1
@@ -824,27 +826,27 @@ cls
 Echo "Disabling Intel Drivers on Amd Systems And Vice Versa
 for /F "tokens=* skip=1" %%n in ('wmic cpu get Manufacturer ^| findstr "."') do set CPUManufacturer=%%n
 if %CPUManufacturer% EQU AuthenticAMD (
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iagpio" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iai2c" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSS2i_GPIO2" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSS2i_GPIO2_BXT_P" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSS2i_I2C" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSS2i_I2C_BXT_P" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSSi_GPIO" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSSi_I2C" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iaStorAVC" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\iaStorV" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\intelide" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\intelpep" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\intelppm" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iagpio" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iai2c" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSS2i_GPIO2" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSS2i_GPIO2_BXT_P" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSS2i_I2C" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSS2i_I2C_BXT_P" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSSi_GPIO" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iaLPSSi_I2C" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iaStorAVC" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\iaStorV" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\intelide" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\intelpep" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\intelppm" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
 )
 
 if %CPUManufacturer% EQU GenuineIntel (
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\AmdK8" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\AmdPPM" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\amdsata" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\amdsbs" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
-	PowerRun.exe /SW:0 reg.exe add "HKLM\System\CurrentControlSet\Services\amdxata" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\AmdK8" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\AmdPPM" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\amdsata" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\amdsbs" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
+	reg.exe add "HKLM\System\CurrentControlSet\Services\amdxata" /v "Start" /t REG_DWORD /d "4" /f > NUL 2>&1
 )
 cls
 
@@ -878,77 +880,21 @@ for %%z in (
 	NetMsmqActivator
 	PcaSvc
 	ShellHWDetection
+	shpamsvc
 	SysMain
-	vpcivsp
-	Vid
-	vdrvroot
-	swenum
-	rdpbus
-	CompositeBus
-	UEFI
-	WmiAcpi
-	acpitime
-	acpipagr
 	Themes
 	TrkWks
-        UsoSvc
-	umbus
-        LanmanWorkstation
-        IKEEXT
-        ALG
-        COMSysApp
-        MSDTC
-        EntAppSvc
-        Eaphost
-        fdPHost
-        BcastDVRUserService_1ab3c
-        smphost
-        UmRdpService
-        SstpSvc
-        autotimesvc
-        EFS
-        SharedAccess
-        ipxlatCfgSvc
-        KtmRm
-        NgcSvc
-        NgcCtnrSvc
-        WarpKITSvc
-        WEPHOSTSVC
-        icssvc
-        W32Time
- 	tzautoupdate
+	tzautoupdate
 	uhssvc
 	W3SVC
+	OneSyncSvc
 	WdiSystemHost
 	WdiServiceHost
+	SensorDataService
+	SensrSvc
 	Beep
 	cdfs
 	cdrom
-        WmiAcpi
-        lltdio
-        luafv
-        mrxsmb
-        p2pimsvc
-        mrxsmb20
-        p2psvc
-        PNRPAutoReg
-        PNRPsvc
-        QWAVEdrv
-        KSecPkg
-        PptpMiniport
-        RasAgileVpn
-        Rasl2tp
-        RasSstp
-        RasPppoe
-        RasMan
-        SstpSvc
-        srv2
-        srvnet
-        SSDPSRV
-        XboxGipSvc
-        XblAuthManager
-        XblGameSave
-        XboxNetApiSvc
 	cnghwassist
 	GpuEnergyDrv
 	Telemetry
@@ -956,6 +902,7 @@ for %%z in (
 	udfs
 	MsLldp
 	lltdio
+	NdisVirtualBus
 	NDU
 	rdbss
 	rdyboost
@@ -967,8 +914,6 @@ for %%z in (
 	spaceport
 	storqosflt
 	bam
-        StiSvc
-        cbdhsvc
 	bowser
 	CldFlt
 	DispBrokerDesktopSvc
@@ -987,10 +932,6 @@ for %%z in (
 	bthserv
 	BluetoothUserService
 	BthAvctpSvc
-        BthMini
-        BTHPORT
-        BTHUSB
-        bttflt
 	vmickvpexchange
 	vmicguestinterface
 	vmicshutdown
@@ -1008,7 +949,7 @@ for %%z in (
 	vpci
 	hvservice
 	hvcrash
-        HvHost
+	HvHost
 	lfsvc
 ) do (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
