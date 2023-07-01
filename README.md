@@ -14,6 +14,53 @@ Calypto
 
 ## Server Link https://discord.gg/6Y5CZqWHFa
 
+
+# W11 22H2
+## Stripped / Not Working Features:
+- Windows installation from setup.exe
+- BitLocker Drive Encryption (Affects diskmgmt.msc & msconfig)
+- Windows Defender
+- Cortana
+- SmartScreen
+- Input Method Editor
+- OneDrive
+- Windows Backup / Restore
+- Windows Sounds
+- Windows Help Content
+- Game Explorer
+- OpenSSH
+- Shared Experiences
+- Share Media Control Panel
+- Easy Transfer & Sync Host
+- CEIP
+- SFC
+- Windows To Go
+- AutoPlay
+- Webcam on Discord ***?***
+- Telephony
+- Windows Update
+
+## Stripped Devices & Drivers:
+- Printing
+- Floppy Disks
+- Smart Cards
+- TabletPC Components
+- POS
+- NFC
+- VR Headsets
+- Biometric Devices (finger print etc)
+
+> Download
+
+https://drive.google.com/file/d/1qk9rwNp0LVdzMaMnyQ02h8GYPkbdnS7b/view?usp=sharing
+
+### Always have a backup USB with default Windows 10 if something goes wrong
+
+SHA-256:8956d95de86422c51e3fea2967340f1f957b66d85ac68d2d4390fcbc81592dd7
+
+SHA-1:51d18582ed87b3e9d3407e013f5b0f2e1a5b093c
+
+
 # W10 22H2
 ## Stripped / Not Working Features:
 - Windows installation from setup.exe
