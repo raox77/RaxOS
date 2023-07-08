@@ -47,6 +47,9 @@ Windows Registry Editor Version 5.00
 "DeferFeatureUpdatesPeriodInDays"=dword:0000016d
 "DeferQualityUpdates"=dword:00000001
 "DeferQualityUpdatesPeriodInDays"=dword:00000004
+"WUServer"=" "
+"WUStatusServer"=" "
+"UpdateServiceUrlAlternate"=" "
 "SetDisableUXWUAccess"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
@@ -485,7 +488,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability
 ; allocate processor resources primarily to programs
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:00000028
+"Win32PrioritySeparation"=dword:00000026
 
 ; disables retrieval of online tips and help in the immersive control panel
 
@@ -563,7 +566,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability
 "Start_TrackDocs"=dword:00000000
 "Start_TrackProgs"=dword:00000000
 
-; Bypass TPM Boot
+; Bypass
 
 [HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig]
 "BypassTPMCheck"=dword:00000001 ; insider preview period ; Rufus
@@ -573,10 +576,11 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability
 "BypassDiskCheck"=dword:00000001 ; strings.exe winsetup.dll | find /i "Bypass", don't appear to exist
 "BypassStorageCheck"=dword:00000001 ; strings.exe winsetup.dll | find /i "Bypass", don't appear to exist
 
-; Disable Mouse menu delay
+; Disable Mouse menu delay and autoendtasks
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "MenuShowDelay"="0"
+"AutoEndTasks"="1"
 
 ; Diable Mouse Keys
 
@@ -648,6 +652,11 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Diagnostics\Performance]
 "DisableDiagnosticTracing"=dword:00000001
+
+; Disable auto maintenance
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
+"MaintenanceDisabled"=dword:00000001
 
 ; default power saving mode for all network cards to disabled
 
@@ -1330,20 +1339,6 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability
 "UserAuthPolicy"=dword:00000000
 "BluetoothPolicy"=dword:00000000
     
-; Disable app running in the background
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
-"GlobalUserDisabled"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
-"GlobalUserDisabled"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
-"BackgroundAppGlobalToggle"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Search]
-"BackgroundAppGlobalToggle"=dword:00000000
-  
 ; Disable apps use user advertising ID for experiences across apps
       
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
