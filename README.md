@@ -49,7 +49,7 @@ Calypto
 
 > Download
 
-https://drive.google.com/file/d/1qk9rwNp0LVdzMaMnyQ02h8GYPkbdnS7b/view?usp=sharing
+https://drive.google.com/file/d/1lZzyB76FtpxFdunFkimO-JtRYudlxyAt/view?usp=sharing
 
 ### Always have a backup USB with default Windows 10 if something goes wrong
 
