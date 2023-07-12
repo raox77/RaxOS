@@ -22,7 +22,6 @@ Calypto
 - Windows Defender
 - Cortana
 - SmartScreen
-- Input Method Editor
 - OneDrive
 - Windows Backup / Restore
 - Windows Sounds
@@ -33,10 +32,8 @@ Calypto
 - Share Media Control Panel
 - Easy Transfer & Sync Host
 - CEIP
-- SFC
 - Windows To Go
 - AutoPlay
-- Webcam on Discord ***?***
 - Telephony
 - Windows Update
 
@@ -56,9 +53,9 @@ https://drive.google.com/file/d/1qk9rwNp0LVdzMaMnyQ02h8GYPkbdnS7b/view?usp=shari
 
 ### Always have a backup USB with default Windows 10 if something goes wrong
 
-SHA-256:8956d95de86422c51e3fea2967340f1f957b66d85ac68d2d4390fcbc81592dd7
+SHA-256:97bbd464b984980f7f7ee6bf2d561b93fabdd073882c6780895d0be162e87a64
 
-SHA-1:51d18582ed87b3e9d3407e013f5b0f2e1a5b093c
+SHA-1:4d24813660ca9830118eb68e9a049a1a088f9954 
 
 
 # W10 22H2
