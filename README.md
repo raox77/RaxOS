@@ -44,13 +44,13 @@ Calypto
 
 > Download
 
-https://drive.google.com/file/d/1qAZNb9IOv4u9LttTmYhOjcp26fQjzQlM/view
+https://drive.google.com/file/d/1WKfQaal-ChFXRdFnXC6i22KJC3lmm-iE/view?usp=sharing
 
 ### Always have a backup USB with default Windows 10 if something goes wrong
 
-SHA-256: 2f5b19a2a1b9acbecd2ad9cf99863ab6a61c9850e7c8ea10de83677af115002b
+SHA-256: 46947708f4d50b54373b53188d0fedea62d6f5a186e8165cb2710c5a11d51664
 
-SHA-1: a2821e0f98d8f9307d304b998ccc24d120326f5f 
+SHA-1: 015c17a342fc6dce06377cdc4c5390f5083261cc 
 
 
 # W10 22H2
