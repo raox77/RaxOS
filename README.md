@@ -26,7 +26,6 @@ Calypto
 - Windows Backup / Restore
 - Windows Sounds
 - Windows Help Content
-- Game Explorer
 - OpenSSH
 - Shared Experiences
 - Share Media Control Panel
@@ -35,27 +34,23 @@ Calypto
 - Windows To Go
 - AutoPlay
 - Telephony
-- Windows Update
 
 ## Stripped Devices & Drivers:
 - Printing
 - Floppy Disks
 - Smart Cards
 - TabletPC Components
-- POS
-- NFC
-- VR Headsets
 - Biometric Devices (finger print etc)
 
 > Download
 
-https://drive.google.com/file/d/1lZzyB76FtpxFdunFkimO-JtRYudlxyAt/view?usp=sharing
+https://drive.google.com/file/d/1qAZNb9IOv4u9LttTmYhOjcp26fQjzQlM/view
 
 ### Always have a backup USB with default Windows 10 if something goes wrong
 
-SHA-256:97bbd464b984980f7f7ee6bf2d561b93fabdd073882c6780895d0be162e87a64
+SHA-256: 2f5b19a2a1b9acbecd2ad9cf99863ab6a61c9850e7c8ea10de83677af115002b
 
-SHA-1:4d24813660ca9830118eb68e9a049a1a088f9954 
+SHA-1: a2821e0f98d8f9307d304b998ccc24d120326f5f 
 
 
 # W10 22H2
