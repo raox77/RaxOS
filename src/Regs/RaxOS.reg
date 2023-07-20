@@ -426,16 +426,6 @@ Windows Registry Editor Version 5.00
 "Start_TrackDocs"=dword:00000000
 "Start_TrackProgs"=dword:00000000
 
-; Bypass
-
-[HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig]
-"BypassTPMCheck"=dword:00000001 ; insider preview period ; Rufus
-"BypassSecureBootCheck"=dword:00000001 ; insider preview period ; Rufus
-"BypassRAMCheck"=dword:00000001 ; insider preview period ; Rufus
-"BypassCPUCheck"=dword:00000001 ; insider preview period ; strings.exe winsetup.dll | find /i "Bypass", don't appear to exist
-"BypassDiskCheck"=dword:00000001 ; strings.exe winsetup.dll | find /i "Bypass", don't appear to exist
-"BypassStorageCheck"=dword:00000001 ; strings.exe winsetup.dll | find /i "Bypass", don't appear to exist
-
 ; Disable Mouse menu delay and autoendtasks
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -626,11 +616,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings]
 "IsDeviceSearchHistoryEnabled"=dword:00000000
-
-; disable automatic updates for offline maps
-
-[HKEY_LOCAL_MACHINE\SYSTEM\Maps]
-"AutoUpdateEnabled"=dword:00000000
 
 ; OpenShell Settings
 
@@ -1406,9 +1391,6 @@ Windows Registry Editor Version 5.00
 "SubscribedContent-338389Enabled"=dword:00000000
 "SubscribedContent-353698Enabled"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Power]
-"HiberbootEnabled"=dword:00000000
-
 ; Prevent Edge to install again
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate]
@@ -1428,12 +1410,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
 "DODownloadMode"=dword:00000001
-
-; Fixing timing precision in Windows after "The Great Rule Change"
-; https://github.com/amitxv/TimerResolution
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
-"GlobalTimerResolutionRequests"=dword:00000001
 
 ; oeminformations
 
