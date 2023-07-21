@@ -113,7 +113,6 @@ Windows Registry Editor Version 5.00
 ; Timer coalescing is a computer system energy-saving technique that reduces central processing unit (CPU) power consumption by reducing the precision of software timers
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
-"HiberbootEnabled"=dword:00000000
 "CoalescingTimerInterval"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
