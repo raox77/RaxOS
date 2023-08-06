@@ -1,7 +1,5 @@
 Windows Registry Editor Version 5.00
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
-
 [-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\PintoStartScreen]
 
 [-HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\PintoStartScreen]
@@ -533,9 +531,12 @@ Windows Registry Editor Version 5.00
 @="\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \"%1\""
 
 ; disable page combining
+; disable Meltdown and inspectre 
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "EnableCfg"=dword:00000000
+"FeatureSettingsOverride"=dword:00000003
+"FeatureSettingsOverrideMask"=dword::00000003
 "EnableLowVaAccess"=dword:00000000
 "EnablePrefetcher"=dword:00000000
 "MoveImages"=dword:00000000
