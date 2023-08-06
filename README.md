@@ -23,6 +23,7 @@ Calypto
 - Cortana
 - SmartScreen
 - OneDrive
+- Windows Sounds
 - Windows Backup / Restore
 - Windows Help Content
 - OpenSSH
