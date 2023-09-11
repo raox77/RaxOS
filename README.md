@@ -29,10 +29,9 @@ Calypto
 - OpenSSH
 - Shared Experiences
 - Share Media Control Panel
-- Easy Transfer & Sync Host
+- Easy Transfer
 - CEIP
 - Windows To Go
-- AutoPlay
 - Telephony
 - Snip and Sketch is stripped but can be installed in store but you just use lightshot
 - Input Method Editor
@@ -43,13 +42,16 @@ Calypto
 - Floppy Disks
 - TabletPC Components
 - Biometric Devices (finger print etc)
+- POS
+- NFC
+- VR Headsets Support
 
 > Download
 
-https://drive.google.com/file/d/1fPuwIPscxKaKGnIL3Oi0n63hRxb0Vy_3/view?usp=drive_link
+https://drive.google.com/file/d/1uMeIwRFo4quvtDTyJOn9ff-WnekykT0W/view?usp=sharing
 
 ### Always have a backup USB with default Windows 10 if something goes wrong
 
-SHA-256: c295c73dc4eace380f46a607a340af87acc281f739851dd78101cdeb58f6af64
+SHA-256: 55a97273dbd024aed5baddbc0ebb42f756d8a862f9a77345b24c6b21782b5c26
 
-SHA-1: 8fc740c82fdc1f86042819ae8ffc560558b4e332
+SHA-1: 669e0b6915808ddac42e8af8c451b04ebde72a7a
