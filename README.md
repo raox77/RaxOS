@@ -15,7 +15,7 @@ Calypto
 ## Server Link https://discord.gg/6Y5CZqWHFa
 
 
-# W11 22H2
+# W11
 ## Stripped / Not Working Features:
 - Windows installation from setup.exe
 - BitLocker Drive Encryption (Affects diskmgmt.msc & msconfig)
@@ -27,20 +27,17 @@ Calypto
 - Windows Backup / Restore
 - Windows Help Content
 - OpenSSH
-- Shared Experiences
 - Share Media Control Panel
 - Easy Transfer
 - CEIP
 - Windows To Go
 - Telephony
 - Snip and Sketch is stripped but can be installed in store but you just use lightshot
-- Input Method Editor
 
 ## Stripped Devices & Drivers:
 - Printing
 - Smart Cards
 - Floppy Disks
-- TabletPC Components
 - Biometric Devices (finger print etc)
 - POS
 - NFC
@@ -48,10 +45,10 @@ Calypto
 
 > Download
 
-https://drive.google.com/file/d/1uMeIwRFo4quvtDTyJOn9ff-WnekykT0W/view?usp=sharing
+https://drive.google.com/file/d/1FhPXw4eHnYZRLNmBhG_2Qbpz_1Ot0uGh/view?usp=sharing
 
-### Always have a backup USB with default Windows 10 if something goes wrong
+### Always have a backup USB with default Windows 10 Or 11 if something goes wrong and your network driver in the USB
 
-SHA-256: 55a97273dbd024aed5baddbc0ebb42f756d8a862f9a77345b24c6b21782b5c26
+SHA-256: e4a9a7b4ef3cd5febd57db1e0ac44e8fcda8a4ac51da6746ceb56dfa10f7d8bd
 
-SHA-1: 669e0b6915808ddac42e8af8c451b04ebde72a7a
+SHA-1: 5784ba7bec1bea5cf3bee7cdc8f9443dc94d2dda
