@@ -111,7 +111,7 @@ reg delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\Firew
 cls
 
 Echo "editing POW & power tweaks"
-powercfg -import "C:\Modules\RaxOS 2.0.1 PowerPlan" 00000000-0000-0000-0000-000000000000
+powercfg -import "C:\Modules\RaxOS.pow" 00000000-0000-0000-0000-000000000000
 powercfg /setactive 00000000-0000-0000-0000-000000000000
 powercfg -h off
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t Reg_DWORD /d "0" /f 
@@ -150,21 +150,12 @@ devmanview /disable "Programmable Interrupt Controller" > NUL 2>&1
 devmanview /disable "Numeric Data Processor" > NUL 2>&1
 devmanview /disable "Communications Port (COM1)" > NUL 2>&1
 devmanview /disable "Microsoft RRAS Root Enumerator" > NUL 2>&1
+devmanview /disable "Micosoft GS Wavetable Synth" > NUL 2>&1
 cls
 
 Echo "Changing fsutil behaviors"
-fsutil behavior set allowextchar 0 > NUL 2>&1
-fsutil behavior set Bugcheckoncorrupt 0 > NUL 2>&1
-fsutil repair set C: 0 > NUL 2>&1
 fsutil behavior set disable8dot3 1 > NUL 2>&1
-fsutil behavior set disablecompression 1 > NUL 2>&1
-fsutil behavior set disableencryption 1 > NUL 2>&1
 fsutil behavior set disablelastaccess 1 > NUL 2>&1
-fsutil behavior set disablespotcorruptionhandling 1 > NUL 2>&1
-fsutil behavior set encryptpagingfile 0 > NUL 2>&1
-fsutil behavior set quotanotify 86400 > NUL 2>&1
-fsutil behavior set symlinkevaluation L2L:1 > NUL 2>&1
-fsutil behavior set disabledeletenotify 0 > NUL 2>&1
 cls
 
 Echo "Disabling USB Idle"
@@ -186,6 +177,10 @@ for %%a in (
 	DmaRemappingCompatible
 	DmaRemappingCompatibleSelfhost
 ) do for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "%%a" ^| findstr "HKEY"') do reg add "%%b" /v "%%a" /t REG_DWORD /d "0" /f >NUL 2>&1
+cls
+
+Echo "Set svchost to ffffffff works best for all RAM size"
+Reg add HKLM\SYSTEM\CurrentControlSet\Control /t REG_DWORD /v SvcHostSplitThresholdInKB /d 0xffffffff /f
 cls
 
 Echo "Enabling MSI mode & set to undefined"
@@ -265,6 +260,7 @@ for %%z in (
         AJRouter
         AppIDSvc
 	DiagTrack
+        DsmSvc
 	DialogBlockingService
 	Diagsvc
         autotimesvc
