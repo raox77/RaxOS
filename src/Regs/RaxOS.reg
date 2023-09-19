@@ -277,6 +277,28 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
 "{7AD84985-87B4-4a16-BE58-8B72A5B390F7}"=""
 
+; Add idle toggle in context menu
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Idle]
+"Icon"="powercpl.dll"
+"MUIVerb"="CPU Idle"
+"Position"="Bottom"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Idle\Shell\Disable Idle]
+"MUIVerb"="Disable Idle"
+"Icon"="powercpl.dll"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Idle\Shell\Disable Idle\Command]
+@="powercfg -setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Idle\Shell\Enable Idle]
+"MUIVerb"="Enable Idle"
+"Icon"="powercpl.dll"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Idle\Shell\Enable Idle\Command]
+@="powercfg -setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 0"
+
 ; remove map network drive and disconnect network drive from context menu
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
@@ -327,10 +349,126 @@ Windows Registry Editor Version 5.00
 ; allocate processor resources primarily to programs
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:00000026
+"Win32PrioritySeparation"=dword:0000001a
+
+; disable-system-responsiveness-performance-diagnostics
+; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WDI\{a7a5847a-7511-4e4e-90b1-45ad2a002f51}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{a7a5847a-7511-4e4e-90b1-45ad2a002f51}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{186f47ef-626c-4670-800a-4a30756babad}]
+"ScenarioExecutionEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WDI\{186f47ef-626c-4670-800a-4a30756babad}]
+"ScenarioExecutionEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WDI\{ecfb03d1-58ee-4cc7-a1b5-9bc6febcb915}]
+"ScenarioExecutionEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{ecfb03d1-58ee-4cc7-a1b5-9bc6febcb915}]
+"ScenarioExecutionEnabled"=dword:00000000
+
+; disable-windows-standby-resume-performance-diagnostics
+; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{ffc42108-4920-4acf-a4fc-8abdcc68ada4}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WDI\{ffc42108-4920-4acf-a4fc-8abdcc68ada4}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
+
+; disable-windows-shutdown-performance-diagnostics
+; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WDI\{2698178D-FDAD-40AE-9D3C-1371703ADC5B}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{2698178D-FDAD-40AE-9D3C-1371703ADC5B}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
+
+; disable-windows-memory-leak-diagnostics
+; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{eb73b633-3f4e-4ba0-8f60-8f3c6f53168f}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WDI\{eb73b633-3f4e-4ba0-8f60-8f3c6f53168f}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=dword:00000001
+
+; disable-windows-boot-performance-diagnostics
+; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{67144949-5132-4859-8036-a737b43825d8}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WDI\{67144949-5132-4859-8036-a737b43825d8}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WDI\{86432a0b-3c7d-4ddf-a89c-172faa90485d}]
+"ScenarioExecutionEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{86432a0b-3c7d-4ddf-a89c-172faa90485d}]
+"ScenarioExecutionEnabled"=dword:00000000
+
+; disallow-users-to-access-online-troubleshooting-content-on-microsoft-servers-via-wots
+; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy]
+"EnableQueryRemoteServer"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy]
+"EnableQueryRemoteServer"=dword:00000000
+
+; disallow-users-to-access-and-run-troubleshooting-wizards
+; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnostics]
+"EnableDiagnostics"=dword:00000000
+
+; disable-scheduled-maintenance
+; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\ScheduledDiagnostics]
+"EnabledExecution"=dword:00000000
+"EnabledExecutionLevel"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics]
+"EnabledExecution"=dword:00000000
+"EnabledExecutionLevel"=
+
+; disable-text-prediction
+; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\TabletTip\1.7]
+"DisablePrediction"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\TabletTip\1.7]
+"DisablePrediction"=dword:00000001
 
 ; disables onlinetips
 ; created by imribiy
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WDI\{2698178D-FDAD-40AE-9D3C-1371703ADC5B}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{2698178D-FDAD-40AE-9D3C-1371703ADC5B}]
+"ScenarioExecutionEnabled"=dword:00000000
+"EnabledScenarioExecutionLevel"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "AllowOnlineTips"=dword:00000000
