@@ -69,7 +69,7 @@ cls
 Echo "Editing Bcdedit"
 bcdedit /set {current} nx optin
 label C: RaxOS
-bcdedit /set {current} description "RaxOS W11"
+bcdedit /set {current} description "RaxOS W10"
 bcdedit /set disabledynamictick yes
 bcdedit /set useplatformtick yes
 bcdedit /deletevalue useplatformclock
