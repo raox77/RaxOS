@@ -264,7 +264,6 @@ for %%z in (
 	FontCache3.0.0.0
 	MsKeyboardFilter
         icssvc
-        IKEEXT
 	PcaSvc
 	ShellHWDetection
 	SysMain
@@ -329,7 +328,6 @@ for %%z in (
         3ware
         arcsas
         buttonconverter
-        cdfs
         circlass
         Dfsc
         ErrDev
