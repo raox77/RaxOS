@@ -11,12 +11,11 @@ start /b /wait "" "C:\Modules\7z2301-x64.msi" /passive >nul 2>&1
 cls
 
 Echo "7zip settings"
-Regedit /s "C:\Modules\7-zip_Alternate_Context_Menu.reg"
+Regedit /s "C:\Modules\7-zip_Alternate_Context_Menu.reg" >nul 2>&1
 cls
 
 Echo "Disabling Process Mitigations"
-call C:\Modules\disable-process-mitigations.bat
-powershell set-ProcessMitigation -System -Disable  DEP, EmulateAtlThunks, SEHOP, ForceRelocateImages, RequireInfo, BottomUp, HighEntropy, StrictHandle, DisableWin32kSystemCalls, AuditSystemCall, DisableExtensionPoints, BlockDynamicCode, AllowThreadsToOptOut, AuditDynamicCode, CFG, SuppressExports, StrictCFG, MicrosoftSignedOnly, AllowStoreSignedBinaries, AuditMicrosoftSigned, AuditStoreSigned, EnforceModuleDependencySigning, DisableNonSystemFonts, AuditFont, BlockRemoteImageLoads, BlockLowLabelImageLoads, PreferSystem32, AuditRemoteImageLoads, AuditLowLabelImageLoads, AuditPreferSystem32
+call C:\Modules\disable-process-mitigations.bat >nul 2>&1
 cls
 
 Echo Setting "Execution Policy To Unrestricted"
@@ -198,14 +197,6 @@ cls
 Echo "Remove Share from context menu"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
-cls
-
-Echo "Disabling Nagles Algorithm"
-for /f %%i in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do (
-	Reg.exe add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpAckFrequency" /t REG_DWORD /d "1" /f > NUL 2>&1
-	Reg.exe add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TcpDelAckTicks" /t REG_DWORD /d "0" /f > NUL 2>&1
-	Reg.exe add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v "TCPNoDelay" /t REG_DWORD /d "1" /f > NUL 2>&1
-)
 cls
 
 Echo "Remove Restore Previous Versions from context menu"
