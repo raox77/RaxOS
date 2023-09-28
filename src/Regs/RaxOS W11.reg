@@ -176,10 +176,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
 "FolderType"="NotSpecified"
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
-"NumberOfSIUFInPeriod"=dword:00000000
-"PeriodInNanoSeconds"=-
-
 ; hide this pc shortcuts
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}\PropertyBag]
@@ -1455,7 +1451,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
-"PeriodInNanoSeconds"=-
+"PeriodInSeconds"=-
 
 ; disable recommended troubleshooting
 
@@ -1792,19 +1788,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Policies\Microsoft\InputPersonalization]
 "RestrictImplicitInkCollection"=dword:00000001
-
-; Disable Feedback Frequency
-
-[HKEY_CURRENT_USER\Software\Microsoft\Siuf\Rules]
-"NumberOfSIUFInPeriod"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Siuf\Rules]
-"NumberOfSIUFInPeriod"=dword:00000000
-
-; Disable Let apps on user's other devices open apps and continue experiences on this device
-
-[HKEY_CURRENT_USER\Software\Microsoft\Siuf\Rules]
-"NumberOfSIUFInPeriod"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
