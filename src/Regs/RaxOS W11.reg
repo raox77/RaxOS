@@ -666,11 +666,6 @@ Windows Registry Editor Version 5.00
 "ContactVisualization"=dword:00000000
 "GestureVisualization"=dword:00000000
 
-; VisualEffect
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
-"VisualFXSetting"=dword:00000002
-
 ; turn off autoplay 
 ; Created by imribiy
 
