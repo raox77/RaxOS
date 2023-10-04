@@ -1390,7 +1390,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "FeatureSettingsOverride"=dword:00000003
-"FeatureSettingsOverrideMask"=dword::00000003
+"FeatureSettingsOverrideMask"=dword:00000003
 
 ; hide frequent folders in quick access
 ; hide recent folders in quick access
