@@ -1,16 +1,16 @@
 # RaxOS
 
 ### Credits:-
-Imribiy
-Phlegm
-Gosheto
-Amit
-Catgamerop 
-Revi team
-Spddl
-Atlas team
+[Imribiy](https://github.com/imribiy)
+[Phlegm](https://github.com/getggos)
+[Gosheto](https://twitter.com/g0shet00)
+[Amit](https://github.com/amitxv)
+[Catgamerop](https://twitter.com/CatGamerOP)
+[Revi team](https://github.com/meetrevision)
+[Spddl](https://github.com/spddl)
+[Atlas team](https://github.com/Atlas-OS)
 [Cynar](https://github.com/CYNAR2k/)
-Calypto
+[Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
 
 ## Server Link https://discord.gg/6Y5CZqWHFa
 
