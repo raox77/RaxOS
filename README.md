@@ -9,7 +9,7 @@ Catgamerop
 Revi team
 Spddl
 Atlas team
-Cynar
+[Cynar](https://github.com/CYNAR2k/)
 Calypto
 
 ## Server Link https://discord.gg/6Y5CZqWHFa
