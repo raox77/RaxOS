@@ -12,7 +12,7 @@
 [Cynar](https://github.com/CYNAR2k/)
 [Calypto](https://docs.google.com/document/d/1c2-lUJq74wuYK1WrA_bIvgb89dUN0sj8-hO3vqmrau4/edit)
 
-## Server Link https://discord.gg/6Y5CZqWHFa
+## [Server Link](https://discord.gg/6Y5CZqWHFa)
 
 
 # W11
