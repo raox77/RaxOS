@@ -27,7 +27,6 @@
 - Windows Backup / Restore
 - Windows Help Content
 - OpenSSH
-- Share Media Control Panel
 - Easy Transfer
 - CEIP
 - Windows To Go
@@ -66,7 +65,6 @@ SHA-1: 5784ba7bec1bea5cf3bee7cdc8f9443dc94d2dda
 - Windows Backup / Restore
 - Windows Help Content
 - OpenSSH
-- Share Media Control Panel
 - Easy Transfer
 - CEIP
 - Windows To Go
