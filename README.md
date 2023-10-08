@@ -1,11 +1,11 @@
 # RaxOS
 
 ### Credits:-
-[Imribiy](https://github.com/imribiy)
-[Phlegm](https://github.com/getggos)
+[Imribiy](https://bit.ly/xos-windows)
+[Phlegm]([https://github.com/getggos](https://dsc.gg/ggos))
 [Gosheto](https://twitter.com/g0shet00)
 [Amit](https://github.com/amitxv)
-[Catgamerop](https://twitter.com/CatGamerOP)
+[Catgamerop](https://discord.gg/4Gg8n6WhPN)
 [Revi team](https://github.com/meetrevision)
 [Spddl](https://github.com/spddl)
 [Atlas team](https://github.com/Atlas-OS)
