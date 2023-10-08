@@ -2,7 +2,7 @@
 
 ### Credits:-
 [Imribiy](https://bit.ly/xos-windows)
-[Phlegm]([https://github.com/getggos](https://dsc.gg/ggos))
+[Phlegm](https://dsc.gg/ggos)
 [Gosheto](https://twitter.com/g0shet00)
 [Amit](https://github.com/amitxv)
 [Catgamerop](https://discord.gg/4Gg8n6WhPN)
