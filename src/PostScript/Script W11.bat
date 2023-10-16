@@ -14,10 +14,6 @@ Echo "7zip settings"
 Regedit /s "C:\Modules\7-zip_Alternate_Context_Menu.reg" >nul 2>&1
 cls
 
-Echo "Installing OpenShell"
-start /b /wait "" "C:\Windows\Modules\OpenShellSetup_4_4_191.exe" /qn ADDLOCAL=StartMenu >nul 2>&1
-cls
-
 Echo "Disabling Process Mitigations"
 call C:\Modules\disable-process-mitigations.bat >nul 2>&1
 cls
@@ -246,6 +242,10 @@ cls
 Echo "Enabling FSE"
 Reg.exe add "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehaviorMode" /t REG_DWORD /d "2" /f >nul 2>&1
 PowerRun.exe /SW:0 Reg.exe add "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f >nul 2>&1
+cls
+
+Echo "RW Fix for w11"
+Reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f >NUL 2>&1
 cls
 
 Echo "Change NTP server to pool.ntp.org"
