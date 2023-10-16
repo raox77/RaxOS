@@ -14,6 +14,10 @@ Echo "7zip settings"
 Regedit /s "C:\Modules\7-zip_Alternate_Context_Menu.reg" >nul 2>&1
 cls
 
+Echo "Installing OpenShell"
+start /b /wait "" "C:\Windows\Modules\OpenShellSetup_4_4_191.exe" /qn ADDLOCAL=StartMenu >nul 2>&1
+cls
+
 Echo "Disabling Process Mitigations"
 call C:\Modules\disable-process-mitigations.bat >nul 2>&1
 cls
