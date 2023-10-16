@@ -11,11 +11,7 @@ start /b /wait "" "C:\Modules\7z2301-x64.msi" /passive >nul 2>&1
 cls
 
 Echo "7zip settings"
-Regedit /s "C:\Modules\7-zip_Alternate_Context_Menu.reg"
-cls
-
-Echo "Installing OpenShell"
-start /b /wait "" "C:\Windows\Modules\OpenShellSetup_4_4_191.exe" /qn ADDLOCAL=StartMenu >nul 2>&1
+Regedit /s "C:\Modules\7-zip_Alternate_Context_Menu.reg" >nul 2>&1
 cls
 
 Echo "Disabling Process Mitigations"
@@ -26,7 +22,7 @@ Echo Setting "Execution Policy To Unrestricted"
 powershell set-executionpolicy unrestricted -force >nul 2>&1
 cls
 
-Echo Configuring "Keyboard and Mouse Settings"
+Echo "Configuring "Keyboard and Mouse Settings"
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "InitialKeyboardIndicators" /t REG_SZ /d "0" /f >nul 2>&1
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "KeyboardDelay" /t REG_SZ /d "0" /f >nul 2>&1
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "KeyboardSpeed" /t REG_SZ /d "31" /f >nul 2>&1
@@ -69,7 +65,7 @@ cls
 Echo "Editing Bcdedit"
 bcdedit /set {current} nx optin
 label C: RaxOS
-bcdedit /set {current} description "RaxOS W10"
+bcdedit /set {current} description "RaxOS W11"
 bcdedit /set disabledynamictick yes
 bcdedit /set useplatformtick yes
 bcdedit /deletevalue useplatformclock
@@ -110,23 +106,23 @@ for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersi
 cls
 
 Echo "Reset Firewall Rules"
-reg delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f
+reg delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f >nul 2>&1
 cls
 
 Echo "editing POW & power tweaks"
 powercfg -import "C:\Modules\RaxOS.pow" 00000000-0000-0000-0000-000000000000
 powercfg /setactive 00000000-0000-0000-0000-000000000000
 powercfg -h off
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t Reg_DWORD /d "0" /f 
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t Reg_DWORD /d "0" /f 
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t Reg_DWORD /d "0" /f 
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t Reg_DWORD /d "1" /f 
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowHibernateOption" /t Reg_DWORD /d "0" /f 
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowLockOption" /t Reg_DWORD /d "0" /f 
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowSleepOption" /t Reg_DWORD /d "0" /f
-wevtutil set-log "Microsoft-Windows-SleepStudy/Diagnostic" /e:false
-wevtutil set-log "Microsoft-Windows-Kernel-Processor-Power/Diagnostic" /e:false
-wevtutil set-log "Microsoft-Windows-UserModePowerService/Diagnostic" /e:false
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t Reg_DWORD /d "0" /f  >nul 2>&1
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t Reg_DWORD /d "0" /f  >nul 2>&1
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t Reg_DWORD /d "0" /f  >nul 2>&1
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t Reg_DWORD /d "1" /f  >nul 2>&1
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowHibernateOption" /t Reg_DWORD /d "0" /f  >nul 2>&1
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowLockOption" /t Reg_DWORD /d "0" /f  >nul 2>&1
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowSleepOption" /t Reg_DWORD /d "0" /f >nul 2>&1
+wevtutil set-log "Microsoft-Windows-SleepStudy/Diagnostic" /e:false >nul 2>&1
+wevtutil set-log "Microsoft-Windows-Kernel-Processor-Power/Diagnostic" /e:false >nul 2>&1
+wevtutil set-log "Microsoft-Windows-UserModePowerService/Diagnostic" /e:false >nul 2>&1
 cls
 
 Echo "Disabling Device Manager Devices"
@@ -182,8 +178,12 @@ for %%a in (
 ) do for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "%%a" ^| findstr "HKEY"') do reg add "%%b" /v "%%a" /t REG_DWORD /d "0" /f >NUL 2>&1
 cls
 
+Echo "Disable Driver PowerSaving"
+%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.enable = $false; $_.psbase.put(); }"
+cls
+
 Echo "Set svchost to ffffffff works best for all RAM size"
-Reg add HKLM\SYSTEM\CurrentControlSet\Control /t REG_DWORD /v SvcHostSplitThresholdInKB /d 0xffffffff /f
+Reg add HKLM\SYSTEM\CurrentControlSet\Control /t REG_DWORD /v SvcHostSplitThresholdInKB /d 0xffffffff /f >nul 2>&1
 cls
 
 Echo "Enabling MSI mode & set to undefined"
@@ -220,6 +220,10 @@ Echo "Disabling StorPort Idle"
 for /f "tokens=*" %%s in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "StorPort" ^| findstr /e "StorPort"') do Reg.exe add "%%s" /v "EnableIdlePowerManagement" /t REG_DWORD /d "0" /f >nul 2>&1
 cls
 
+Echo "Disable Startup Sound"
+Reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation" /v "DisableStartupSound" /t REG_DWORD /d "1" /f >NUL 2>&1
+cls
+
 Echo "Remove Troubleshoot Compability from context menu"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{1d27f844-3a1f-4410-85ac-14651078412d}" /t REG_SZ /d "" /f > nul
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{1d27f844-3a1f-4410-85ac-14651078412d}" /t REG_SZ /d "" /f > nul
@@ -233,7 +237,12 @@ cls
 
 Echo "Enabling FSE"
 Reg.exe add "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehaviorMode" /t REG_DWORD /d "2" /f >nul 2>&1
-Reg.exe add "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f >nul 2>&1
+PowerRun.exe /SW:0 Reg.exe add "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f >nul 2>&1
+cls
+
+Echo "Change NTP server to pool.ntp.org"
+: thanks to privacy.sexy
+w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org" >nul 2>&1
 cls
 
 Echo "Disabling Drivers and Services"
@@ -294,8 +303,6 @@ for %%z in (
 	NdisVirtualBus
 	NDU
         luafv
-        fvevol
-        CDPSvc
         UsoSvc
         cbdhsvc
         BcastDVRUserService
@@ -355,8 +362,6 @@ for %%z in (
         IpxlatCfgSvc
         NetTcpPortSharing
         KtmRm
-        LanmanWorkstation
-	LanmanServer
 	lmhosts
         MSDTC
         QWAVE
