@@ -22,7 +22,7 @@ Echo "Disabling Process Mitigations"
 call C:\Modules\disable-process-mitigations.bat >nul 2>&1
 cls
 
-Echo Setting "Execution Policy To Unrestricted"
+Echo "Execution Policy To Unrestricted"
 powershell set-executionpolicy unrestricted -force >nul 2>&1
 cls
 
