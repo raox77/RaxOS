@@ -109,7 +109,7 @@ Echo "Reset Firewall Rules"
 reg delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f >nul 2>&1
 cls
 
-Echo "editing POW & power tweaks"
+Echo "Editing POW & power tweaks"
 powercfg -import "C:\Modules\RaxOS.pow" 00000000-0000-0000-0000-000000000000
 powercfg /setactive 00000000-0000-0000-0000-000000000000
 powercfg -h off
@@ -152,30 +152,53 @@ devmanview /disable "Microsoft RRAS Root Enumerator" > NUL 2>&1
 devmanview /disable "Micosoft GS Wavetable Synth" > NUL 2>&1
 cls
 
+Echo "Optimizing Scheduled Tasks"
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64 Critical" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 Critical" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\CertificateServicesClient\AikCertEnrollTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\CertificateServicesClient\KeyPreGenTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Clip\License Validation" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Device Setup\Metadata Refresh" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\RecommendedTroubleshootingScanner" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\Scheduled" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskFootprint\Diagnostics" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\InstallService\ScanForUpdates" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\InstallService\ScanForUpdatesAsUser" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\InstallService\SmartRetry" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsToastTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsUpdateTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Registry\RegIdleBackup" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Security\Pwdless\IntelligentPwdlessTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\SoftwareProtectionPlatform\SvcRestartTaskNetwork" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\StateRepository\MaintenanceTasks" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Subscription\EnableLicenseAcquisition" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Subscription\LicenseAcquisition" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\ResPriStaticDbSync" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\WsSwapAssessmentTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\WDI\ResolutionHost" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Windows Error Reporting\QueueReporting" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Windows Filtering Platform\BfeOnServiceStartTypeChange" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Wininet\CacheTask" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\TaskScheduler" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WaaSMedic" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WindowsUpdate" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan Static Task" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Wake To Work" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Start Oobe Expedite Work" >nul 2>&1
+cls
+
 Echo "Changing fsutil behaviors"
 fsutil behavior set disable8dot3 1 > NUL 2>&1
 fsutil behavior set disablelastaccess 1 > NUL 2>&1
-cls
-
-Echo "Disabling USB Idle"
-for %%a in (
-	EnhancedPowerManagementEnabled
-	AllowIdleIrpInD3
-	EnableSelectiveSuspend
-	DeviceSelectiveSuspended
-	SelectiveSuspendEnabled
-	SelectiveSuspendOn
-	EnumerationRetryCount
-	ExtPropDescSemaphore
-	WaitWakeEnabled
-	D3ColdSupported
-	WdfDirectedPowerTransitionEnable
-	EnableIdlePowerManagement
-	IdleInWorkingState
-	IoLatencyCap
-	DmaRemappingCompatible
-	DmaRemappingCompatibleSelfhost
-) do for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "%%a" ^| findstr "HKEY"') do reg add "%%b" /v "%%a" /t REG_DWORD /d "0" /f >NUL 2>&1
 cls
 
 Echo "Disable Driver PowerSaving"
@@ -208,26 +231,6 @@ reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{596AB062-B4D2-4215-9F74-E9109B0A8153}" /t REG_SZ /d "" /f >nul 2>&1
 cls
 
-Echo "Disabling DMA Remapping"
-for %%a in (DmaRemappingCompatible) do for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f "%%a" ^| findstr "HKEY"') do Reg.exe add "%%b" /v "%%a" /t REG_DWORD /d "0" /f >nul 2>&1
-cls
-
-Echo "Disabling HIPM, DIPM and HDDParking"
-for %%a in (EnableHIPM EnableDIPM EnableHDDParking) do for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f "%%a" ^| findstr "HKEY"') do Reg.exe add "%%b" /v "%%a" /t REG_DWORD /d "0" /f >nul 2>&1
-cls
-
-Echo "Disabling StorPort Idle"
-for /f "tokens=*" %%s in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "StorPort" ^| findstr /e "StorPort"') do Reg.exe add "%%s" /v "EnableIdlePowerManagement" /t REG_DWORD /d "0" /f >nul 2>&1
-cls
-
-Echo "Disable Startup Sound"
-Reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation" /v "DisableStartupSound" /t REG_DWORD /d "1" /f >NUL 2>&1
-cls
-
-Echo "Set sounds to no sounds"
-powershell C:\Modules\No Sounds.ps1
-cls
-
 Echo "Remove Troubleshoot Compability from context menu"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{1d27f844-3a1f-4410-85ac-14651078412d}" /t REG_SZ /d "" /f > nul
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{1d27f844-3a1f-4410-85ac-14651078412d}" /t REG_SZ /d "" /f > nul
@@ -237,11 +240,6 @@ Echo "Disable Background apps"
 Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t Reg_DWORD /d "1" /f >nul 2>&1
 Reg add "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t Reg_DWORD /d "2" /f >nul 2>&1
 Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle" /t Reg_DWORD /d "0" /f >nul 2>&1
-cls
-
-Echo "Enabling FSE"
-Reg.exe add "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehaviorMode" /t REG_DWORD /d "2" /f >nul 2>&1
-PowerRun.exe /SW:0 Reg.exe add "HKCU\System\GameConfigStore" /v "GameDVR_DXGIHonorFSEWindowsCompatible" /t REG_DWORD /d "1" /f >nul 2>&1
 cls
 
 Echo "RW Fix for w11"
@@ -262,26 +260,26 @@ PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Cont
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "UpperFilters" /t REG_MULTI_SZ /d "" /f
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dhcp" /v "DependOnService" /t REG_MULTI_SZ /d "NSI\0Afd" /f
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache" /v "DependOnService" /t REG_MULTI_SZ /d "nsi" /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform" /v "InactivityShutdownDelay" /t REG_DWORD /d "4294967295" /f
+Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform" /v "InactivityShutdownDelay" /t REG_DWORD /d "4294967295" /f
 for %%z in (
 	AppVClient
-        AJRouter
-        AppIDSvc
+	AJRouter
+	AppIDSvc
 	DiagTrack
-        DsmSvc
+      DsmSvc
 	DialogBlockingService
 	Diagsvc
-        autotimesvc
-        W32Time
+      autotimesvc
+      W32Time
 	diagnosticshub.standardcollector.service
 	DPS
-        DsSvc
+      DsSvc
 	DusmSvc
 	FontCache
 	FontCache3.0.0.0
 	MsKeyboardFilter
-        icssvc
-        IKEEXT
+      icssvc
+      IKEEXT
 	PcaSvc
 	ShellHWDetection
 	SysMain
@@ -293,14 +291,14 @@ for %%z in (
 	WdiServiceHost
 	SensorDataService
 	SensrSvc
-        SensorService
+      SensorService
 	Beep
 	cdfs
 	cdrom
-        acpiex
-        acpipagr
-        acpipmi
-        acpitime
+      acpiex
+      acpipagr
+      acpipmi
+      acpitime
 	cnghwassist
 	GpuEnergyDrv
 	Telemetry
@@ -310,69 +308,69 @@ for %%z in (
 	lltdio
 	NdisVirtualBus
 	NDU
-        luafv
-        UsoSvc
-        cbdhsvc
-        BcastDVRUserService
+      luafv
+      UsoSvc
+      cbdhsvc
+      BcastDVRUserService
 	rdyboost
-        rdpbus
-        umbus
-        vdrvroot
-        Vid
-        CompositeBus
+      rdpbus
+      umbus
+      vdrvroot
+      Vid
+      CompositeBus
 	rspndr
 	NdisCap
 	NetBIOS
 	NetBT
 	KSecPkg
 	spaceport
-        VaultSvc
-        EventSystem
+      VaultSvc
+      EventSystem
 	storqosflt
 	bam
 	bowser
-        WarpJITSvc
-        Wecsvc
-        dmwappushservice
-        GraphicsPerfSvc
-        WMPNetworkSvc
-        TermService
-        UmRdpService
-        UnistoreSvc
-        PimIndexMaintenanceSvc
-        UserDataSvc
-        3ware
-        arcsas
-        buttonconverter
-        cdfs
-        circlass
-        Dfsc
-        ErrDev
-        mrxsmb
-        mrxsmb20
-        PEAUTH
-        QWAVEdrv
-        srv
-        SiSRaid2
-        SiSRaid4
-        Tcpip6
-        tcpipreg
-        vsmraid
-        VSTXRAID
-        wcnfs
-        WindowsTrustedRTProxy
-        SstpSvc
-        SSDPSRV
-        SmsRouter
+      WarpJITSvc
+      Wecsvc
+      dmwappushservice
+      GraphicsPerfSvc
+      WMPNetworkSvc
+      TermService
+      UmRdpService
+      UnistoreSvc
+      PimIndexMaintenanceSvc
+      UserDataSvc
+      3ware
+      arcsas
+      buttonconverter
+      cdfs
+      circlass
+      Dfsc
+      ErrDev
+      mrxsmb
+      mrxsmb20
+      PEAUTH
+      QWAVEdrv
+      srv
+      SiSRaid2
+      SiSRaid4
+      Tcpip6
+      tcpipreg
+      vsmraid
+      VSTXRAID
+      wcnfs
+      WindowsTrustedRTProxy
+      SstpSvc
+      SSDPSRV
+      SmsRouter
 	CldFlt
-        DisplayEnhancementService
+      DisplayEnhancementService
 	iphlpsvc
-        IpxlatCfgSvc
-        NetTcpPortSharing
-        KtmRm
+      IpxlatCfgSvc
+      NetTcpPortSharing
+      KtmRm
 	lmhosts
-        MSDTC
-        QWAVE
+      MSDTC
+      QWAVE
 	RmSvc
 	RFCOMM
 	BthEnum
@@ -390,17 +388,17 @@ for %%z in (
 	vmicshutdown
 	vmicheartbeat
 	vmicvmsession
-        vpci
-        TsUsbFlt
-        tsusbhub
-        storflt
-        RDPDR
-        RdpVideominiport
-        bttflt
-        HidBth
-        BthMini
-        BTHPORT
-        BTHUSB
+      vpci
+      TsUsbFlt
+      tsusbhub
+      storflt
+      RDPDR
+      RdpVideominiport
+      bttflt
+      HidBth
+      BthMini
+      BTHPORT
+      BTHUSB
 	vmicrdv
 	vmictimesync
 	vmicvss
@@ -434,4 +432,3 @@ xcopy "%WinDir%\Modules\cleanup.bat" "C:\ProgramData\Microsoft\Windows\Start Men
 cls
 
 shutdown -r -t 0
-Exit
