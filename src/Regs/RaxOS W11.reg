@@ -1,27 +1,5 @@
 Windows Registry Editor Version 5.00
 
-[-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\PintoStartScreen]
-
-[-HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\PintoStartScreen]
-
-[-HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\SendTo]
-
-[-HKEY_CLASSES_ROOT\UserLibraryFolder\shellex\ContextMenuHandlers\SendTo]
-
-[-HKEY_LOCAL_MACHINE\Software\Classes\*\shellex\ContextMenuHandlers\ModernSharing]
-
-[-HKEY_CLASSES_ROOT\Microsoft.Website\ShellEx\ContextMenuHandlers\PintoStartScreen]
-
-[-HKEY_CLASSES_ROOT\mscfile\shellex\ContextMenuHandlers\PintoStartScreen]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
-
-[-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
-
-[-HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags]
-
 ; add Script
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce]
@@ -68,7 +46,7 @@ Windows Registry Editor Version 5.00
 "RestartNotificationsAllowed2"=dword:00000000
 "HideMCTLink"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MRT]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
 "DontOfferThroughWUAU"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
@@ -81,17 +59,11 @@ Windows Registry Editor Version 5.00
 "ExcludeWUDriversInQualityUpdate"=dword:00000001
 "DoNotConnectToWindowsUpdateInternetLocations"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching]
-"SearchOrderConfig"=dword:00000000
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
 "PreventDeviceMetadataFromNetwork"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate]
 "SusClientId"="00000000-0000-0000-0000-000000000000"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableWindowsConsumerFeatures"=dword:00000001
 
 ; disable transparency
 
@@ -106,46 +78,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
 "AllowTelemetry"=dword:00000000
 
-; https://en.wikipedia.org/wiki/Timer_coalescing
-; Timer coalescing is a computer system energy-saving technique that reduces central processing unit (CPU) power consumption by reducing the precision of software timers
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
-"CoalescingTimerInterval"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
-"CoalescingTimerInterval"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
-"CoalescingTimerInterval"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Executive]
-"CoalescingTimerInterval"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
-"CoalescingTimerInterval"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\ModernSleep]
-"CoalescingTimerInterval"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
-"CoalescingTimerInterval"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
-"CoalescingTimerInterval"=dword:00000000
-
-; network throttling index and system responsiveness
+; reserve 10% of CPU resources for low-priority tasks instead of the default 20%
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
-"NetworkThrottlingIndex"=dword:ffffffff
 "SystemResponsiveness"=dword:0000000a
-
-; disable prefetcher and superfetch
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
-"EnablePrefetcher"=dword:00000000
-"EnableSuperfetch"=dword:00000000
-"EnableBootTrace"=dword:00000000
-"SfTracingState"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]
 "DisableDeleteNotification"=dword:00000000
@@ -164,10 +100,10 @@ Windows Registry Editor Version 5.00
 
 ; enable legacy volume layout
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\MTCUVC]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\MTCUVC]
 "EnableMtcUvc"=dword:00000000
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings]
 "NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK"=dword:00000000
 "NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK"=dword:00000000
 
@@ -176,10 +112,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
 "FolderType"="NotSpecified"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
-"NumberOfSIUFInPeriod"=dword:00000000
-"PeriodInNanoSeconds"=-
 
 ; hide this pc shortcuts
 
@@ -313,7 +245,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR] 
 "AllowGameDVR"=dword:00000000
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR] 
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR] 
 "AppCaptureEnabled"=dword:00000000
 
 [HKEY_CURRENT_USER\System\GameConfigStore]
@@ -509,7 +441,7 @@ Windows Registry Editor Version 5.00
 
 ; disable suggested content in the immersive control panel
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SubscribedContent-353694Enabled"=dword:00000000
 "SubscribedContent-353696Enabled"=dword:00000000
 "SubscribedContent-338393Enabled"=dword:00000000
@@ -522,12 +454,12 @@ Windows Registry Editor Version 5.00
 
 ; prevent windows marking file attachments with information about their zone of origin
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 
 ; turn off display of recent search entries in the file explorer search box
 
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "DisableSearchBoxSuggestions"=dword:00000001
 
 ; disable shake to minimize
@@ -538,7 +470,7 @@ Windows Registry Editor Version 5.00
 ; disable recent items and frequent places
 ; disable app launch tracking
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "DisallowShaking"=dword:00000001
 "ShowSyncProviderNotifications"=dword:00000000
 "HideFileExt"=dword:00000000
@@ -607,7 +539,7 @@ Windows Registry Editor Version 5.00
 
 ; disable Quiet Hours (Focus Assist)
 
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\QuietHours]
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\QuietHours]
 "Enable"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Policies\Microsoft\Windows\CurrentVersion\QuietHours]
@@ -615,7 +547,7 @@ Windows Registry Editor Version 5.00
 
 ; disable search indexing
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]
 "WholeFileSystem"=dword:00000001
 "SystemFolders"=dword:00000000
 
@@ -692,15 +624,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
 "LoggingDisabled"=dword:00000001
-
-; disable wer
-; created by imribiy
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
-"Disabled"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Windows Error Reporting]
-"Disabled"=dword:00000001
 
 ; dont send additional date
 ; created by imribiy
@@ -1382,32 +1305,26 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; disable program compatibility assistant
-
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
-"DisablePCA"=dword:00000001
-
 ; enable one view mode for all folders in file explorer
 
-[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\SOFTWARE\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
+[HKEY_CURRENT_USER\Software\Classes\Local Settings\SOFTWARE\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
 "FolderType"="NotSpecified"
 
-; set .ps1 file types to open with PowerShell by default
-
-[HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\Open\Command]
-@="\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \"%1\""
-
-; disable Meltdown and inspectre 
+; disable Meltdown and inspectre and prefetcher and superfetch
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "FeatureSettingsOverride"=dword:00000003
 "FeatureSettingsOverrideMask"=dword:00000003
+"EnablePrefetcher"=dword:00000000
+"EnableSuperfetch"=dword:00000000
+"EnableBootTrace"=dword:00000000
+"SfTracingState"=dword:00000000
 
 ; hide frequent folders in quick access
 ; hide recent folders in quick access
 ; show all tray icons in the taskbar
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "ShowFrequent"=dword:00000000
 "ShowRecent"=dword:00000000
 "EnableAutoTray"=dword:00000000
@@ -1428,7 +1345,7 @@ Windows Registry Editor Version 5.00
 
 ; clear history of recently opened documents on exit
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "ClearRecentDocsOnExit"=dword:00000001
 
 ; disable fault tolerant heap
@@ -1436,15 +1353,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FTH]
 "Enabled"=dword:00000000
 
-; disable inking and typing personalization
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
-"AcceptedPrivacyPolicy"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore]
+[HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization\TrainedDataStore]
 "HarvestContacts"=dword:00000000
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization]
+[HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization]
 "RestrictImplicitInkCollection"=dword:00000001
 "RestrictImplicitTextCollection"=dword:00000001
 
@@ -1460,7 +1372,7 @@ Windows Registry Editor Version 5.00
 
 ; disable windows feedback frequency
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
+[HKEY_CURRENT_USER\Software\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
 "PeriodInNanoSeconds"=-
 
@@ -1471,7 +1383,7 @@ Windows Registry Editor Version 5.00
 
 ; disable device search history
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SearchSettings]
 "IsDeviceSearchHistoryEnabled"=dword:00000000
 
 ; disable hotspot
@@ -1481,7 +1393,7 @@ Windows Registry Editor Version 5.00
 
 ; disable spell checking features
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\TabletTip\1.7]
+[HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7]
 "EnableSpellchecking"=dword:00000000
 "EnableTextPrediction"=dword:00000000
 "EnablePredictionSpaceInsertion"=dword:00000000
@@ -1505,7 +1417,7 @@ Windows Registry Editor Version 5.00
 
 ; disable startup delay for desktop apps
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
 "StartupDelayInMSec"=dword:00000000
 
 ; add takeownership in context menu
@@ -1550,7 +1462,7 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Appointments
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
 "Value"="Deny"
       
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
@@ -1575,7 +1487,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
@@ -1605,7 +1517,7 @@ Windows Registry Editor Version 5.00
   
 ; disable apps access - Email
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
@@ -1641,7 +1553,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
@@ -1649,7 +1561,7 @@ Windows Registry Editor Version 5.00
   
 ; disable apps access - Phone Calls
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
@@ -1660,7 +1572,7 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Pictures Library
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
@@ -1712,7 +1624,7 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Videos Library
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
@@ -1723,7 +1635,7 @@ Windows Registry Editor Version 5.00
     
 ; disable experience improvement program (NVIDIA driver)
 
-[HKEY_CURRENT_USER\SOFTWARE\NVIDIA Corporation\NVControlPanel2\Client]
+[HKEY_CURRENT_USER\Software\NVIDIA Corporation\NVControlPanel2\Client]
 "OptInOrOutPreference"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\NVIDIA Corporation\NVControlPanel2\Client]
@@ -1743,14 +1655,6 @@ Windows Registry Editor Version 5.00
 "DisableWindowsLocationProvider"=dword:00000001
 "DisableLocationScripting"=dword:00000001
 "DisableLocation"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-"AllowSearchToUseLocation"=dword:00000000
-
-; Ddisable Automatic Installation of sponsored apps (Consumer Experience)
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableWindowsConsumerFeatures"=dword:00000001
   
 ; disable automatically connect to hotspots temporarily to see if paid network services are avaiable.
 
@@ -1790,14 +1694,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Policies\Microsoft\InputPersonalization]
 "RestrictImplicitTextCollection"=dword:00000001
-  
-; disable Collect written text (ink) to let Windows and Cortana better understand you
-
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\InputPersonalization]
-"RestrictImplicitInkCollection"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\Classes\Software\Policies\Microsoft\InputPersonalization]
-"RestrictImplicitInkCollection"=dword:00000001
 
 ; disable Feedback Frequency
 
@@ -1807,17 +1703,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
 
-; disable Let apps on user's other devices open apps and continue experiences on this device
-
-[HKEY_CURRENT_USER\Software\Microsoft\Siuf\Rules]
-"NumberOfSIUFInPeriod"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Siuf\Rules]
-"NumberOfSIUFInPeriod"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass]
-"UserAuthPolicy"=dword:00000000
-
 ; disable Let apps on user's other devices use Bluetooth to open apps and continue experiences on this device
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass]
@@ -1826,7 +1711,7 @@ Windows Registry Editor Version 5.00
     
 ; disable apps use user advertising ID for experiences across apps
       
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
@@ -1834,7 +1719,7 @@ Windows Registry Editor Version 5.00
 
 ; disable Microsoft provide more tailored experiences with relevant tips and recommendations by using your diagnostic data
       
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
 "TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Privacy]
@@ -1842,11 +1727,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
-
-; disable Skype (if installed) help you connect with friends in your address book and verify your mobile number
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE\AppSettings]
-"Skype-UserConsentAccepted"=dword:00000000
     
 ; disable websites provide locally relevant content by accesing user language list
 
@@ -1873,7 +1753,7 @@ Windows Registry Editor Version 5.00
 
 ; disable Ocassionally show suggestions in StartMenu
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SystemPaneSuggestionsEnabled"=dword:00000000
 "SubscribedContent-338388Enabled"=dword:00000000
 
@@ -1888,7 +1768,7 @@ Windows Registry Editor Version 5.00
 
 ; disable Personalize your speech, typing and inking input by sending your input data to Microsoft
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
+[HKEY_CURRENT_USER\Software\Microsoft\Personalization\Settings]
 "AcceptedPrivacyPolicy"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Personalization\Settings]
@@ -1899,7 +1779,7 @@ Windows Registry Editor Version 5.00
 
 ; disable Pre-Installed apps
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "PreInstalledAppsEnabled"=dword:00000000
 "PreInstalledAppsEverEnabled"=dword:00000000
 "RemediationRequired"=dword:00000000
@@ -1931,14 +1811,9 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\Software\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
 
-; disable cloud search (Sources like OneDriver and SharePoint)
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-"AllowCloudSearch"=dword:00000000
-
 ; disable Bing web results on StartMenu
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
 "BingSearchEnabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Search]
@@ -1946,7 +1821,7 @@ Windows Registry Editor Version 5.00
 
 ; disable suggested content in the settings app
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SubscribedContent-338393Enabled"=dword:00000000
 "SubscribedContent-353694Enabled"=dword:00000000
 "SubscribedContent-353696Enabled"=dword:00000000
@@ -1958,7 +1833,7 @@ Windows Registry Editor Version 5.00
 
 ; disable Windows welcome experience after updates
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SubscribedContent-310093Enabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
@@ -1966,13 +1841,13 @@ Windows Registry Editor Version 5.00
 
 ; disable suggest ways I can finish setting up my device online
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
 "ScoobeSystemSettingEnabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
 "ScoobeSystemSettingEnabled"=dword:00000000
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Context\CloudExperienceHostIntent\Wireless]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Context\CloudExperienceHostIntent\Wireless]
 "ScoobeCheckCompleted"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Context\CloudExperienceHostIntent\Wireless]
@@ -1998,7 +1873,7 @@ Windows Registry Editor Version 5.00
 
 ; disable Windows Spotlight (Tips and suggestions)
 
-[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsSpotlightFeatures"=dword:00000001
 "ConfigureWindowsSpotlight"=dword:00000002
 "IncludeEnterpriseSpotlight"=dword:00000000
@@ -2018,7 +1893,7 @@ Windows Registry Editor Version 5.00
 "DisableThirdPartySuggestions"=dword:00000001
 "DisableSoftLanding"=dword:00000001
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SoftLandingEnabled"=dword:00000000
 "RotatingLockScreenEnabled"=dword:00000000
 "RotatingLockScreenOverlayEnabled"=dword:00000000
