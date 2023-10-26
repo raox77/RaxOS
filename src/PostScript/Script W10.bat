@@ -15,7 +15,7 @@ Regedit /s "C:\Modules\7-zip_Alternate_Context_Menu.reg" >nul 2>&1
 cls
 
 Echo "Installing OpenShell"
-start /b /wait "" "C:\Windows\Modules\OpenShellSetup_4_4_191.exe" /qn ADDLOCAL=StartMenu >nul 2>&1
+start /b /wait "" "C:\Modules\OpenShellSetup_4_4_191.exe" /qn ADDLOCAL=StartMenu >nul 2>&1
 cls
 
 Echo "Disabling Process Mitigations"
@@ -415,16 +415,6 @@ for %%z in (
 ) do (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
 )
-cls
-
-Echo "Fix explorer white bar bug"
-cmd /c "start C:\Windows\explorer.exe"
-taskkill /f /im explorer.exe >nul 2>&1
-taskkill /f /im explorer.exe >nul 2>&1
-taskkill /f /im explorer.exe >nul 2>&1
-taskkill /f /im explorer.exe >nul 2>&1
-taskkill /f /im explorer.exe >nul 2>&1
-cmd /c "start C:\Windows\explorer.exe"
 cls
 
 Echo "Cleanup"
