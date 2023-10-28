@@ -31,7 +31,6 @@
 - CEIP
 - Windows To Go
 - Telephony
-- Snip and Sketch is stripped but can be installed in store but you just use lightshot
 
 ## Stripped Devices & Drivers:
 - Printing
@@ -40,17 +39,16 @@
 - Biometric Devices (finger print etc)
 - POS
 - NFC
-- VR Headsets Support
 
 > Download
 
-https://drive.google.com/file/d/1FhPXw4eHnYZRLNmBhG_2Qbpz_1Ot0uGh/view?usp=sharing
+https://drive.google.com/file/d/1v_5jvVjflVg-9ZvZyM4zVjAKlqDRDfFF/view?usp=drive_link
 
 ### Always have a backup USB with default Windows 10 Or 11 if something goes wrong and your network driver in the USB
 
-SHA-256: e4a9a7b4ef3cd5febd57db1e0ac44e8fcda8a4ac51da6746ceb56dfa10f7d8bd
+SHA-256: 459adb6d217ed04528021aba2013756a5679c9587433e768d29a7ca297efb720
 
-SHA-1: 5784ba7bec1bea5cf3bee7cdc8f9443dc94d2dda
+SHA-1: 971616c8a22619f641568250b25d04f703fc3bc9
 
 
 # W10
@@ -77,14 +75,13 @@ SHA-1: 5784ba7bec1bea5cf3bee7cdc8f9443dc94d2dda
 - Biometric Devices (finger print etc)
 - POS
 - NFC
-- VR Headsets Support
 
 > Download
 
-https://drive.google.com/file/d/19Yk_vGcrRnlAvDrv1OVWys_Qu3KotX0N/view?usp=sharing
+https://drive.google.com/file/d/1irrWKDUJEZg8ST-P3H25ZI871l7FIY-u/view?usp=drive_link
 
 ### Always have a backup USB with default Windows 10 Or 11 if something goes wrong and your network driver in the USB
 
-SHA-256: 510e57f5a7119133c40cbe6b2b23462dd00e92e7d016471b17b3354a1c411790
+SHA-256: 38f134da8371f6d5d38b43aac7f21f9b81d9e86a44536a9cdfe3252d8505490d
 
-SHA-1: e3904e7d3271fff6f764b715c96656b97ae6ebd9
+SHA-1: c3fce8d28859e6662c945ebd484b681fc6fa5423
