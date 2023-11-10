@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+
+; Disable power throttling
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling]
+"PowerThrottlingOff"=dword:00000001

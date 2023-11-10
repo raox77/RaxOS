@@ -116,7 +116,6 @@ powercfg -h off
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t Reg_DWORD /d "0" /f  >nul 2>&1
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t Reg_DWORD /d "0" /f  >nul 2>&1
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t Reg_DWORD /d "0" /f  >nul 2>&1
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t Reg_DWORD /d "1" /f  >nul 2>&1
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowHibernateOption" /t Reg_DWORD /d "0" /f  >nul 2>&1
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowLockOption" /t Reg_DWORD /d "0" /f  >nul 2>&1
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowSleepOption" /t Reg_DWORD /d "0" /f >nul 2>&1
@@ -170,10 +169,6 @@ powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskFootprint\D
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\InstallService\ScanForUpdates" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\InstallService\ScanForUpdatesAsUser" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\InstallService\SmartRetry" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsToastTask" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsUpdateTask" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Registry\RegIdleBackup" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Security\Pwdless\IntelligentPwdlessTask" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\SoftwareProtectionPlatform\SvcRestartTaskNetwork" >nul 2>&1
@@ -266,20 +261,25 @@ for %%z in (
 	AJRouter
 	AppIDSvc
 	DiagTrack
-      DsmSvc
+        DsmSvc
 	DialogBlockingService
 	Diagsvc
-      autotimesvc
-      W32Time
+        autotimesvc
+        SharedAccess
+        W32Time
 	diagnosticshub.standardcollector.service
+        icssvc
+        WaaSMedicSvc
+        MSiSCSI
+        defragsvc
+        AxInstSV
 	DPS
-      DsSvc
-	DusmSvc
+        DsSvc
+   	DusmSvc
 	FontCache
 	FontCache3.0.0.0
 	MsKeyboardFilter
-      icssvc
-      IKEEXT
+        IKEEXT
 	PcaSvc
 	ShellHWDetection
 	SysMain
@@ -291,86 +291,104 @@ for %%z in (
 	WdiServiceHost
 	SensorDataService
 	SensrSvc
-      SensorService
+        SensorService
 	Beep
 	cdfs
 	cdrom
-      acpiex
-      acpipagr
-      acpipmi
-      acpitime
+        acpiex
+        acpipagr
+        acpipmi
+        acpitime
 	cnghwassist
 	GpuEnergyDrv
 	Telemetry
 	VerifierExt
 	udfs
 	MsLldp
+        MixedRealityOpenXRSvc
+        SharedRealitySvc
+        VacSvc
+        spectrum
+        perceptionsimulation
+        svsvc
+        ALG
 	lltdio
 	NdisVirtualBus
 	NDU
-      luafv
-      UsoSvc
-      cbdhsvc
-      BcastDVRUserService
+        UdkUserSvc
+        TieringEngineService
+        WebClient
+        wcnsvc
+        luafv
+        UsoSvc
+        cbdhsvc
+        BcastDVRUserService
 	rdyboost
-      rdpbus
-      umbus
-      vdrvroot
-      Vid
-      CompositeBus
+        rdpbus
+        umbus
+        vdrvroot
+        Vid
+        CompositeBus
 	rspndr
 	NdisCap
 	NetBIOS
 	NetBT
 	KSecPkg
 	spaceport
-      VaultSvc
-      EventSystem
+        VaultSvc
+        EventSystem
 	storqosflt
 	bam
 	bowser
-      WarpJITSvc
-      Wecsvc
-      dmwappushservice
-      GraphicsPerfSvc
-      WMPNetworkSvc
-      TermService
-      UmRdpService
-      UnistoreSvc
-      PimIndexMaintenanceSvc
-      UserDataSvc
-      3ware
-      arcsas
-      buttonconverter
-      cdfs
-      circlass
-      Dfsc
-      ErrDev
-      mrxsmb
-      mrxsmb20
-      PEAUTH
-      QWAVEdrv
-      srv
-      SiSRaid2
-      SiSRaid4
-      Tcpip6
-      tcpipreg
-      vsmraid
-      VSTXRAID
-      wcnfs
-      WindowsTrustedRTProxy
-      SstpSvc
-      SSDPSRV
-      SmsRouter
+        Wecsvc
+        dmwappushservice
+        GraphicsPerfSvc
+        WMPNetworkSvc
+        TermService
+        UmRdpService
+        UnistoreSvc
+        PimIndexMaintenanceSvc
+        UserDataSvc
+        3ware
+        arcsas
+        buttonconverter
+        cdfs
+        circlass
+        Dfsc
+        ErrDev
+        mrxsmb
+        mrxsmb20
+        PEAUTH
+        QWAVEdrv
+        srv
+        SiSRaid2
+        SiSRaid4
+        Tcpip6
+        tcpipreg
+        vsmraid
+        VSTXRAID
+        wcnfs
+        WindowsTrustedRTProxy
+        SstpSvc
+        SSDPSRV
+        SmsRouter
 	CldFlt
-      DisplayEnhancementService
 	iphlpsvc
-      IpxlatCfgSvc
-      NetTcpPortSharing
-      KtmRm
+        IpxlatCfgSvc
+        P9RdrService
+        PNRPsvc
+        PNRPAutoReg
+        p2psvc
+        p2pimsvc
+        SmsRouter
+        wlpasvc
+        NetTcpPortSharing
+        KtmRm
 	lmhosts
-      MSDTC
-      QWAVE
+        MSDTC
+        EntAppSvc
+        EapHost
+        QWAVE
 	RmSvc
 	RFCOMM
 	BthEnum
@@ -388,17 +406,17 @@ for %%z in (
 	vmicshutdown
 	vmicheartbeat
 	vmicvmsession
-      vpci
-      TsUsbFlt
-      tsusbhub
-      storflt
-      RDPDR
-      RdpVideominiport
-      bttflt
-      HidBth
-      BthMini
-      BTHPORT
-      BTHUSB
+        vpci
+        TsUsbFlt
+        tsusbhub
+        storflt
+        RDPDR
+        RdpVideominiport
+        bttflt
+        HidBth
+        BthMini
+        BTHPORT
+        BTHUSB
 	vmicrdv
 	vmictimesync
 	vmicvss
@@ -411,10 +429,15 @@ for %%z in (
 	hvcrash
 	HvHost
 	lfsvc
+        XboxNetApiSvc
+        XblGameSave
+        XblAuthManager
+        XboxGipSvc
 ) do (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
 )
 cls
+
 
 Echo "Fix explorer white bar bug"
 cmd /c "start C:\Windows\explorer.exe"
