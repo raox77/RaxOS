@@ -77,10 +77,7 @@ bcdedit /set debug No
 bcdedit /set ems No
 bcdedit /set bootems No
 bcdedit /set vm No
-bcdedit /set sos No
 bcdedit /set integrityservices disable
-bcdedit /set allowedinmemorysettings 0x0
-bcdedit /set isolatedcontext No
 bcdedit /set {globalsettings} custom:16000067 true
 bcdedit /set {globalsettings} custom:16000068 true
 bcdedit /set {globalsettings} custom:16000069 true
