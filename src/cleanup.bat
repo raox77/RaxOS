@@ -3,7 +3,7 @@ takeown /f "%WinDir%\Modules" /a & icacls "%WinDir%\Modules" /grant Administrato
 rd /s /q "%WinDir%\Modules"
 takeown /f "C:\Modules" /a & icacls "C:\Modules" /grant Administrators:F
 rd /s /q "C:\Modules"
-del "%~f0"&exit
+
 
 for /F "tokens=* skip=1" %%n in ('wmic SYSTEMenclosure get ChassisTypes ^| findstr "."') do set ChassisTypes=%%n
 set ChassisTypes=%ChassisTypes:{=% 
@@ -19,6 +19,7 @@ cls
 goto end
 
 :B
+powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\serenum" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sermouse" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\serial" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1

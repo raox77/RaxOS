@@ -522,14 +522,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "AltTabSettings"=dword:00000001
 
-; disable Quiet Hours (Focus Assist)
-
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\QuietHours]
-"Enable"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Classes\Software\Policies\Microsoft\Windows\CurrentVersion\QuietHours]
-"Enable"=dword:00000000
-
 ; disable search indexing
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]
@@ -1406,9 +1398,6 @@ Windows Registry Editor Version 5.00
 "StartupDelayInMSec"=dword:00000000
 
 ; add takeownership in context menu
-
-[-HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
-[-HKEY_CLASSES_ROOT\*\shell\runas]
 
 [HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
 @="Take Ownership"

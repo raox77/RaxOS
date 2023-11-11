@@ -1412,9 +1412,6 @@ Windows Registry Editor Version 5.00
 
 ; add takeownership in context menu
 
-[-HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
-[-HKEY_CLASSES_ROOT\*\shell\runas]
-
 [HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
 @="Take Ownership"
 "Extended"=-
