@@ -32,7 +32,6 @@ Windows Registry Editor Version 5.00
 "WUStatusServer"=" "
 "UpdateServiceUrlAlternate"=" "
 "SetDisableUXWUAccess"=dword:00000001
-"DoNotConnectToWindowsUpdateInternetLocations"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
 "AUOptions"=dword:00000002
@@ -57,7 +56,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WindowsUpdate]
 "ExcludeWUDriversInQualityUpdate"=dword:00000001
-"DoNotConnectToWindowsUpdateInternetLocations"=dword:00000001
+"DoNotConnectToWindowsUpdateInternetLocations"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
 "PreventDeviceMetadataFromNetwork"=dword:00000001
@@ -250,7 +249,7 @@ Windows Registry Editor Version 5.00
 ; allocate processor resources primarily to programs
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:0000001a
+"Win32PrioritySeparation"=dword:0000002a
 
 ; disable-system-responsiveness-performance-diagnostics
 ; created by imribiy

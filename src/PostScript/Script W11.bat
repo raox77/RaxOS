@@ -14,6 +14,10 @@ Echo "7zip settings"
 Regedit /s "C:\Modules\7-zip_Alternate_Context_Menu.reg" >nul 2>&1
 cls
 
+Echo "Installing OpenShell"
+start /b /wait "" "C:\Modules\OpenShellSetup_4_4_191.exe" /qn ADDLOCAL=StartMenu >nul 2>&1
+cls
+
 Echo "Disabling Process Mitigations"
 call C:\Modules\disable-process-mitigations.bat >nul 2>&1
 cls
@@ -95,6 +99,10 @@ for /f "delims=" %%u in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\NetB
 )
 cls
 
+Echo "Disabling DMA Remapping"
+for %%a in (DmaRemappingCompatible) do for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f "%%a" ^| findstr "HKEY"') do Reg.exe add "%%b" /v "%%a" /t REG_DWORD /d "0" /f >nul 2>&1
+cls
+
 Echo "Disabling Exclusive Mode On Audio Devices"
 for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Capture') do PowerRun.exe /SW:0 Reg.exe add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},3" /t REG_DWORD /d "0" /f >nul 2>&1
 for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Capture') do PowerRun.exe /SW:0 Reg.exe add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},4" /t REG_DWORD /d "0" /f >nul 2>&1
@@ -111,6 +119,7 @@ powercfg -import "C:\Modules\RaxOS.pow" 00000000-0000-0000-0000-000000000000
 powercfg /setactive 00000000-0000-0000-0000-000000000000
 powercfg -h off
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t Reg_DWORD /d "0" /f  >nul 2>&1
+Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t Reg_DWORD /d "0" /f  >nul 2>&1
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t Reg_DWORD /d "0" /f  >nul 2>&1
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowHibernateOption" /t Reg_DWORD /d "0" /f  >nul 2>&1
@@ -158,8 +167,6 @@ powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\CertificateServ
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Clip\License Validation" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Device Setup\Metadata Refresh" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\RecommendedTroubleshootingScanner" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\Scheduled" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskFootprint\Diagnostics" >nul 2>&1
@@ -257,25 +264,18 @@ for %%z in (
 	AppVClient
 	AJRouter
 	AppIDSvc
-	DiagTrack
         DsmSvc
-	DialogBlockingService
-	Diagsvc
         autotimesvc
         SharedAccess
         W32Time
-	diagnosticshub.standardcollector.service
         icssvc
         WaaSMedicSvc
         MSiSCSI
         defragsvc
         AxInstSV
-	DPS
         DsSvc
-   	DusmSvc
 	FontCache
 	FontCache3.0.0.0
-	MsKeyboardFilter
         IKEEXT
 	PcaSvc
 	ShellHWDetection
@@ -284,24 +284,18 @@ for %%z in (
 	TrkWks
 	tzautoupdate
 	OneSyncSvc
-	WdiSystemHost
-	WdiServiceHost
 	SensorDataService
 	SensrSvc
         SensorService
 	Beep
-	cdfs
 	cdrom
         acpiex
         acpipagr
         acpipmi
         acpitime
 	cnghwassist
-	GpuEnergyDrv
-	Telemetry
 	VerifierExt
 	udfs
-	MsLldp
         MixedRealityOpenXRSvc
         SharedRealitySvc
         VacSvc
@@ -309,13 +303,10 @@ for %%z in (
         perceptionsimulation
         svsvc
         ALG
-	lltdio
 	NdisVirtualBus
-	NDU
         UdkUserSvc
         TieringEngineService
         WebClient
-        wcnsvc
         luafv
         UsoSvc
         cbdhsvc
@@ -326,8 +317,6 @@ for %%z in (
         vdrvroot
         Vid
         CompositeBus
-	rspndr
-	NdisCap
 	NetBIOS
 	NetBT
 	KSecPkg
@@ -339,13 +328,9 @@ for %%z in (
 	bowser
         Wecsvc
         dmwappushservice
-        GraphicsPerfSvc
         WMPNetworkSvc
         TermService
         UmRdpService
-        UnistoreSvc
-        PimIndexMaintenanceSvc
-        UserDataSvc
         3ware
         arcsas
         buttonconverter
@@ -353,19 +338,8 @@ for %%z in (
         circlass
         Dfsc
         ErrDev
-        mrxsmb
-        mrxsmb20
-        PEAUTH
         QWAVEdrv
-        srv
-        SiSRaid2
-        SiSRaid4
-        Tcpip6
         tcpipreg
-        vsmraid
-        VSTXRAID
-        wcnfs
-        WindowsTrustedRTProxy
         SstpSvc
         SSDPSRV
         SmsRouter
@@ -377,12 +351,9 @@ for %%z in (
         PNRPAutoReg
         p2psvc
         p2pimsvc
-        SmsRouter
         wlpasvc
         NetTcpPortSharing
-        KtmRm
 	lmhosts
-        MSDTC
         EntAppSvc
         EapHost
         QWAVE
@@ -421,11 +392,9 @@ for %%z in (
 	hypervideo
 	gencounter
 	vmgid
-	storflt
 	hvservice
 	hvcrash
 	HvHost
-	lfsvc
         XboxNetApiSvc
         XblGameSave
         XblAuthManager
@@ -434,7 +403,6 @@ for %%z in (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
 )
 cls
-
 
 Echo "Fix explorer white bar bug"
 cmd /c "start C:\Windows\explorer.exe"
