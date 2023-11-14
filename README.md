@@ -53,6 +53,7 @@ https://drive.google.com/file/d/17T8fDUY_es4pCCyOm13IE-e81rfSMS2K/view?usp=shari
 - Added a backup windows default services and drivers
 - Replaced Startmenu with Openshell
 - Changed Win32Prio to 2A
+- Updated Build to 22631.2506 (23H2)
 
 </details>
 
