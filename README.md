@@ -15,7 +15,7 @@
 ## [Server Link](https://discord.gg/6Y5CZqWHFa)
 
 
-# W11
+# W11 23H2
 ## Stripped / Not Working Features:
 - Windows installation from setup.exe
 - BitLocker Drive Encryption (Affects diskmgmt.msc & msconfig)
@@ -24,6 +24,7 @@
 - SmartScreen
 - OneDrive
 - Windows Sounds
+- SFC
 - Windows Backup / Restore
 - Windows Help Content
 - OpenSSH
@@ -35,23 +36,34 @@
 ## Stripped Devices & Drivers:
 - Printing
 - Smart Cards
-- Floppy Disks
 - Biometric Devices (finger print etc)
 - POS
 - NFC
 
 > Download
 
-https://drive.google.com/file/d/1v_5jvVjflVg-9ZvZyM4zVjAKlqDRDfFF/view?usp=drive_link
+https://drive.google.com/file/d/17T8fDUY_es4pCCyOm13IE-e81rfSMS2K/view?usp=sharing
+
+<details>
+<br>
+<summary>Changelog 23H2 V001</summary>
+
+- Compatibility improvements
+- Removed SFC (Useless)
+- Added a backup windows default services and drivers
+- Replaced Startmenu with Openshell
+- Changed Win32Prio to 2A
+
+</details>
 
 ### Always have a backup USB with default Windows 10 Or 11 if something goes wrong and your network driver in the USB
 
-SHA-256: 459adb6d217ed04528021aba2013756a5679c9587433e768d29a7ca297efb720
+SHA-256: a4ddb753407c8eadd2dfb2934e8e7679ca3e78dec2c347a82338a0244e320790
 
-SHA-1: 971616c8a22619f641568250b25d04f703fc3bc9
+SHA-1: e395945f3fd2277570017e0875590167e99ad9d6
 
 
-# W10
+# W10 22H2
 ## Stripped / Not Working Features:
 - Windows installation from setup.exe
 - BitLocker Drive Encryption (Affects diskmgmt.msc & msconfig)
