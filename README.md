@@ -73,6 +73,7 @@ SHA-1: e395945f3fd2277570017e0875590167e99ad9d6
 - SmartScreen
 - OneDrive
 - Windows Sounds
+- SFC
 - Windows Backup / Restore
 - Windows Help Content
 - OpenSSH
@@ -84,17 +85,29 @@ SHA-1: e395945f3fd2277570017e0875590167e99ad9d6
 ## Stripped Devices & Drivers:
 - Printing
 - Smart Cards
-- Floppy Disks
 - Biometric Devices (finger print etc)
 - POS
 - NFC
 
 > Download
 
-https://drive.google.com/file/d/1irrWKDUJEZg8ST-P3H25ZI871l7FIY-u/view?usp=drive_link
+https://drive.google.com/file/d/16M7JShEfYObl_BhRIxmVLEwKp9ulZcY1/view?usp=sharing
+
+<details>
+<br>
+<summary>Changelog 22H2 V003</summary>
+
+- Compatibility Improvements
+- Removed SFC (Useless)
+- Added a backup windows default services and drivers
+- Changed Win32Prio to 2A
+- Updated Build to 19045.3636
+- Brought Back Stock Startmenu (Disabled By Default)
+
+</details>
 
 ### Always have a backup USB with default Windows 10 Or 11 if something goes wrong and your network driver in the USB
 
-SHA-256: 38f134da8371f6d5d38b43aac7f21f9b81d9e86a44536a9cdfe3252d8505490d
+SHA-256: 63fbe46cdf61e3e0ef75172327e15b400beba047c5a32b4271bbff7c5f33da30
 
-SHA-1: c3fce8d28859e6662c945ebd484b681fc6fa5423
+SHA-1: a8da3e5deb190e0f1836c42e20ff93e1daa36ae8
