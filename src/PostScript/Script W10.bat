@@ -261,25 +261,18 @@ for %%z in (
 	AppVClient
 	AJRouter
 	AppIDSvc
-	DiagTrack
         DsmSvc
-	DialogBlockingService
-	Diagsvc
         autotimesvc
         SharedAccess
         W32Time
-	diagnosticshub.standardcollector.service
         icssvc
         WaaSMedicSvc
         MSiSCSI
         defragsvc
         AxInstSV
-	DPS
         DsSvc
-   	DusmSvc
 	FontCache
 	FontCache3.0.0.0
-	MsKeyboardFilter
         IKEEXT
 	PcaSvc
 	ShellHWDetection
@@ -288,24 +281,18 @@ for %%z in (
 	TrkWks
 	tzautoupdate
 	OneSyncSvc
-	WdiSystemHost
-	WdiServiceHost
 	SensorDataService
 	SensrSvc
         SensorService
 	Beep
-	cdfs
 	cdrom
         acpiex
         acpipagr
         acpipmi
         acpitime
 	cnghwassist
-	GpuEnergyDrv
-	Telemetry
 	VerifierExt
 	udfs
-	MsLldp
         MixedRealityOpenXRSvc
         SharedRealitySvc
         VacSvc
@@ -313,13 +300,10 @@ for %%z in (
         perceptionsimulation
         svsvc
         ALG
-	lltdio
 	NdisVirtualBus
-	NDU
-        UdkUserSvc
         TieringEngineService
         WebClient
-        wcnsvc
+        WSearch
         luafv
         UsoSvc
         cbdhsvc
@@ -330,26 +314,19 @@ for %%z in (
         vdrvroot
         Vid
         CompositeBus
-	rspndr
-	NdisCap
 	NetBIOS
 	NetBT
-	KSecPkg
 	spaceport
         VaultSvc
         EventSystem
 	storqosflt
 	bam
-	bowser
+      dam
         Wecsvc
         dmwappushservice
-        GraphicsPerfSvc
         WMPNetworkSvc
         TermService
         UmRdpService
-        UnistoreSvc
-        PimIndexMaintenanceSvc
-        UserDataSvc
         3ware
         arcsas
         buttonconverter
@@ -357,36 +334,21 @@ for %%z in (
         circlass
         Dfsc
         ErrDev
-        mrxsmb
-        mrxsmb20
-        PEAUTH
         QWAVEdrv
-        srv
-        SiSRaid2
-        SiSRaid4
-        Tcpip6
         tcpipreg
-        vsmraid
-        VSTXRAID
-        wcnfs
-        WindowsTrustedRTProxy
         SstpSvc
         SSDPSRV
         SmsRouter
 	CldFlt
 	iphlpsvc
         IpxlatCfgSvc
-        P9RdrService
         PNRPsvc
         PNRPAutoReg
         p2psvc
         p2pimsvc
-        SmsRouter
         wlpasvc
         NetTcpPortSharing
-        KtmRm
 	lmhosts
-        MSDTC
         EntAppSvc
         EapHost
         QWAVE
@@ -425,11 +387,9 @@ for %%z in (
 	hypervideo
 	gencounter
 	vmgid
-	storflt
 	hvservice
 	hvcrash
 	HvHost
-	lfsvc
         XboxNetApiSvc
         XblGameSave
         XblAuthManager

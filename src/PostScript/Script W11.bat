@@ -200,6 +200,10 @@ fsutil behavior set disable8dot3 1 > NUL 2>&1
 fsutil behavior set disablelastaccess 1 > NUL 2>&1
 cls
 
+Echo "Disabling DMA Remapping"
+for %%a in (DmaRemappingCompatible) do for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f "%%a" ^| findstr "HKEY"') do Reg.exe add "%%b" /v "%%a" /t REG_DWORD /d "0" /f >nul 2>&1
+cls
+
 Echo "Disable Driver PowerSaving"
 %SYSTEMROOT%\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.enable = $false; $_.psbase.put(); }"
 cls
@@ -304,9 +308,9 @@ for %%z in (
         svsvc
         ALG
 	NdisVirtualBus
-        UdkUserSvc
         TieringEngineService
         WebClient
+        WSearch
         luafv
         UsoSvc
         cbdhsvc
@@ -319,13 +323,12 @@ for %%z in (
         CompositeBus
 	NetBIOS
 	NetBT
-	KSecPkg
 	spaceport
         VaultSvc
         EventSystem
 	storqosflt
 	bam
-	bowser
+      dam
         Wecsvc
         dmwappushservice
         WMPNetworkSvc
