@@ -2,9 +2,11 @@
 setlocal enabledelayedexpansion
 
 echo === Browser Installer ===
-echo 1. Install Google Chrome
-echo 2. Install Brave
-echo 3. Install Firefox
+echo 1. Google Chrome
+echo 2. Brave
+echo 3. Firefox
+echo 4. Waterfox
+echo 5. Librefox
 echo 0. Exit
 
 set /p choice=Enter your choice: 
@@ -18,6 +20,12 @@ if "%choice%"=="1" (
 ) else if "%choice%"=="3" (
     set "browser=Firefox"
     set "downloadUrl=https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US"
+) else if "%choice%"=="4" (
+    set "browser=Waterfox"
+    set "downloadUrl=https://cdn1.waterfox.net/waterfox/releases/G6.0.6/WINNT_x86_64/Waterfox%20Setup%20G6.0.6.exe"
+) else if "%choice%"=="5" (
+    set "browser=Librefox"
+    set "downloadUrl=https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/120.0.1-1/librewolf-120.0.1-1-windows-x86_64-setup.exe"
 ) else if "%choice%"=="0" (
     echo Exiting...
     exit /b
@@ -88,8 +96,9 @@ if "%choice%"=="2" (
 
 :: Run commands after installing Firefox
 if "%choice%"=="3" (
-    start "" "C:\Program Files (x86)\Mozilla Maintenance Service\Uninstall.exe" >nul 2>&1
-    :: wmic product where name="Mozilla Maintenance Service" call uninstall /nointeractive >nul 2>&1
+    del "C:\Program Files\Mozilla Firefox\defaultagent.ini" /f /q >nul 2>&1
+    del "C:\Program Files\Mozilla Firefox\defaultagent_localized.ini" /f /q >nul 2>&1
+    del "C:\Program Files\Mozilla Firefox\default-browser-agent.exe" /f /q >nul 2>&1
     del "C:\Program Files\Mozilla Firefox\crashreporter.exe" /f /q >nul 2>&1
     del "C:\Program Files\Mozilla Firefox\crashreporter.ini" /f /q >nul 2>&1
     del "C:\Program Files\Mozilla Firefox\maintenanceservice.exe" /f /q >nul 2>&1
@@ -97,6 +106,23 @@ if "%choice%"=="3" (
     del "C:\Program Files\Mozilla Firefox\minidump-analyzer.exe" /f /q >nul 2>&1
     del "C:\Program Files\Mozilla Firefox\pingsender.exe" /f /q >nul 2>&1
     del "C:\Program Files\Mozilla Firefox\updater.exe" /f /q >nul 2>&1
+    del "C:\Program Files\Mozilla Firefox\updater.ini" /f /q >nul 2>&1
+    del "C:\Program Files\Mozilla Firefox\update-settings.ini" /f /q >nul 2>&1
+)
+
+:: Run commands after installing Waterfox
+if "%choice%"=="4" (
+    del "C:\Program Files\Waterfox\defaultagent.ini" /f /q >nul 2>&1
+    del "C:\Program Files\Waterfox\defaultagent_localized.ini" /f /q >nul 2>&1
+    del "C:\Program Files\Waterfox\default-browser-agent.exe" /f /q >nul 2>&1
+    del "C:\Program Files\Waterfox\updater.exe" /f /q >nul 2>&1
+    del "C:\Program Files\Waterfox\updater.ini" /f /q >nul 2>&1
+    del "C:\Program Files\Waterfox\update-settings.ini" /f /q >nul 2>&1
+)
+
+:: Run commands after installing Librefox
+if "%choice%"=="5" (
+    del "C:\Program Files\LibreWolf\pingsender.exe" /f /q >nul 2>&1
 )
 
 echo.

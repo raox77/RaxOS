@@ -79,9 +79,7 @@ bcdedit /set hypervisorlaunchtype off
 bcdedit /set quietboot yes
 bcdedit /set debug No
 bcdedit /set ems No
-bcdedit /set bootems No
 bcdedit /set vm No
-bcdedit /set integrityservices disable
 bcdedit /set {globalsettings} custom:16000067 true
 bcdedit /set {globalsettings} custom:16000068 true
 bcdedit /set {globalsettings} custom:16000069 true
@@ -131,7 +129,6 @@ wevtutil set-log "Microsoft-Windows-UserModePowerService/Diagnostic" /e:false >n
 cls
 
 Echo "Disabling Device Manager Devices"
-devmanview /disable "Microsoft Device Association Root Enumerator" > NUL 2>&1
 devmanview /disable "High precision event timer" > NUL 2>&1
 devmanview /disable "System Speaker" > NUL 2>&1
 devmanview /disable "Microsoft Radio Device Enumeration Bus" > NUL 2>&1
@@ -142,19 +139,13 @@ devmanview /disable "Intel Management Engine" > NUL 2>&1
 devmanview /disable "PCI Memory Controller" > NUL 2>&1
 devmanview /disable "PCI standard RAM Controller" > NUL 2>&1
 devmanview /disable "System Timer" > NUL 2>&1
-devmanview /disable "WAN Miniport (IKEv2)" > NUL 2>&1
-devmanview /disable "WAN Miniport (IP)" > NUL 2>&1
-devmanview /disable "WAN Miniport (IPv6)" > NUL 2>&1
-devmanview /disable "WAN Miniport (L2TP)" > NUL 2>&1
-devmanview /disable "WAN Miniport (Network Monitor)" > NUL 2>&1
-devmanview /disable "WAN Miniport (PPPOE)" > NUL 2>&1
-devmanview /disable "WAN Miniport (PPTP)" > NUL 2>&1
-devmanview /disable "WAN Miniport (SSTP)" > NUL 2>&1
 devmanview /disable "Programmable Interrupt Controller" > NUL 2>&1
 devmanview /disable "Numeric Data Processor" > NUL 2>&1
 devmanview /disable "Communications Port (COM1)" > NUL 2>&1
-devmanview /disable "Microsoft RRAS Root Enumerator" > NUL 2>&1
-devmanview /disable "Micosoft GS Wavetable Synth" > NUL 2>&1
+devmanview /disable "Fax" > NUL 2>&1
+devmanview /disable "Microsoft Print to PDF" > NUL 2>&1
+devmanview /disable "Microsoft XPS Document Writer" > NUL 2>&1
+devmanview /disable "Root Print Queue" > NUL 2>&1
 cls
 
 Echo "Optimizing Scheduled Tasks"
@@ -167,6 +158,8 @@ powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\CertificateServ
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Clip\License Validation" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Device Setup\Metadata Refresh" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\RecommendedTroubleshootingScanner" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\Scheduled" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskFootprint\Diagnostics" >nul 2>&1
@@ -181,6 +174,7 @@ powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Subscription\En
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Subscription\LicenseAcquisition" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\ResPriStaticDbSync" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\WsSwapAssessmentTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\SystemRestore\SR" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\WDI\ResolutionHost" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Windows Error Reporting\QueueReporting" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Windows Filtering Platform\BfeOnServiceStartTypeChange" >nul 2>&1
@@ -229,30 +223,22 @@ reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
 cls
 
-Echo "Remove Restore Previous Versions from context menu"
-reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{596AB062-B4D2-4215-9F74-E9109B0A8153}" /t REG_SZ /d "" /f >nul 2>&1
-reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{596AB062-B4D2-4215-9F74-E9109B0A8153}" /t REG_SZ /d "" /f >nul 2>&1
-cls
-
-Echo "Remove Troubleshoot Compability from context menu"
-reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{1d27f844-3a1f-4410-85ac-14651078412d}" /t REG_SZ /d "" /f > nul
-reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{1d27f844-3a1f-4410-85ac-14651078412d}" /t REG_SZ /d "" /f > nul
-cls
-
-Echo "Disable Background apps"
-Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t Reg_DWORD /d "1" /f >nul 2>&1
-Reg add "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t Reg_DWORD /d "2" /f >nul 2>&1
-Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle" /t Reg_DWORD /d "0" /f >nul 2>&1
-cls
-
 Echo "RW Fix for w11"
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f >NUL 2>&1
 cls
 
 Echo "Change NTP server to pool.ntp.org"
-: thanks to privacy.sexy
 w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org" >nul 2>&1
 cls
+
+Echo"Removing Quick access"
+Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "HubMode" /t REG_DWORD /d "1" /f
+PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f
+PowerRun.exe /SW:0 Reg.exe add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f
+cls
+
+Echo "Set Sound Scheme to no sound"
+powershell C:\Modules\sound.ps1  >nul 2>&1
 
 Echo "Disabling Drivers and Services"
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e96c-e325-11ce-bfc1-08002be10318}" /v "UpperFilters" /t REG_MULTI_SZ /d "" /f
@@ -314,6 +300,7 @@ for %%z in (
         luafv
         UsoSvc
         cbdhsvc
+        WinRM
         BcastDVRUserService
 	rdyboost
         rdpbus
@@ -328,7 +315,20 @@ for %%z in (
         EventSystem
 	storqosflt
 	bam
-      dam
+        dam
+	wdiservicehost
+	wdisystemhost
+        troubleshootingsvc
+	spooler
+	stisvc
+	printworkflowusersvc
+        SEMgrSvc
+        RasAuto
+        PhoneSvc
+        TapiSrv
+        diagsvc
+        DPS
+        diagnosticshub.standardcollector.service
         Wecsvc
         dmwappushservice
         WMPNetworkSvc

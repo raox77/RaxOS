@@ -1,16 +1,18 @@
 @echo off
 :menu
 cls
-echo ---------- Confugring Services ----------
+echo ---------- Configuring Services ----------
 echo 1. Wi-Fi
 echo 2. Bluetooth
-echo 3. Hyper-V , Remote Desktop
+echo 3. Hyper-V, Remote Desktop
 echo 4. Xbox
 echo 5. Microsoft Store
 echo 6. Clipboard
 echo 7. VPN
+echo 8. Printing
+echo 9. Lanman Workstation
 echo 0. Exit
-echo ------------------------------------
+echo -----------------------------------------
 echo.
 
 set /p option=Choose an option: 
@@ -29,6 +31,10 @@ if %option%==1 (
     call :clipboard_menu
 ) else if %option%==7 (
     call :vpn_menu
+) else if %option%==8 (
+    call :printing_menu
+) else if %option%==9 (
+    call :lanman_menu
 ) else if %option%==0 (
     exit
 ) else (
@@ -177,9 +183,9 @@ if %hyperv_option%==1 (
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbFlt" /v "Start" /t REG_DWORD /d "3" /f
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbFlt" /v "Start" /t REG_DWORD /d "3" /f
     bcdedit /set hypervisorlaunchtype auto
-    dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+    dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All /NoRestart
     cls
-    echo Hyper-V has been Enabled
+    echo Hyper-V, Remote Desktop has been Enabled
     timeout 2 > nul
     goto :menu
 ) else if %hyperv_option%==2 (
@@ -212,7 +218,7 @@ if %hyperv_option%==1 (
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RdpVideominiport" /v "Start" /t REG_DWORD /d "4" /f
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbFlt" /v "Start" /t REG_DWORD /d "4" /f
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbFlt" /v "Start" /t REG_DWORD /d "4" /f
-    dism.exe /Online /Disable-Feature:Microsoft-Hyper-V-All
+    dism.exe /Online /Disable-Feature:Microsoft-Hyper-V-All /NoRestart
     bcdedit /set hypervisorlaunchtype off
     cls
     echo Hyper-V, Remote Desktop has been Disabled
@@ -268,7 +274,7 @@ if %xbox_option%==1 (
 
 :store_menu
 cls
-echo ---------- Mirosoft Store Services ----------
+echo ---------- Microsoft Store Services ----------
 echo 1. Enable
 echo 2. Disable
 echo 3. Back to main menu
@@ -306,7 +312,7 @@ if %store_option%==1 (
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\StorSvc" /v "Start" /t REG_DWORD /d "4" /f
     PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.WindowsStore' | Remove-AppxPackage"
     cls
-echo Microsoft Store has been Disabled
+    echo Microsoft Store has been Disabled
     timeout 2 > nul
     goto :menu
 ) else if %store_option%==3 (
@@ -349,7 +355,7 @@ if %clipboard_option%==1 (
 
 :vpn_menu
 cls
-echo ---------- Vpn Services ----------
+echo ---------- VPN Services ----------
 echo 1. Enable
 echo 2. Disable
 echo 3. Back to main menu
@@ -373,7 +379,7 @@ if %vpn_option%==1 (
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache" /v "Start" /t REG_DWORD /d "2" /f
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvc" /v "Start" /t REG_DWORD /d "3" /f
     cls
-    echo Vpn has been Enabled
+    echo VPN has been Enabled
     timeout 2 > nul
     goto :menu
 ) else if %vpn_option%==2 (
@@ -390,7 +396,7 @@ if %vpn_option%==1 (
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Wcmsvc" /v "Start" /t REG_DWORD /d "4" /f
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvc" /v "Start" /t REG_DWORD /d "4" /f
     cls
-    echo Vpn has been Disabled
+    echo VPN has been Disabled
     timeout 2 > nul
     goto :menu
 ) else if %vpn_option%==3 (
@@ -399,4 +405,82 @@ if %vpn_option%==1 (
     echo Invalid option!
     timeout 2 > nul
     goto :vpn_menu
+)
+
+:printing_menu
+cls
+echo ---------- Printing Services ----------
+echo 1. Enable
+echo 2. Disable
+echo 3. Back to main menu
+echo ------------------------------------
+
+set /p printing_option=Choose an option: 
+
+if %printing_option%==1 (
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Spooler" /v "Start" /t REG_DWORD /d "2" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PrintWorkFlowUserSvc" /v "Start" /t REG_DWORD /d "3" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\StiSvc" /v "Start" /t REG_DWORD /d "3" /f
+    cls
+    echo Printing has been Enabled
+    timeout 2 > nul
+    goto :menu
+) else if %printing_option%==2 (
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Spooler" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PrintWorkFlowUserSvc" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\StiSvc" /v "Start" /t REG_DWORD /d "4" /f
+    cls
+    echo Printing has been Disabled
+    timeout 2 > nul
+    goto :menu
+) else if %printing_option%==3 (
+    goto :menu
+) else (
+    echo Invalid option!
+    timeout 2 > nul
+    goto :printing_menu
+)
+
+:lanman_menu
+cls
+echo ---------- Lanman Workstation Services ----------
+echo 1. Enable
+echo 2. Disable
+echo 3. Back to main menu
+echo ------------------------------------
+
+set /p lanman_option=Choose an option: 
+
+if %lanman_option%==1 (
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Bowser" /v "Start" /t REG_DWORD /d "3" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\rdbss" /v "Start" /t REG_DWORD /d "3" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\KSecPkg" /v "Start" /t REG_DWORD /d "3" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb20" /v "Start" /t REG_DWORD /d "3" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb" /v "Start" /t REG_DWORD /d "3" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\srv2" /v "Start" /t REG_DWORD /d "3" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation" /v "Start" /t REG_DWORD /d "2" /f
+    DISM /Online /Enable-Feature /FeatureName:SmbDirect /norestart
+    cls
+    echo Lanman Workstation has been Enabled
+    timeout 2 > nul
+    goto :menu
+) else if %lanman_option%==2 (
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Bowser" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\rdbss" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\KSecPkg" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb20" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\srv2" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation" /v "Start" /t REG_DWORD /d "4" /f
+    DISM /Online /Disable-Feature /FeatureName:SmbDirect /norestart
+    cls
+    echo Lanman Workstation has been Disabled
+    timeout 2 > nul
+    goto :menu
+) else if %lanman_option%==3 (
+    goto :menu
+) else (
+    echo Invalid option!
+    timeout 2 > nul
+    goto :lanman_menu
 )
