@@ -6,7 +6,7 @@ echo 1. Google Chrome
 echo 2. Brave
 echo 3. Firefox
 echo 4. Waterfox
-echo 5. Librefox
+echo 5. Librewolf
 echo 0. Exit
 
 set /p choice=Enter your choice: 
@@ -24,7 +24,7 @@ if "%choice%"=="1" (
     set "browser=Waterfox"
     set "downloadUrl=https://cdn1.waterfox.net/waterfox/releases/G6.0.6/WINNT_x86_64/Waterfox%20Setup%20G6.0.6.exe"
 ) else if "%choice%"=="5" (
-    set "browser=Librefox"
+    set "browser=Librewolf"
     set "downloadUrl=https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/120.0.1-1/librewolf-120.0.1-1-windows-x86_64-setup.exe"
 ) else if "%choice%"=="0" (
     echo Exiting...
@@ -120,7 +120,7 @@ if "%choice%"=="4" (
     del "C:\Program Files\Waterfox\update-settings.ini" /f /q >nul 2>&1
 )
 
-:: Run commands after installing Librefox
+:: Run commands after installing Librewolf
 if "%choice%"=="5" (
     del "C:\Program Files\LibreWolf\pingsender.exe" /f /q >nul 2>&1
 )
