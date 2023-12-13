@@ -337,6 +337,7 @@ for %%z in (
         3ware
         arcsas
         buttonconverter
+        VSS
         cdfs
         circlass
         Dfsc

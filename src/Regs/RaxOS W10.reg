@@ -64,11 +64,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate]
 "SusClientId"="00000000-0000-0000-0000-000000000000"
 
-; hide windows update page
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"SettingsPageVisibility"="hide:windowsupdate"
-
 ; prevent Edge to install again
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate]
