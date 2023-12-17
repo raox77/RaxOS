@@ -301,6 +301,8 @@ for %%z in (
         UsoSvc
         cbdhsvc
         WinRM
+        WPDBusEnum
+        cloudidsvc
         BcastDVRUserService
 	rdyboost
         rdpbus
