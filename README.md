@@ -18,56 +18,55 @@
 # W11 23H2
 ## Stripped / Not Working Features:
 - Windows installation from setup.exe
-- BitLocker Drive Encryption (Affects diskmgmt.msc & msconfig)
+- BitLocker Drive Encryption
 - Windows Defender
 - Cortana
 - SmartScreen
 - OneDrive
-- Windows Sounds
-- SFC
 - Windows Backup / Restore
 - Windows Help Content
-- OpenSSH
 - Easy Transfer
 - CEIP
 - Windows To Go
-- Telephony
 
 ## Stripped Devices & Drivers:
-- Printing
 - Smart Cards
 - Biometric Devices (finger print etc)
-- POS
-- NFC
 
 > Download
 
-https://drive.google.com/file/d/17T8fDUY_es4pCCyOm13IE-e81rfSMS2K/view?usp=sharing
+https://drive.google.com/file/d/1JasyEuulI7oAiUdBNPyec7VMQ7-uI3N0/view?usp=sharing
 
 <details>
 <br>
 <summary>Changelog 23H2 V001</summary>
 
 - Compatibility improvements
-- Removed SFC (Useless)
-- Added a backup windows default services and drivers
-- Replaced Startmenu with Openshell
-- Changed Win32Prio to 2A
-- Updated Build to 22631.2506 (23H2)
+- Revamped lots of stuff
+- Hid Home and Windows update in settings
+- Removed Get Started 
+- Updated Build to 22631.2861
+- Ability to Enable/Disable Openshell/Stock startmenu
+- Fixed Process mitigations wasnt disabled
+- Brought back SendTo in conext menu
+- Brought back Printing
+- Brought back POS
+- Brought back NFC
+- Brought back Windows Sounds ( disabled )
 
 </details>
 
 ### Always have a backup USB with default Windows 10 Or 11 if something goes wrong and your network driver in the USB
 
-SHA-256: a4ddb753407c8eadd2dfb2934e8e7679ca3e78dec2c347a82338a0244e320790
+SHA-256: e3d21da9b2a5f52e239c8b593eee94d05889676348ab491b2f185f526905caa5
 
-SHA-1: e395945f3fd2277570017e0875590167e99ad9d6
+SHA-1: 1e656a3c13a2e24ba4263ca0a721a9d825c7cc40
 
 
 # W10 22H2
 ## Stripped / Not Working Features:
 - Windows installation from setup.exe
-- BitLocker Drive Encryption (Affects diskmgmt.msc & msconfig)
+- BitLocker Drive Encryption
 - Windows Defender
 - Cortana
 - SmartScreen
