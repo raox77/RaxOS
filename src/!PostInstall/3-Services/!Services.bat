@@ -10,7 +10,6 @@ echo 5. Microsoft Store
 echo 6. Clipboard
 echo 7. VPN
 echo 8. Printing
-echo 9. Lanman Workstation
 echo 0. Exit
 echo -----------------------------------------
 echo.
@@ -33,8 +32,6 @@ if %option%==1 (
     call :vpn_menu
 ) else if %option%==8 (
     call :printing_menu
-) else if %option%==9 (
-    call :lanman_menu
 ) else if %option%==0 (
     exit
 ) else (
@@ -447,48 +444,4 @@ if %printing_option%==1 (
     echo Invalid option!
     timeout 2 > nul
     goto :printing_menu
-)
-
-:lanman_menu
-cls
-echo ---------- Lanman Workstation Services ----------
-echo 1. Enable
-echo 2. Disable
-echo 3. Back to main menu
-echo ------------------------------------
-
-set /p lanman_option=Choose an option: 
-
-if %lanman_option%==1 (
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Bowser" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\rdbss" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\KSecPkg" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb20" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\srv2" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation" /v "Start" /t REG_DWORD /d "2" /f
-    DISM /Online /Enable-Feature /FeatureName:SmbDirect /norestart
-    cls
-    echo Lanman Workstation has been Enabled
-    timeout 2 > nul
-    goto :menu
-) else if %lanman_option%==2 (
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Bowser" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\rdbss" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\KSecPkg" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb20" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\srv2" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation" /v "Start" /t REG_DWORD /d "4" /f
-    DISM /Online /Disable-Feature /FeatureName:SmbDirect /norestart
-    cls
-    echo Lanman Workstation has been Disabled
-    timeout 2 > nul
-    goto :menu
-) else if %lanman_option%==3 (
-    goto :menu
-) else (
-    echo Invalid option!
-    timeout 2 > nul
-    goto :lanman_menu
 )
