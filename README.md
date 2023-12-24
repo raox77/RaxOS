@@ -35,11 +35,11 @@
 
 > Download
 
-https://drive.google.com/file/d/1JasyEuulI7oAiUdBNPyec7VMQ7-uI3N0/view?usp=sharing
+https://drive.google.com/file/d/1UPUU_8Zrup-bq40aIsvrgLJNouMuwCwV/view?usp=sharing
 
 <details>
 <br>
-<summary>Changelog 23H2 V001</summary>
+<summary>Changelog 23H2 V002.1</summary>
 
 - Compatibility improvements
 - Revamped lots of stuff
@@ -54,13 +54,18 @@ https://drive.google.com/file/d/1JasyEuulI7oAiUdBNPyec7VMQ7-uI3N0/view?usp=shari
 - Brought back NFC
 - Brought back Windows Sounds ( disabled )
 
+V002.2 **Changelog**:
+Fixed RaxOS-Default Services
+- Disabled DusmSvc
+- Removed Lanman Workstation toggle services
+
 </details>
 
 ### Always have a backup USB with default Windows 10 Or 11 if something goes wrong and your network driver in the USB
 
-SHA-256: e3d21da9b2a5f52e239c8b593eee94d05889676348ab491b2f185f526905caa5
+SHA-256: ce6cb41b927ec7f3c6395a04983f3873246e08de90fa4e7f5d671f8548caf50e
 
-SHA-1: 1e656a3c13a2e24ba4263ca0a721a9d825c7cc40
+SHA-1: 9bcecd9bc25a743833befaf8327a9755db2670f4
 
 
 # W10 22H2
