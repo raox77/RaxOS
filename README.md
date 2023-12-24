@@ -55,7 +55,7 @@ https://drive.google.com/file/d/1UPUU_8Zrup-bq40aIsvrgLJNouMuwCwV/view?usp=shari
 - Brought back Windows Sounds ( disabled )
 
 V002.2 **Changelog**:
-Fixed RaxOS-Default Services
+- Fixed RaxOS-Default Services
 - Disabled DusmSvc
 - Removed Lanman Workstation toggle services
 
