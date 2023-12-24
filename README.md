@@ -39,7 +39,7 @@ https://drive.google.com/file/d/1UPUU_8Zrup-bq40aIsvrgLJNouMuwCwV/view?usp=shari
 
 <details>
 <br>
-<summary>Changelog 23H2 V002.1</summary>
+<summary>Changelog 23H2 V002.2</summary>
 
 - Compatibility improvements
 - Revamped lots of stuff
