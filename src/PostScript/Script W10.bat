@@ -257,7 +257,7 @@ for %%z in (
 	AppVClient
 	AJRouter
 	AppIDSvc
-        DsmSvc
+        DusmSvc
         autotimesvc
         SharedAccess
         W32Time
