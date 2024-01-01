@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
 	<Date>12/17/2023 20:42:38</Date>
 	<AppInfo>
@@ -17,11 +17,9 @@
 		<c>asimov 'Telemetry Client'</c>
 		<c>assembly.net '.NET assembly cache'</c>
 		<c>assignedaccess 'Assigned Access'</c>
-		<c>backup 'Backup and Restore'</c>
 		<c>biometric 'Biometric - Support'</c>
 		<c>biometricservice 'Biometric - Service'</c>
 		<c>branchcacheclient 'BranchCache Client'</c>
-		<c>c5e2524a-ea46-4f67-841f-6a9465d9d515 'File Explorer (Legacy)'</c>
 		<c>ceip 'CEIP (SQM)'</c>
 		<c>clipchamp.clipchamp 'Clipchamp'</c>
 		<c>clouddesktop 'Cloud Desktop'</c>
@@ -32,7 +30,6 @@
 		<c>deviceexperience 'Device Experience'</c>
 		<c>devicesync 'Microsoft Sync Framework'</c>
 		<c>deviceupdatecenter 'Device Update Center'</c>
-		<c>devquerybroker 'DevQuery Background Discovery Broker'</c>
 		<c>directml 'Direct Machine Learning (DirectML)'</c>
 		<c>driver_c_biometric.inf</c>
 		<c>driver_c_scmdisk.inf</c>
@@ -54,7 +51,6 @@
 		<c>driver_tpmvsc.inf</c>
 		<c>driver_usbcciddriver.inf</c>
 		<c>driver_wudfusbcciddriver.inf</c>
-		<c>e2a4f912-2574-4a75-9bb0-0d023378592b 'App Resolver'</c>
 		<c>edgeupdate 'Microsoft Edge Update'</c>
 		<c>edgewebview 'Microsoft Edge WebView'</c>
 		<c>edgewebviewlegacy 'WebView2 Runtime (Legacy)'</c>
@@ -64,20 +60,16 @@
 		<c>enhancedstorage 'Enhanced Storage'</c>
 		<c>enterprisedataprotection 'Enterprise Data Protection (EDP/WIP)'</c>
 		<c>errorreporting 'Windows Error Reporting'</c>
-		<c>f46d4000-fd22-4db4-ac8e-4e1ddde828fe 'Add Folder Suggestions dialog'</c>
 		<c>facerecognition 'Face Recognition'</c>
 		<c>fciclient 'File Server Resource Manager'</c>
 		<c>filerevocationmanager 'File Revocation Manager - 32 bit'</c>
-		<c>firstlogonanim 'First-logon animation'</c>
 		<c>folderredirection 'Folder Redirection'</c>
-		<c>graphicsperfsvc 'Graphics performance monitor service'</c>
 		<c>guardedhost 'Guarded Host'</c>
 		<c>help 'Windows Help content'</c>
 		<c>helpsupport 'Help file support (CHM)'</c>
 		<c>hwsupport_smartcard 'Smartcard'</c>
 		<c>insiderhub 'Windows Insider Program'</c>
 		<c>ipt 'Identity Protection Technology (Intel IPT)'</c>
-		<c>kerneldebug 'Kernel Debugging'</c>
 		<c>laps 'Windows Local Administrator Password Solution(LAPS)'</c>
 		<c>location 'Location Service'</c>
 		<c>mail 'Windows Mail'</c>
@@ -99,7 +91,6 @@
 		<c>microsoft.getstarted 'Tips (Get Started)'</c>
 		<c>microsoft.heifimageextension 'HEIF Image Extensions'</c>
 		<c>microsoft.hevcvideoextension 'HEVC Video Extensions from Device Manufacturer'</c>
-		<c>microsoft.lockapp 'Windows Default Lock Screen'</c>
 		<c>microsoft.microsoftedge 'Microsoft Edge (Legacy)'</c>
 		<c>microsoft.microsoftedge.stable 'Microsoft Edge (Chromium)'</c>
 		<c>microsoft.microsoftedgedevtoolsclient 'Microsoft Edge DevTools Client'</c>
@@ -107,7 +98,6 @@
 		<c>microsoft.microsoftsolitairecollection 'Microsoft Solitaire Collection'</c>
 		<c>microsoft.microsoftstickynotes 'Microsoft Sticky Notes'</c>
 		<c>microsoft.outlookforwindows 'Outlook for Windows'</c>
-		<c>microsoft.paint 'Paint'</c>
 		<c>microsoft.people 'Microsoft People'</c>
 		<c>microsoft.powerautomatedesktop 'Power Automate'</c>
 		<c>microsoft.rawimageextension 'Raw Image Extension'</c>
@@ -120,14 +110,10 @@
 		<c>microsoft.windows.apprep.chxapp 'SmartScreen'</c>
 		<c>microsoft.windows.assignedaccesslockapp 'Assigned Access Lock app'</c>
 		<c>microsoft.windows.callingshellapp 'Call'</c>
-		<c>microsoft.windows.contentdeliverymanager 'Content Delivery Manager'</c>
 		<c>microsoft.windows.devhome 'Dev Home'</c>
 		<c>microsoft.windows.parentalcontrols 'Microsoft family features'</c>
-		<c>microsoft.windows.peopleexperiencehost 'Windows Shell Experience'</c>
 		<c>microsoft.windows.photos 'Microsoft Photos'</c>
-		<c>microsoft.windows.pinningconfirmationdialog 'PinningConfirmationDialog'</c>
 		<c>microsoft.windows.secureassessmentbrowser 'Take a Test'</c>
-		<c>microsoft.windows.xgpuejectdialog 'Safely Remove Device'</c>
 		<c>microsoft.windowsalarms 'Windows Clock'</c>
 		<c>microsoft.windowsappruntime.1.3 'WindowsAppRuntime.1.3'</c>
 		<c>microsoft.windowscamera 'Windows Camera'</c>
@@ -151,24 +137,16 @@
 		<c>migwiz 'Easy Transfer'</c>
 		<c>mobiledevicemanagement 'Mobile Device Management (MDM)'</c>
 		<c>multipointconnector 'MultiPoint Connector'</c>
-		<c>naturalauthentication 'Natural Authentication'</c>
 		<c>ncsiuwpapp 'Network Connectivity Status Indicator (NCSI)'</c>
 		<c>nettopology 'Link-Layer Topology Discovery protocol (LLTD)'</c>
 		<c>offlinefiles 'Offline Files'</c>
 		<c>onedrive</c>
 		<c>pdfreader 'Windows Reader (PDF)'</c>
-		<c>penservice 'Pen Service'</c>
-		<c>photoviewer32 'Photo Viewer - 32 bit'</c>
 		<c>pimindexmaintenancesvc 'Contact Data'</c>
 		<c>pinsignin 'PIN sign-in support'</c>
-		<c>pushnotificationssvc 'Windows Push Notifications Service (System)'</c>
 		<c>reliabilityanalysis 'Reliability Analysis Services'</c>
-		<c>remoteregistry 'Remote Registry'</c>
 		<c>retaildemo 'Retail Demo Content'</c>
-		<c>rightsmanagement 'Rights Management support'</c>
-		<c>rpclocator 'Remote Procedure Call (RPC) Locator'</c>
 		<c>screensavers</c>
-		<c>securestartup 'BitLocker Drive Encryption'</c>
 		<c>securitycenter 'Security Center'</c>
 		<c>settingsync 'Setting Sync'</c>
 		<c>sharedpc 'Shared PC mode'</c>
@@ -180,7 +158,6 @@
 		<c>synccenter 'Sync Center'</c>
 		<c>systemguard 'System Guard'</c>
 		<c>systemreset 'System Reset for Windows'</c>
-		<c>tabletextservice 'Table Text Service'</c>
 		<c>targetedcontent32 'Targeted Content Service - 32 bit'</c>
 		<c>tempcache 'Cache and temp files'</c>
 		<c>unistoresvc 'User Data Storage'</c>

@@ -178,7 +178,8 @@ if %hyperv_option%==1 (
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RDPDR" /v "Start" /t REG_DWORD /d "3" /f
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RdpVideominiport" /v "Start" /t REG_DWORD /d "3" /f
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbFlt" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbFlt" /v "Start" /t REG_DWORD /d "3" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\terminpt" /v "Start" /t REG_DWORD /d "3" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbGD" /v "Start" /t REG_DWORD /d "3" /f 
     bcdedit /set hypervisorlaunchtype auto
     dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All /NoRestart
     cls
@@ -214,7 +215,8 @@ if %hyperv_option%==1 (
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RDPDR" /v "Start" /t REG_DWORD /d "4" /f
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RdpVideominiport" /v "Start" /t REG_DWORD /d "4" /f
     PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbFlt" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbFlt" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\terminpt" /v "Start" /t REG_DWORD /d "4" /f
+    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TsUsbGD" /v "Start" /t REG_DWORD /d "4" /f 
     dism.exe /Online /Disable-Feature:Microsoft-Hyper-V-All /NoRestart
     bcdedit /set hypervisorlaunchtype off
     cls
