@@ -1,15 +1,15 @@
 ﻿﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>12/17/2023 20:42:38</Date>
+	<Date>01/01/2024 08:00:20</Date>
 	<AppInfo>
-		<Version>2023.11.9515</Version>
+		<Version>2023.12.9552</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 11 Pro 23H2 x64 - 10.0.22631.2506 (en-US)</Host>
+		<Host>Windows 11 Pro 23H2 x64 - 10.0.22631.2861 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 11 Professional 23H2 x64 - 10.0.22631.2861 (en-US)</Version>
-		<GUID>{F416828F-A09D-69C1-7049-1768B54AD0DF}</GUID>
+		<GUID>{33997494-0369-90D3-9742-59316CFC1D0A}</GUID>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="Custom">
 		<c>aarsvc 'Agent Activation Runtime'</c>
@@ -32,22 +32,13 @@
 		<c>deviceupdatecenter 'Device Update Center'</c>
 		<c>directml 'Direct Machine Learning (DirectML)'</c>
 		<c>driver_c_biometric.inf</c>
-		<c>driver_c_scmdisk.inf</c>
 		<c>driver_c_smartcard.inf</c>
 		<c>driver_c_smartcardfilter.inf</c>
 		<c>driver_c_smartcardreader.inf</c>
-		<c>driver_c_tapedrive.inf</c>
-		<c>driver_ehstorpwddrv.inf</c>
-		<c>driver_ehstortcgdrv.inf</c>
 		<c>driver_helloface.inf</c>
-		<c>driver_kdnic.inf</c>
 		<c>driver_msclmd.inf</c>
-		<c>driver_perceptionsimulationsixdof.inf</c>
-		<c>driver_pmem.inf</c>
-		<c>driver_rawsilo.inf</c>
 		<c>driver_scrawpdo.inf</c>
 		<c>driver_scunknown.inf</c>
-		<c>driver_tape.inf</c>
 		<c>driver_tpmvsc.inf</c>
 		<c>driver_usbcciddriver.inf</c>
 		<c>driver_wudfusbcciddriver.inf</c>
@@ -57,13 +48,9 @@
 		<c>embeddedexperience 'Device Lockdown (Embedded Experience)'</c>
 		<c>embeddedmode 'Embedded Mode'</c>
 		<c>encprovider 'Windows Encryption Provider Host Service'</c>
-		<c>enhancedstorage 'Enhanced Storage'</c>
 		<c>enterprisedataprotection 'Enterprise Data Protection (EDP/WIP)'</c>
 		<c>errorreporting 'Windows Error Reporting'</c>
 		<c>facerecognition 'Face Recognition'</c>
-		<c>fciclient 'File Server Resource Manager'</c>
-		<c>filerevocationmanager 'File Revocation Manager - 32 bit'</c>
-		<c>folderredirection 'Folder Redirection'</c>
 		<c>guardedhost 'Guarded Host'</c>
 		<c>help 'Windows Help content'</c>
 		<c>helpsupport 'Help file support (CHM)'</c>
@@ -82,7 +69,6 @@
 		<c>memorydiagnostic 'Memory Diagnostic'</c>
 		<c>messagingsvc 'Messaging Service'</c>
 		<c>microsoft.549981c3f5f10 'Cortana'</c>
-		<c>microsoft.asynctextservice 'AsyncTextService'</c>
 		<c>microsoft.bingnews 'Microsoft News'</c>
 		<c>microsoft.bingweather 'MSN Weather'</c>
 		<c>microsoft.bioenrollment 'Windows Hello Setup'</c>
@@ -109,7 +95,6 @@
 		<c>microsoft.webpimageextension 'Webp Image Extensions'</c>
 		<c>microsoft.windows.apprep.chxapp 'SmartScreen'</c>
 		<c>microsoft.windows.assignedaccesslockapp 'Assigned Access Lock app'</c>
-		<c>microsoft.windows.callingshellapp 'Call'</c>
 		<c>microsoft.windows.devhome 'Dev Home'</c>
 		<c>microsoft.windows.parentalcontrols 'Microsoft family features'</c>
 		<c>microsoft.windows.photos 'Microsoft Photos'</c>
@@ -136,7 +121,6 @@
 		<c>microsoftwindows.client.webexperience 'Windows Web Experience Pack'</c>
 		<c>migwiz 'Easy Transfer'</c>
 		<c>mobiledevicemanagement 'Mobile Device Management (MDM)'</c>
-		<c>multipointconnector 'MultiPoint Connector'</c>
 		<c>ncsiuwpapp 'Network Connectivity Status Indicator (NCSI)'</c>
 		<c>nettopology 'Link-Layer Topology Discovery protocol (LLTD)'</c>
 		<c>offlinefiles 'Offline Files'</c>
@@ -149,12 +133,10 @@
 		<c>screensavers</c>
 		<c>securitycenter 'Security Center'</c>
 		<c>settingsync 'Setting Sync'</c>
-		<c>sharedpc 'Shared PC mode'</c>
 		<c>skypeortc 'Skype ORTC'</c>
 		<c>stepsrecorder 'Steps Recorder'</c>
 		<c>supportdir 'Support directory'</c>
 		<c>sustainabilityservice 'Sustainability Service'</c>
-		<c>symboliclinks 'Legacy symbolic links'</c>
 		<c>synccenter 'Sync Center'</c>
 		<c>systemguard 'System Guard'</c>
 		<c>systemreset 'System Reset for Windows'</c>
@@ -166,7 +148,6 @@
 		<c>wallet 'Wallet Service'</c>
 		<c>webthreatdefense 'Web Threat Defense Service'</c>
 		<c>winai 'Windows AI Machine Learning'</c>
-		<c>windows.cbspreview 'Windows Barcode Preview'</c>
 		<c>windowstogo 'Windows To Go'</c>
 		<c>winre 'Windows Recovery (WinRE)'</c>
 		<c>wordpad</c>
