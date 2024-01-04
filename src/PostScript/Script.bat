@@ -231,7 +231,7 @@ Echo "Change NTP server to pool.ntp.org"
 w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org" >nul 2>&1
 cls
 
-Echo"Removing Quick access"
+Echo "Removing Quick access"
 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "HubMode" /t REG_DWORD /d "1" /f
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f
 PowerRun.exe /SW:0 Reg.exe add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f
@@ -255,6 +255,7 @@ for %%z in (
 	AJRouter
 	AppIDSvc
         DusmSvc
+        DsmSvc
         autotimesvc
         SharedAccess
         W32Time
@@ -269,6 +270,12 @@ for %%z in (
         IKEEXT
 	PcaSvc
 	ShellHWDetection
+        PenService
+        MessagingService
+        WalletService
+        DialogBlockingService
+        wbengine
+        GraphicsPerfSvc
 	SysMain
 	Themes
 	TrkWks
@@ -299,7 +306,6 @@ for %%z in (
         WSearch
         luafv
         UsoSvc
-        cbdhsvc
         WinRM
         WPDBusEnum
         cloudidsvc

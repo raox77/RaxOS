@@ -1,15 +1,15 @@
-﻿﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>12/17/2023 20:42:38</Date>
+	<Date>01/04/2024 08:28:55</Date>
 	<AppInfo>
-		<Version>2023.11.9515</Version>
+		<Version>2023.12.9552</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 11 Pro 23H2 x64 - 10.0.22631.2506 (en-US)</Host>
+		<Host>Windows 11 Pro 23H2 x64 - 10.0.22631.2861 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 11 Professional 23H2 x64 - 10.0.22631.2861 (en-US)</Version>
-		<GUID>{F416828F-A09D-69C1-7049-1768B54AD0DF}</GUID>
+		<GUID>{33997494-0369-90D3-9742-59316CFC1D0A}</GUID>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="Custom">
 		<c>aarsvc 'Agent Activation Runtime'</c>
@@ -32,39 +32,24 @@
 		<c>deviceupdatecenter 'Device Update Center'</c>
 		<c>directml 'Direct Machine Learning (DirectML)'</c>
 		<c>driver_c_biometric.inf</c>
-		<c>driver_c_scmdisk.inf</c>
 		<c>driver_c_smartcard.inf</c>
 		<c>driver_c_smartcardfilter.inf</c>
 		<c>driver_c_smartcardreader.inf</c>
-		<c>driver_c_tapedrive.inf</c>
-		<c>driver_ehstorpwddrv.inf</c>
-		<c>driver_ehstortcgdrv.inf</c>
 		<c>driver_helloface.inf</c>
-		<c>driver_kdnic.inf</c>
 		<c>driver_msclmd.inf</c>
-		<c>driver_perceptionsimulationsixdof.inf</c>
-		<c>driver_pmem.inf</c>
-		<c>driver_rawsilo.inf</c>
 		<c>driver_scrawpdo.inf</c>
 		<c>driver_scunknown.inf</c>
-		<c>driver_tape.inf</c>
 		<c>driver_tpmvsc.inf</c>
 		<c>driver_usbcciddriver.inf</c>
 		<c>driver_wudfusbcciddriver.inf</c>
 		<c>edgeupdate 'Microsoft Edge Update'</c>
 		<c>edgewebview 'Microsoft Edge WebView'</c>
 		<c>edgewebviewlegacy 'WebView2 Runtime (Legacy)'</c>
-		<c>embeddedexperience 'Device Lockdown (Embedded Experience)'</c>
 		<c>embeddedmode 'Embedded Mode'</c>
 		<c>encprovider 'Windows Encryption Provider Host Service'</c>
-		<c>enhancedstorage 'Enhanced Storage'</c>
 		<c>enterprisedataprotection 'Enterprise Data Protection (EDP/WIP)'</c>
 		<c>errorreporting 'Windows Error Reporting'</c>
 		<c>facerecognition 'Face Recognition'</c>
-		<c>fciclient 'File Server Resource Manager'</c>
-		<c>filerevocationmanager 'File Revocation Manager - 32 bit'</c>
-		<c>folderredirection 'Folder Redirection'</c>
-		<c>guardedhost 'Guarded Host'</c>
 		<c>help 'Windows Help content'</c>
 		<c>helpsupport 'Help file support (CHM)'</c>
 		<c>hwsupport_smartcard 'Smartcard'</c>
@@ -72,6 +57,7 @@
 		<c>ipt 'Identity Protection Technology (Intel IPT)'</c>
 		<c>laps 'Windows Local Administrator Password Solution(LAPS)'</c>
 		<c>location 'Location Service'</c>
+		<c>guardedhost 'Guarded Host'</c>
 		<c>mail 'Windows Mail'</c>
 		<c>mailcommdll 'Windows Mail Communications Library'</c>
 		<c>manifestbackup 'Manifest Backup (WinSxS\Backup)'</c>
@@ -80,9 +66,7 @@
 		<c>mcupdate 'Processor microcode update'</c>
 		<c>mcupdatesvc 'Processor microcode update - Servicing'</c>
 		<c>memorydiagnostic 'Memory Diagnostic'</c>
-		<c>messagingsvc 'Messaging Service'</c>
 		<c>microsoft.549981c3f5f10 'Cortana'</c>
-		<c>microsoft.asynctextservice 'AsyncTextService'</c>
 		<c>microsoft.bingnews 'Microsoft News'</c>
 		<c>microsoft.bingweather 'MSN Weather'</c>
 		<c>microsoft.bioenrollment 'Windows Hello Setup'</c>
@@ -109,7 +93,6 @@
 		<c>microsoft.webpimageextension 'Webp Image Extensions'</c>
 		<c>microsoft.windows.apprep.chxapp 'SmartScreen'</c>
 		<c>microsoft.windows.assignedaccesslockapp 'Assigned Access Lock app'</c>
-		<c>microsoft.windows.callingshellapp 'Call'</c>
 		<c>microsoft.windows.devhome 'Dev Home'</c>
 		<c>microsoft.windows.parentalcontrols 'Microsoft family features'</c>
 		<c>microsoft.windows.photos 'Microsoft Photos'</c>
@@ -136,7 +119,6 @@
 		<c>microsoftwindows.client.webexperience 'Windows Web Experience Pack'</c>
 		<c>migwiz 'Easy Transfer'</c>
 		<c>mobiledevicemanagement 'Mobile Device Management (MDM)'</c>
-		<c>multipointconnector 'MultiPoint Connector'</c>
 		<c>ncsiuwpapp 'Network Connectivity Status Indicator (NCSI)'</c>
 		<c>nettopology 'Link-Layer Topology Discovery protocol (LLTD)'</c>
 		<c>offlinefiles 'Offline Files'</c>
@@ -148,13 +130,12 @@
 		<c>retaildemo 'Retail Demo Content'</c>
 		<c>screensavers</c>
 		<c>securitycenter 'Security Center'</c>
+		<c>securestartup 'BitLocker Drive Encryption'</c>
 		<c>settingsync 'Setting Sync'</c>
-		<c>sharedpc 'Shared PC mode'</c>
 		<c>skypeortc 'Skype ORTC'</c>
 		<c>stepsrecorder 'Steps Recorder'</c>
 		<c>supportdir 'Support directory'</c>
 		<c>sustainabilityservice 'Sustainability Service'</c>
-		<c>symboliclinks 'Legacy symbolic links'</c>
 		<c>synccenter 'Sync Center'</c>
 		<c>systemguard 'System Guard'</c>
 		<c>systemreset 'System Reset for Windows'</c>
@@ -163,10 +144,8 @@
 		<c>unistoresvc 'User Data Storage'</c>
 		<c>unp 'Universal Notification Platform (UNP)'</c>
 		<c>userdatasvc 'User Data Access'</c>
-		<c>wallet 'Wallet Service'</c>
 		<c>webthreatdefense 'Web Threat Defense Service'</c>
 		<c>winai 'Windows AI Machine Learning'</c>
-		<c>windows.cbspreview 'Windows Barcode Preview'</c>
 		<c>windowstogo 'Windows To Go'</c>
 		<c>winre 'Windows Recovery (WinRE)'</c>
 		<c>wordpad</c>
@@ -261,7 +240,9 @@
 			<!--<Command>dism /image:[MOUNTDIR] /get-intl</Command>-->
 		</PostUpdates>
 	</Commands>
-	<Drivers showHidden="true"></Drivers>
+	<Drivers showHidden="true">
+		<File>host_imported\e1d.inf_amd64_9959ba283455536d\e1d.inf</File>
+	</Drivers>
 	<Unattended mode="1">
 		<AnswerFileLocationPanther>false</AnswerFileLocationPanther>
 		<AnswerFileLocationBoot>false</AnswerFileLocationBoot>
@@ -364,7 +345,6 @@
 			<TweakGroup name="Explorer">
 				<Tweak name="AutoplayHandlers\DisableAutoplay">1</Tweak>
 				<Tweak name="Explorer\EnableLegacyBalloonNotifications">0</Tweak>
-				<Tweak name="Explorer\NoCDBurning">1</Tweak>
 				<Tweak name="{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}\System.IsPinnedToNameSpaceTree">0</Tweak>
 				<Tweak name="{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder\Attributes">-1332477852</Tweak>
 				<Tweak name="Advanced\LaunchTo">2</Tweak>
@@ -440,6 +420,7 @@
 				<Tweak name="ContentDeliveryManager\PreInstalledAppsEnabled">0</Tweak>
 				<Tweak name="ContentDeliveryManager\OemPreInstalledAppsEnabled">0</Tweak>
 				<Tweak name="AppCompat\DisablePCA">1</Tweak>
+				<Tweak name="Packages\InstallLocation">0</Tweak>
 				<Tweak name="Windows Search\AllowCloudSearch">0</Tweak>
 				<Tweak name="SystemIndex\EnableFindMyFiles">0</Tweak>
 				<Tweak name="Search\BingSearchEnabled">0</Tweak>
@@ -471,14 +452,13 @@
 				<Tweak name="Windows\DisableATMFD">1</Tweak>
 				<Tweak name="GameConfigStore\GameDVR_FSEBehavior">2</Tweak>
 				<Tweak name="kernel\GlobalTimerResolutionRequests">1</Tweak>
-				<Tweak name="GraphicsDrivers\HwSchMode">1</Tweak>
+				<Tweak name="GraphicsDrivers\HwSchMode">2</Tweak>
 				<Tweak name="System\NoConnectedUser">3</Tweak>
-				<Tweak name="Memory Management\PagingFiles1">-:\pagefile.sys</Tweak>
+				<Tweak name="Memory Management\PagingFiles1">0:\pagefile.sys 0 0</Tweak>
 				<Tweak name="3\1806">0</Tweak>
 				<Tweak name="RDP-Tcp\UserAuthentication">0</Tweak>
 				<Tweak name="Device\DevicePasswordLessBuildVersion">0</Tweak>
 				<Tweak name="ReserveManager\ShippedWithReserves">0</Tweak>
-				<Tweak name="MoSetup\AllowUpgradesWithUnsupportedTPMOrCPU">1</Tweak>
 				<Tweak name="StoragePolicy\01">0</Tweak>
 				<Tweak name=".NETFramework\OnlyUseLatestCLR">1</Tweak>
 				<Tweak name="UserGpuPreferences\DirectXUserGlobalSettings">VRROptimizeEnable=0</Tweak>
@@ -521,8 +501,9 @@
 		<ImageTasks>
 			<Task>imageSaveTrim</Task>
 			<Task>imageFormatWim</Task>
+			<Task>imageOptionsCreateIso</Task>
 		</ImageTasks>
-		<AutoIsoFile>RaxOS 23H2 V002.iso</AutoIsoFile>
+		<AutoIsoFile>RaxOS 23H2 V003.iso</AutoIsoFile>
 		<AutoIsoLabel>RaxOS</AutoIsoLabel>
 		<AutoSplitSize>4000</AutoSplitSize>
 		<CleanHotfixedLeftovers>0</CleanHotfixedLeftovers>
@@ -536,6 +517,5 @@
 	</Execution>
 	<Registry>
 		<File>D:\src\Regs\RaxOS W11.reg</File>
-		<File>D:\src\Regs\OpenShell.reg</File>
 	</Registry>
 </Preset>
