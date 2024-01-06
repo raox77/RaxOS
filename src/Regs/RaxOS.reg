@@ -5,7 +5,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce]
 "POST INSTALL"="\"C:\\Windows\\Modules\\Script.bat\""
 
-; disable user account control (needed for correct post-install script permissions)
+; disable user account control
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "ConsentPromptBehaviorAdmin"=dword:00000000

@@ -240,9 +240,7 @@
 			<!--<Command>dism /image:[MOUNTDIR] /get-intl</Command>-->
 		</PostUpdates>
 	</Commands>
-	<Drivers showHidden="true">
-		<File>host_imported\e1d.inf_amd64_9959ba283455536d\e1d.inf</File>
-	</Drivers>
+	<Drivers showHidden="true"></Drivers>
 	<Unattended mode="1">
 		<AnswerFileLocationPanther>false</AnswerFileLocationPanther>
 		<AnswerFileLocationBoot>false</AnswerFileLocationBoot>
@@ -454,7 +452,7 @@
 				<Tweak name="kernel\GlobalTimerResolutionRequests">1</Tweak>
 				<Tweak name="GraphicsDrivers\HwSchMode">2</Tweak>
 				<Tweak name="System\NoConnectedUser">3</Tweak>
-				<Tweak name="Memory Management\PagingFiles1">0:\pagefile.sys 0 0</Tweak>
+				<Tweak name="Memory Management\PagingFiles1">-:\pagefile.sys</Tweak>
 				<Tweak name="3\1806">0</Tweak>
 				<Tweak name="RDP-Tcp\UserAuthentication">0</Tweak>
 				<Tweak name="Device\DevicePasswordLessBuildVersion">0</Tweak>
@@ -504,7 +502,7 @@
 			<Task>imageOptionsCreateIso</Task>
 		</ImageTasks>
 		<AutoIsoFile>RaxOS 23H2 V003.iso</AutoIsoFile>
-		<AutoIsoLabel>RaxOS</AutoIsoLabel>
+		<AutoIsoLabel>RaxOS 23H2 V003</AutoIsoLabel>
 		<AutoSplitSize>4000</AutoSplitSize>
 		<CleanHotfixedLeftovers>0</CleanHotfixedLeftovers>
 		<OptimizeAppX>false</OptimizeAppX>
