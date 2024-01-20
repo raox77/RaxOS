@@ -183,7 +183,14 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
 "DODownloadMode"=dword:00000000
 
-; xbox stuff
+; turn off Game Bar tips
+; related to Game Bar tips
+; disable GameMode
+; turn off open Xbox Game Bar using Xbox button on game controller
+; related to Gamemode
+; disabled Windows Game Recording and Broadcasting
+; disable Game Bar
+; enable Hardware: Legacy Flip presentation mode (FSE)
 
 [HKEY_CURRENT_USER\Software\Microsoft\GameBar] 
 "ShowStartupPanel"=dword:00000000 
