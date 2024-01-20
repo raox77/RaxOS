@@ -26,6 +26,10 @@ Echo "Execution Policy To Unrestricted"
 powershell set-executionpolicy unrestricted -force >nul 2>&1
 cls
 
+Echo "Disable reserved storage" 
+DISM /Online /Set-ReservedStorageState /State:Disabled >nul 2>&1
+cls
+
 Echo "Configuring "Keyboard and Mouse Settings"
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "InitialKeyboardIndicators" /t REG_SZ /d "0" /f >nul 2>&1
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "KeyboardDelay" /t REG_SZ /d "0" /f >nul 2>&1
@@ -48,6 +52,7 @@ cls
 Echo "Visual Effects"
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v "VisualFXSetting" /t REG_DWORD /d "2" /f > NUL 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v "VisualFXSetting" /t REG_DWORD /d "3" /f > NUL 2>&1
+Reg.exe add "HKCU\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d "9012078010000000" /f > NUL 2>&1
 Reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarAnimations" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "Blur" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "Animations" /t REG_DWORD /d "0" /f > NUL 2>&1
@@ -88,6 +93,15 @@ bcdedit /set {current} recoveryenabled no
 bcdedit /timeout 10
 cls
 
+Echo "Disable Spectre and meltdown"
+wmic cpu get name | findstr "Intel" >nul && (
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d 0 /f
+)
+wmic cpu get name | findstr "AMD" >nul && (
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d 64 /f
+)
+cls
+
 Echo "Disabling network adapters"
 powershell -NoProfile -Command "Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6, ms_msclient, ms_server, ms_rspndr, ms_lltdio, ms_implat, ms_lldp" >nul 2>&1
 cls
@@ -107,10 +121,6 @@ for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersi
 for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Capture') do PowerRun.exe /SW:0 Reg.exe add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},4" /t REG_DWORD /d "0" /f >nul 2>&1
 for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Render') do PowerRun.exe /SW:0 Reg.exe add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},3" /t REG_DWORD /d "0" /f >nul 2>&1
 for /f "delims=" %%a in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\Render') do PowerRun.exe /SW:0 Reg.exe add "%%a\Properties" /v "{b3f8fa53-0004-438e-9003-51a46e139bfc},4" /t REG_DWORD /d "0" /f >nul 2>&1
-cls
-
-Echo "Reset Firewall Rules"
-reg delete "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f && reg add "HKLM\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f >nul 2>&1
 cls
 
 Echo "Editing POW & power tweaks"
@@ -420,6 +430,34 @@ for %%z in (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
 )
 cls
+
+Echo "Setting Timer Resolution"
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" /f
+cls
+
+Echo "Renaming microcodes"
+cd C:\Windows\System32
+takeown /f "mcupdate_AuthenticAMD.dll"
+icacls "C:\Windows\System32\mcupdate_AuthenticAMD.dll" /grant Administrators:F
+ren mcupdate_AuthenticAMD.dll mcupdate_AuthenticAMD.old
+takeown /f "mcupdate_GenuineIntel.dll"
+icacls "C:\Windows\System32\mcupdate_GenuineIntel.dll" /grant Administrators:F
+ren mcupdate_GenuineIntel.dll mcupdate_GenuineIntel.old
+cls
+
+Echo "Disabling Search/StartMenu
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\wsearch" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "SearchboxTaskbarMode" /t REG_DWORD /d "0" /f
+taskkill /f /im explorer.exe
+taskkill /f /im SearchHost.exe
+cd C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy
+takeown /f "SearchHost.exe"
+icacls "C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe" /grant Administrators:F
+ren SearchHost.exe SearchHost.old
+cd C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
+takeown /f "StartMenuExperienceHost.exe"
+icacls "C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe" /grant Administrators :F
+ren StartMenuExperienceHost.exe StartMenuExperienceHost.old
 
 Echo "Fix explorer white bar bug"
 cmd /c "start C:\Windows\explorer.exe"
