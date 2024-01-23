@@ -51,7 +51,7 @@ cls
 
 Echo "Visual Effects"
 Reg.exe add "HKCU\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d "9012038010000000" /f > NUL 2>&1
-Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewShadow" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewShadow" /t REG_DWORD /d "0" /f >nul 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewAlphaSelect" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v "VisualFXSetting" /t REG_DWORD /d "3" /f > NUL 2>&1
 Reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarAnimations" /t REG_DWORD /d "0" /f > NUL 2>&1
@@ -71,8 +71,8 @@ Reg.exe Add "HKCU\Software\Microsoft\Windows\DWM" /v "AlwaysHibernateThumbnails"
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "SystemUsesLightTheme" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "AppsUseLightTheme" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Hidden" /t REG_DWORD /d "1" /f > NUL 2>&1
-Reg.exe delete "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v "DisableNotificationCenter" /f
-Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "DisableNotificationCenter" /f
+Reg.exe delete "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v "DisableNotificationCenter" /f >nul 2>&1
+Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "DisableNotificationCenter" /f >nul 2>&1
 cls
 
 Echo "Editing Bcdedit"
@@ -94,15 +94,6 @@ bcdedit /set {globalsettings} custom:16000068 true
 bcdedit /set {globalsettings} custom:16000069 true
 bcdedit /set {current} recoveryenabled no
 bcdedit /timeout 10
-cls
-
-Echo "Disable Spectre and meltdown"
-wmic cpu get name | findstr "Intel" >nul && (
-    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d 0 /f
-)
-wmic cpu get name | findstr "AMD" >nul && (
-    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d 64 /f
-)
 cls
 
 Echo "Disabling network adapters"
@@ -203,6 +194,24 @@ powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Sc
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Start Oobe Expedite Work" >nul 2>&1
 cls
 
+echo "Creating Default Services Backup"
+sc config wlansvc start=auto
+set BACKUP="C:\Windows\srvbackup\Windows-Default-services.reg"
+echo Windows Registry Editor Version 5.00 >>%BACKUP%
+
+for /f "delims=" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services"') do (
+    for /f "tokens=3" %%b in ('reg query "%%~a" /v "Start" 2^>nul') do (
+        for /l %%c in (0,1,4) do (
+            if "%%b"=="0x%%c" (
+                echo. >>%BACKUP%
+                echo [%%~a] >>%BACKUP%
+                echo "Start"=dword:0000000%%c >>%BACKUP%
+            ) 
+        ) 
+    ) 
+) >nul 2>&1
+cls
+
 Echo "Changing fsutil behaviors"
 fsutil behavior set disable8dot3 1 > NUL 2>&1
 fsutil behavior set disablelastaccess 1 > NUL 2>&1
@@ -246,13 +255,14 @@ w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.o
 cls
 
 Echo "Removing Quick access"
-Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "HubMode" /t REG_DWORD /d "1" /f
-PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f
-PowerRun.exe /SW:0 Reg.exe add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f
+Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "HubMode" /t REG_DWORD /d "1" /f >nul 2>&1
+PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f >nul 2>&1
+PowerRun.exe /SW:0 Reg.exe add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f >nul 2>&1
 cls
 
 Echo "Set Sound Scheme to no sound"
-powershell C:\Modules\sound.ps1  >nul 2>&1
+powershell C:\Modules\sound.ps1 >nul 2>&1
+cls
 
 Echo "Disabling Drivers and Services"
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e96c-e325-11ce-bfc1-08002be10318}" /v "UpperFilters" /t REG_MULTI_SZ /d "" /f
@@ -293,6 +303,10 @@ for %%z in (
 	SysMain
 	Themes
 	TrkWks
+        lfsvc
+        webthreatdefsvc
+        webthreatdefusersvc
+        WpnService
 	tzautoupdate
         Ndu
 	OneSyncSvc
@@ -448,11 +462,12 @@ icacls "C:\Windows\System32\mcupdate_GenuineIntel.dll" /grant Administrators:F
 ren mcupdate_GenuineIntel.dll mcupdate_GenuineIntel.old
 cls
 
-Echo "Disabling Search/StartMenu
+Echo "Disabling Search/StartMenu"
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\wsearch" /v "Start" /t REG_DWORD /d "4" /f
 Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "SearchboxTaskbarMode" /t REG_DWORD /d "0" /f
 taskkill /f /im explorer.exe
 taskkill /f /im SearchHost.exe
+taskkill /f /im StartMenuExperienceHost.exe
 cd C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy
 takeown /f "SearchHost.exe"
 icacls "C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe" /grant Administrators:F
@@ -461,6 +476,24 @@ cd C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
 takeown /f "StartMenuExperienceHost.exe"
 icacls "C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe" /grant Administrators :F
 ren StartMenuExperienceHost.exe StartMenuExperienceHost.old
+cls
+
+echo "Creating Default Services Backup"
+set BACKUP="C:\Windows\srvbackup\RaxOS-Default-services.reg"
+echo Windows Registry Editor Version 5.00 >>%BACKUP%
+
+for /f "delims=" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services"') do (
+    for /f "tokens=3" %%b in ('reg query "%%~a" /v "Start" 2^>nul') do (
+        for /l %%c in (0,1,4) do (
+            if "%%b"=="0x%%c" (
+                echo. >>%BACKUP%
+                echo [%%~a] >>%BACKUP%
+                echo "Start"=dword:0000000%%c >>%BACKUP%
+            ) 
+        ) 
+    ) 
+) >nul 2>&1
+cls
 
 Echo "Fix explorer white bar bug"
 cmd /c "start C:\Windows\explorer.exe"

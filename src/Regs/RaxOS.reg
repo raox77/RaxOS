@@ -89,6 +89,78 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000000
 
+; enable the legacy photo viewer
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]
+".tif"="PhotoViewer.FileAssoc.Tiff"
+".tiff"="PhotoViewer.FileAssoc.Tiff"
+".bmp"="PhotoViewer.FileAssoc.Tiff"
+".dib"="PhotoViewer.FileAssoc.Tiff"
+".gif"="PhotoViewer.FileAssoc.Tiff"
+".jfif"="PhotoViewer.FileAssoc.Tiff"
+".jpe"="PhotoViewer.FileAssoc.Tiff"
+".jpeg"="PhotoViewer.FileAssoc.Tiff"
+".jpg"="PhotoViewer.FileAssoc.Tiff"
+".jxr"="PhotoViewer.FileAssoc.Tiff"
+".png"="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.jpg]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.jpeg]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.gif]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.png]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.bmp]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.tiff]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.ico]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.tif]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.wdp]
+@="PhotoViewer.FileAssoc.Wdp"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.jfif]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.dib]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.jpe]
+@="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes.jxr]
+@="PhotoViewer.FileAssoc.Tiff"
+
+; disable windows default printer management
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
+"LegacyDefaultPrinterMode"=dword:00000001
+
+; disable language bar
+
+[HKEY_CURRENT_USER\Keyboard Layout\Toggle]
+"Layout Hotkey"="3"
+"Language Hotkey"="3"
+"Hotkey"="3"
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\CTF\LangBar]
+"Transparency"=dword:000000ff
+"Label"=dword:00000000
+"ExtraIconsOnMinimized"=dword:00000000
+"ShowStatus"=dword:00000003
+
 ; disable telemetry
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
@@ -113,6 +185,71 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Messenger\Client]
 "CEIP"=dword:00000002
+
+; add `Windows Batch File`, `Hash`, `Registry Entries` in context menu
+
+[HKEY_CLASSES_ROOT\.bat\ShellNew]
+"NullFile"=""
+
+[HKEY_CLASSES_ROOT\*\shell\hash]
+"MUIVerb"="Hash"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu]
+"MUIVerb"="SHA1"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA1 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu]
+"MUIVerb"="SHA256"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA256 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu]
+"MUIVerb"="SHA384"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA384 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu]
+"MUIVerb"="SHA512"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA512 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu]
+"MUIVerb"="MACTripleDES"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm MACTripleDES | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu]
+"MUIVerb"="MD5"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm MD5 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu]
+"MUIVerb"="RIPEMD160"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\08menu]
+"CommandFlags"=dword:00000020
+"MUIVerb"="Show all"
+
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\08menu\command]
+@="powershell -noexit get-filehash -literalpath '%1' -algorithm SHA1 | format-list;get-filehash -literalpath '%1' -algorithm SHA256 | format-list;get-filehash -literalpath '%1' -algorithm SHA384 | format-list;get-filehash -literalpath '%1' -algorithm SHA512 | format-list;get-filehash -literalpath '%1' -algorithm MACTripleDES | format-list;get-filehash -literalpath '%1' -algorithm MD5 | format-list;get-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list"
+
+[HKEY_CLASSES_ROOT\.reg\ShellNew]
+"ItemName"=hex(2):40,00,25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,\
+  6f,00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,\
+  00,6e,00,6f,00,74,00,65,00,70,00,61,00,64,00,2e,00,65,00,78,00,65,00,2c,00,\
+  2d,00,34,00,37,00,30,00,00,00
+"NullFile"=""
 
 ; reserve 10% of CPU resources for low-priority tasks instead of the default 20%
 
@@ -165,7 +302,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "DisableAutomaticRestartSignOn"=dword:00000001
 
-; Remove Gallery in Explorer
+; remove Gallery in Explorer
 
 [HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
 "System.IsPinnedToNameSpaceTree"=dword:00000000
@@ -468,7 +605,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
 "WaitToKillServiceTimeout"="1500"
 
-; alt+Tab Classic
+; classic alt-tab
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "AltTabSettings"=dword:00000001
@@ -561,7 +698,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsMediaPlayer]
 "PreventLibrarySharing"=dword:00000001
 
-; Configure Environment preference logging and tracing
+; configure Environment preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{0E28E245-9368-4853-AD84-6DA3BA35BB75}]
 "LogLevel"=dword:00000000
@@ -607,7 +744,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Files preference logging and tracing
+; configure Files preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{7150F9BF-48AD-4da4-A49C-29EF4A8369BA}]
 "LogLevel"=dword:00000000
@@ -653,7 +790,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Folder Options preference logging and tracing
+; configure Folder Options preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{A3F3E39B-5D83-4940-B954-28315B82F0A8}]
 "LogLevel"=dword:00000000
@@ -699,7 +836,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Folders preference logging and tracing
+; configure Folders preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{6232C319-91AC-4931-9385-E70C2B099F0E}]
 "LogLevel"=dword:00000000
@@ -745,7 +882,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Ini Files preference logging and tracing
+; configure Ini Files preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{74EE6C03-5363-4554-B161-627540339CAB}]
 "LogLevel"=dword:00000000
@@ -791,7 +928,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Internet Settings preference logging and tracing
+; configure Internet Settings preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{E47248BA-94CC-49c4-BBB5-9EB7F05183D0}]
 "LogLevel"=dword:00000000
@@ -837,7 +974,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Local Users and Groups preference logging and tracing
+; configure Local Users and Groups preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{17D89FEC-5C44-4972-B12D-241CAEF74509}]
 "LogLevel"=dword:00000000
@@ -883,7 +1020,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Network Options preference logging and tracing
+; configure Network Options preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{3A0DBA37-F8B2-4356-83DE-3E90BD5C261F}]
 "LogLevel"=dword:00000000
@@ -929,7 +1066,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Network Shares preference logging and tracing
+; configure Network Shares preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{6A4C88C6-C502-4f74-8F60-2CB23EDC24E2}]
 "LogLevel"=dword:00000000
@@ -975,7 +1112,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Power Options preference logging and tracing
+; configure Power Options preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{E62688F0-25FD-4c90-BFF5-F508B9D2E31F}]
 "LogLevel"=dword:00000000
@@ -1021,7 +1158,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Printers preference logging and tracing
+; configure Printers preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{BC75B1ED-5833-4858-9BB8-CBF0B166DF9D}]
 "LogLevel"=dword:00000000
@@ -1067,7 +1204,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Regional Options preference logging and tracing
+; configure Regional Options preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{E5094040-C46C-4115-B030-04FB2E545B00}]
 "LogLevel"=dword:00000000
@@ -1113,7 +1250,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Registry preference logging and tracing
+; configure Registry preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{B087BE9D-ED37-454f-AF9C-04291E351182}]
 "LogLevel"=dword:00000000
@@ -1159,7 +1296,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Scheduled Tasks preference logging and tracing
+; configure Scheduled Tasks preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{AADCED64-746C-4633-A97C-D61349046527}]
 "LogLevel"=dword:00000000
@@ -1205,7 +1342,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Services preference logging and tracing
+; configure Services preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{91FBB303-0CD5-4055-BF42-E512A681B325}]
 "LogLevel"=dword:00000000
@@ -1251,7 +1388,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Shortcuts preference logging and tracing
+; configure Shortcuts preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{C418DD9D-0D14-4efb-8FBF-CFE535C8FAC7}]
 "LogLevel"=dword:00000000
@@ -1297,7 +1434,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Configure Start Menu preference logging and tracing
+; configure Start Menu preference logging and tracing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{E4F48E54-F38D-4884-BFB9-D4D2E5729C18}]
 "LogLevel"=dword:00000000
@@ -1343,7 +1480,7 @@ Windows Registry Editor Version 5.00
 00
 "TraceFileMaxSize"=dword:00000000
 
-; Disable enumeration policy for external devices incompatible with Kernel DMA Protection
+; disable enumeration policy for external devices incompatible with Kernel DMA Protection
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Kernel DMA Protection]
 "DeviceEnumerationPolicy"=dword:00000000
@@ -1351,7 +1488,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Kernel DMA Protection]
 "DeviceEnumerationPolicy"=dword:00000000
 
-; Turn off windows startup sound
+; turn off windows startup sound
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "DisableStartupSound"=dword:00000001
@@ -1415,12 +1552,15 @@ Windows Registry Editor Version 5.00
 "EnableScriptBlockLogging"=dword:00000000
 "EnableScriptBlockInvocationLogging"=-
 
+; disable Meltdown and Inspectre
 ; disable Prefetcher 
 ; disable Superfetch
 ; disable Disk Checkup
 ; disable Paging Drivers to SSD
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"FeatureSettingsOverride"=dword:00000003
+"FeatureSettingsOverrideMask"=dword:00000003
 "EnablePrefetcher"=dword:00000000
 "EnableSuperfetch"=dword:00000000
 "EnableBootTrace"=dword:00000000
@@ -1428,10 +1568,10 @@ Windows Registry Editor Version 5.00
 "BootExecute"=-
 "DisablePagingExecutive"=dword:00000001
 
-; Hide frequent folders in quick access
-; Hide recent folders in quick access
-; Show all tray icons in the taskbar
-; Clear history of recently opened documents on exit
+; hide frequent folders in quick access
+; hide recent folders in quick access
+; show all tray icons in the taskbar
+; clear history of recently opened documents on exit
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
 "ShowFrequent"=dword:00000000
@@ -1449,11 +1589,9 @@ Windows Registry Editor Version 5.00
 "AutoSetup"=dword:00000000
 
 ; apply the default account picture to all users
-; remove the security and maintenance icon
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "UseDefaultTile"=dword:00000001
-"HideSCAHealth"=dword:00000001
 
 ; disable fault tolerant heap
 
@@ -1483,7 +1621,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
 "UserPreference"=dword:00000001
 
-; disable device search history
+; disable suggestions in the search box and in search home
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SearchSettings]
 "IsDeviceSearchHistoryEnabled"=dword:00000000
@@ -2005,7 +2143,7 @@ Windows Registry Editor Version 5.00
 "SubscribedContent-338389Enabled"=dword:00000000
 "SubscribedContent-353698Enabled"=dword:00000000
 
-; Fixing timing precision in Windows after "The Great Rule Change"
+; fixing timing precision in Windows after "The Great Rule Change"
 ; https://github.com/amitxv/TimerResolution
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
