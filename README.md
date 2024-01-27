@@ -34,7 +34,7 @@
 
 ### Download
 
-https://drive.google.com/file/d/1ac2jGGw9ERdQhvLLn-q4kxzYfYENkyY2/view?usp=sharing
+
 
 <details>
 <br>
