@@ -19,36 +19,48 @@
 ## Stripped / Not Working Features:
 - Windows installation from setup.exe
 - BitLocker Drive Encryption
-- Windows Defender
+- Windows Defender & SmartScreen & Security Center & System Guard
+- Microsoft To Do
 - Cortana
-- SmartScreen
 - OneDrive
 - Windows Help Content
 - Easy Transfer
-- CEIP
 - Windows To Go
+- Cloud Desktop
+- System Reset & Recovery
 
 ## Stripped Devices & Drivers:
 - Smart Cards
-- Biometric Devices (finger print etc)
+- Biometric Devices (finger print, face recognition)
 
 ### Download
 
-https://drive.google.com/file/d/1ac2jGGw9ERdQhvLLn-q4kxzYfYENkyY2/view?usp=sharing
+https://drive.google.com/file/d/1RpNfStpxdMGA3eBP1m-XmItAaQXGPe1V/view
 
 <details>
 <br>
-<summary>Changelog 23H2 V003</summary>
+<summary>Changelog 23H2 V004</summary>
 
+- Updated Build to 22631.3085
 - Compatibility improvements
-- Fixed Openshell
-- Removed REAL.exe from starting
-- Added back FirstLogonAnimation
-- Brought back paint ( very much needed )
+- Renamed microcode updates instead of removing
+- Disabled Search in script instead of doing it manually 
+- Set Timer Res to startup in script instead of doing it manually 
+- Removed "Reset Firewall Rules" line
+- Disabled ceip instead of removing
+- Disabled reserved storage
+- Added a fix CS2, The Finals in Support folder
+- Added NIP to enable ReBAR
+  - Minor Changes to NIP
+- Fixed VIsual Effects
+- Fixed Calendar on taskbar
+- Backed up "RaxOS-Default-Services" and "Windows-Default-Services" in script instead of doing it manually
+- Changed bcdedit boot name from "RaxOS W11" to "RaxOS w11 V004"
+- Enabled Power Throttling for Laptop Users and set Balanced Powerplan for Laptop Users and Disabled Power Throttling for Desktop Users
 </details>
 
 ### Always have a backup USB with default Windows 10 Or 11 if something goes wrong and your network driver in the USB
 
-SHA-256: eeabc722fe3ae5df7ba2bddae3976285dcad2b1b83746c11b728f2caa3d651ca
+SHA-256: DF7CD68C66CD69B1F7E6E0C4BB95B71C1D14C6A473ED595CB7244FD2DCC45CB5
 
-SHA-1: 5837e5f6f8c1146c5354399b0a2158a21bdb1e65
+SHA-1: 1D5D8ABFC770A5DC476463E9789CDBD513D2F334

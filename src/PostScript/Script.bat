@@ -78,7 +78,7 @@ cls
 Echo "Editing Bcdedit"
 bcdedit /set {current} nx optin
 label C: RaxOS
-bcdedit /set {current} description "RaxOS W11"
+bcdedit /set {current} description "RaxOS w11 V004"
 bcdedit /set disabledynamictick yes
 bcdedit /set useplatformtick yes
 bcdedit /deletevalue useplatformclock
@@ -122,7 +122,6 @@ powercfg -import "C:\Modules\RaxOS.pow" 00000000-0000-0000-0000-000000000000
 powercfg /setactive 00000000-0000-0000-0000-000000000000
 powercfg -h off
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t Reg_DWORD /d "0" /f  >nul 2>&1
-Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t Reg_DWORD /d "0" /f  >nul 2>&1
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t Reg_DWORD /d "0" /f  >nul 2>&1
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /v "ShowHibernateOption" /t Reg_DWORD /d "0" /f  >nul 2>&1
@@ -151,6 +150,7 @@ devmanview /disable "Fax" > NUL 2>&1
 devmanview /disable "Microsoft Print to PDF" > NUL 2>&1
 devmanview /disable "Microsoft XPS Document Writer" > NUL 2>&1
 devmanview /disable "Root Print Queue" > NUL 2>&1
+devmanview /disable "Remote Desktop Device Redirector Bus" > NUL 2>&1
 cls
 
 Echo "Optimizing Scheduled Tasks"
@@ -307,6 +307,13 @@ for %%z in (
         webthreatdefsvc
         webthreatdefusersvc
         WpnService
+        dispbrokerdesktopsvc
+	ehstorclass
+	ehstortcgdrv
+        lltdio
+        mslldp
+        rspndr
+        WEPHOSTSVC
 	tzautoupdate
         Ndu
 	OneSyncSvc
@@ -462,20 +469,34 @@ icacls "C:\Windows\System32\mcupdate_GenuineIntel.dll" /grant Administrators:F
 ren mcupdate_GenuineIntel.dll mcupdate_GenuineIntel.old
 cls
 
-Echo "Disabling Search/StartMenu"
+Echo "Disabling variable services"
+for /f "delims=:{}" %%a in ('wmic path Win32_SystemEnclosure get ChassisTypes ^| findstr [0-9]') do set "CHASSIS=%%a"
+set "DEVICE_TYPE=PC"
+for %%a in (8 9 10 11 12 13 14 18 21 30 31 32) do if "%CHASSIS%" == "%%a" (set "DEVICE_TYPE=LAPTOP")
+
+if "%DEVICE_TYPE%" == "LAPTOP" (
+    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\serenum" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
+    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sermouse" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
+    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\serial" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
+    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "0" /f
+    powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e
+    cls
+)
+) else (
+    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DisplayEnhancementService" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f  >nul 2>&1
+    cls
+)
+
+Echo "Disabling Search"
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\wsearch" /v "Start" /t REG_DWORD /d "4" /f
 Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "SearchboxTaskbarMode" /t REG_DWORD /d "0" /f
 taskkill /f /im explorer.exe
 taskkill /f /im SearchHost.exe
-taskkill /f /im StartMenuExperienceHost.exe
 cd C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy
 takeown /f "SearchHost.exe"
 icacls "C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe" /grant Administrators:F
 ren SearchHost.exe SearchHost.old
-cd C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
-takeown /f "StartMenuExperienceHost.exe"
-icacls "C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe" /grant Administrators :F
-ren StartMenuExperienceHost.exe StartMenuExperienceHost.old
 cls
 
 echo "Creating Default Services Backup"
