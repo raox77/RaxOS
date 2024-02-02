@@ -5,11 +5,10 @@ echo ---------- Configuring Services ----------
 echo 1. Wi-Fi
 echo 2. Bluetooth
 echo 3. Hyper-V, Remote Desktop
-echo 4. Xbox
-echo 5. Microsoft Store
-echo 6. Clipboard
-echo 7. VPN
-echo 8. Printing
+echo 4. Microsoft Store
+echo 5. Clipboard
+echo 6. VPN
+echo 7. Printing
 echo 0. Exit
 echo -----------------------------------------
 echo.
@@ -23,14 +22,12 @@ if %option%==1 (
 ) else if %option%==3 (
     call :hyperv_menu
 ) else if %option%==4 (
-    call :xbox_menu
-) else if %option%==5 (
     call :store_menu
-) else if %option%==6 (
+) else if %option%==5 (
     call :clipboard_menu
-) else if %option%==7 (
+) else if %option%==6 (
     call :vpn_menu
-) else if %option%==8 (
+) else if %option%==7 (
     call :printing_menu
 ) else if %option%==0 (
     exit
@@ -229,46 +226,6 @@ if %hyperv_option%==1 (
     echo Invalid option!
     timeout 2 > nul
     goto :hyperv_menu
-)
-
-:xbox_menu
-cls
-echo ---------- Xbox Services ----------
-echo 1. Enable
-echo 2. Disable
-echo 3. Back to main menu
-echo ------------------------------------
-
-set /p xbox_option=Choose an option: 
-
-if %xbox_option%==1 (
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxGipSvc" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblAuthManager" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblGameSave" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxNetApiSvc" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xboxgip" /v "Start" /t REG_DWORD /d "3" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xboxgrip" /v "Start" /t REG_DWORD /d "3" /f
-    cls
-    echo Xbox has been Enabled
-    timeout 2 > nul
-    goto :menu
-) else if %xbox_option%==2 (
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxGipSvc" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblAuthManager" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblGameSave" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxNetApiSvc" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xboxgip" /v "Start" /t REG_DWORD /d "4" /f
-    PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xboxgrip" /v "Start" /t REG_DWORD /d "4" /f
-    cls
-    echo Xbox has been Disabled
-    timeout 2 > nul
-    goto :menu
-) else if %xbox_option%==3 (
-    goto :menu
-) else (
-    echo Invalid option!
-    timeout 2 > nul
-    goto :xbox_menu
 )
 
 :store_menu

@@ -49,12 +49,18 @@ Echo "Disabling Write Cache Buffer"
 )
 cls
 
+Echo "Enabling legacy photo viewer"
+for %%a in (tif tiff bmp dib gif jfif jpe jpeg jpg jxr png) do (
+    reg add "HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations" /v ".%%~a" /t REG_SZ /d "PhotoViewer.FileAssoc.Tiff" /f
+)
+cls
+
 Echo "Visual Effects"
 Reg.exe add "HKCU\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d "9012038010000000" /f > NUL 2>&1
 Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewShadow" /t REG_DWORD /d "0" /f >nul 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewAlphaSelect" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v "VisualFXSetting" /t REG_DWORD /d "3" /f > NUL 2>&1
-Reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarAnimations" /t REG_DWORD /d "0" /f > NUL 2>&1
+Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarAnimations" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "Blur" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "Animations" /t REG_DWORD /d "0" /f > NUL 2>&1
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DWM" /v "DWMA_TRANSITTIONS_FORCEDISABLED" /t REG_DWORD /d "1" /f > NUL 2>&1
@@ -78,7 +84,7 @@ cls
 Echo "Editing Bcdedit"
 bcdedit /set {current} nx optin
 label C: RaxOS
-bcdedit /set {current} description "RaxOS w11 V004"
+bcdedit /set {current} description "RaxOS w11 V005"
 bcdedit /set disabledynamictick yes
 bcdedit /set useplatformtick yes
 bcdedit /deletevalue useplatformclock
@@ -104,6 +110,10 @@ Echo "Disabling NetBIOS over TCP/IP"
 for /f "delims=" %%u in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters\Interfaces" /s /f "NetbiosOptions" ^| findstr "HKEY"') do (
     reg add "%%u" /v "NetbiosOptions" /t REG_DWORD /d "2" /f
 )
+cls
+
+Echo "Disabling AutoLoggers and Firewall Rules"
+C:\Windows\PowerRun.exe "powershell.exe" Remove-AutologgerConfig -Name "autologger-diagtrack-listener", "cellcore", "cloudexperiencehostoobe", "lwtnetlog", "mellanox-Kernel", "microsoft-windows-assignedaccess-trace", "microsoft-windows-rdp-graphics-rdpidd-trace"
 cls
 
 Echo "Disabling DMA Remapping"
@@ -307,6 +317,11 @@ for %%z in (
         webthreatdefsvc
         webthreatdefusersvc
         WpnService
+        SCardSvr
+        ScDeviceEnum
+        SCPolicySvc
+        WbioSrvc
+        scfilter
         dispbrokerdesktopsvc
 	ehstorclass
 	ehstortcgdrv
@@ -489,14 +504,15 @@ if "%DEVICE_TYPE%" == "LAPTOP" (
 )
 
 Echo "Disabling Search"
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\wsearch" /v "Start" /t REG_DWORD /d "4" /f
 Reg.exe add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "SearchboxTaskbarMode" /t REG_DWORD /d "0" /f
 taskkill /f /im explorer.exe
 taskkill /f /im SearchHost.exe
-cd C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy
-takeown /f "SearchHost.exe"
-icacls "C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe" /grant Administrators:F
-ren SearchHost.exe SearchHost.old
+C:\Modules\NSudo.exe -U:S -P:E cmd.exe /c ren C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe StartMenuExperienceHost.old
+C:\Modules\NSudo.exe -U:S -P:E cmd.exe /c ren C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe SearchHost.old
+cls
+
+Echo "Enabling FSE & Disabling Gamebar"
+call "C:\!PostInstall\Support\Xbox and Fse\enable-fse-and-disable-gamebar.bat" >NUL 2>&1
 cls
 
 echo "Creating Default Services Backup"

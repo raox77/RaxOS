@@ -4,9 +4,8 @@ setlocal enabledelayedexpansion
 echo === Browser Installer ===
 echo 1. Google Chrome
 echo 2. Brave
-echo 3. Firefox
-echo 4. Waterfox
-echo 5. Librewolf
+echo 3. Firefox (Recommended)
+echo 4. Librewolf (Recommended)
 echo 0. Exit
 
 set /p choice=Enter your choice: 
@@ -20,9 +19,6 @@ if "%choice%"=="1" (
 ) else if "%choice%"=="3" (
     set "browser=Firefox"
     set "downloadUrl=https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US"
-) else if "%choice%"=="4" (
-    set "browser=Waterfox"
-    set "downloadUrl=https://cdn1.waterfox.net/waterfox/releases/G6.0.6/WINNT_x86_64/Waterfox%20Setup%20G6.0.6.exe"
 ) else if "%choice%"=="5" (
     set "browser=Librewolf"
     set "downloadUrl=https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/120.0.1-1/librewolf-120.0.1-1-windows-x86_64-setup.exe"
@@ -108,16 +104,8 @@ if "%choice%"=="3" (
     del "C:\Program Files\Mozilla Firefox\updater.exe" /f /q >nul 2>&1
     del "C:\Program Files\Mozilla Firefox\updater.ini" /f /q >nul 2>&1
     del "C:\Program Files\Mozilla Firefox\update-settings.ini" /f /q >nul 2>&1
-)
-
-:: Run commands after installing Waterfox
-if "%choice%"=="4" (
-    del "C:\Program Files\Waterfox\defaultagent.ini" /f /q >nul 2>&1
-    del "C:\Program Files\Waterfox\defaultagent_localized.ini" /f /q >nul 2>&1
-    del "C:\Program Files\Waterfox\default-browser-agent.exe" /f /q >nul 2>&1
-    del "C:\Program Files\Waterfox\updater.exe" /f /q >nul 2>&1
-    del "C:\Program Files\Waterfox\updater.ini" /f /q >nul 2>&1
-    del "C:\Program Files\Waterfox\update-settings.ini" /f /q >nul 2>&1
+    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Firefox" /v "DisableTelemetry" /t REG_DWORD /d "1" /f > NUL 2>&1
+    Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Firefox" /v "DisableDefaultBrowserAgent" /t REG_DWORD /d "1" /f > NUL 2>&1
 )
 
 :: Run commands after installing Librewolf

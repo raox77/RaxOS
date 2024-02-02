@@ -1,0 +1,7 @@
+This behavior is controlled by the kernel variable KiSerializeTimerExpiration, which is
+initialized based on a registry setting whose value is different between a server and client
+installation. By modifying or creating the value SerializeTimerExpiration
+other than 0 or 1, serialization can be disabled, enabling timers to be distributed among
+processors. Deleting the value, or keeping it as 0, allows the kernel to make the decision
+based on Modern Standby availability, and setting it to 1 permanently enables serialization
+even on non-Modern Standby systems.
