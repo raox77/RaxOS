@@ -19,7 +19,7 @@ if "%choice%"=="1" (
 ) else if "%choice%"=="3" (
     set "browser=Firefox"
     set "downloadUrl=https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US"
-) else if "%choice%"=="5" (
+) else if "%choice%"=="4" (
     set "browser=Librewolf"
     set "downloadUrl=https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/120.0.1-1/librewolf-120.0.1-1-windows-x86_64-setup.exe"
 ) else if "%choice%"=="0" (
