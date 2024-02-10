@@ -17,46 +17,91 @@ Windows Registry Editor Version 5.00
 "EnableSecureUIAPaths"=dword:00000000
 "EnableVirtualization"=dword:00000000
 
-; disable windows update
+; defer updates
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-"WUServer"=" "
-"WUStatusServer"=" "
-"UpdateServiceUrlAlternate"=" "
-"DisableWindowsUpdateAccess"=dword:00000001
-"DisableOSUpgrade"=dword:00000001
-"ExcludeWUDriversInQualityUpdate"=dword:00000001
-"SetDisableUXWUAccess"=dword:00000001
+"DeferQualityUpdates"=dword:00000001
+"DeferQualityUpdatesPeriodInDays"=dword:00000006
+
+; disable windows update auto reboot
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"AUPowerManagement"=dword:00000000
+"NoAutoRebootWithLoggedOnUsers"=dword:00000001
+
+; disable delivery optimization
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
+"DODownloadMode"=dword:00000000
+
+; disable feature updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DeferFeatureUpdates"=dword:00000001
+"DeferFeatureUpdatesPeriodInDays"=dword:00000365
+"TargetReleaseVersion"=dword:00000001
+"BranchReadinessLevel"=dword:00000020
+"TargetReleaseVersion"=dword:00000000
+
+; disable MSRT installtion
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+"DontOfferThroughWUAU"=dword:00000001
+
+; disable windows update nagging
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
-"NoAutoUpdate"=dword:00000001
-"UseWUServer"=dword:00000001
-"AUOptions"=dword:00000002
+"NoAUAsDefaultShutdownOption"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
-"PreventDeviceMetadataFromNetwork"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
+"HideMCTLink"=dword:00000001
+"RestartNotificationsAllowed2"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DriverSearching]
-"SearchOrderConfig"=dword:00000000
-"DontSearchWindowsUpdate"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"SetAutoRestartNotificationDisable"=dword:00000000
+"SetUpdateNotificationLevel"=dword:00000002
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update]
-"IncludeRecommendedUpdates"=dword:00000000
-"SetupWizardLaunchTime"=-
-"AcceleratedInstallRequired"=-
+; disable automatic driver updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Update]
+"ExcludeWUDriversInQualityUpdate"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Update]
+"ExcludeWUDriversInQualityUpdate"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
 "ExcludeWUDriversInQualityUpdate"=dword:00000001
 
-; prevent Edge to install again
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"ExcludeWUDriversInQualityUpdate"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate]
-"DoNotUpdateToEdgeWithChromium"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Update\ExcludeWUDriversInQualityUpdate]
+"value"=dword:00000001
 
-; prevent windows to install drivers automatic
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
+"PreventDeviceMetadataFromNetwork"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching]
 "SearchOrderConfig"=dword:00000000
+"DontSearchWindowsUpdate"=dword:00000001
+
+; disable store auto updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsStore\WindowsUpdate]
+"AutoDownload"=dword:00000002
+
+; turn off automatic download and install of updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+"AutoDownload"=dword:00000004
+
+; turn off the offer to update to the latest version of windows
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\WindowsStore]
+"DisableOSUpgrade"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+"DisableOSUpgrade"=dword:00000001
 
 ; prevent software like razer synapse etc from installing
 
@@ -65,62 +110,8 @@ Windows Registry Editor Version 5.00
 
 ; disable transparency
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000000
-
-; enable the legacy photo viewer
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]
-".tif"="PhotoViewer.FileAssoc.Tiff"
-".tiff"="PhotoViewer.FileAssoc.Tiff"
-".bmp"="PhotoViewer.FileAssoc.Tiff"
-".dib"="PhotoViewer.FileAssoc.Tiff"
-".gif"="PhotoViewer.FileAssoc.Tiff"
-".jfif"="PhotoViewer.FileAssoc.Tiff"
-".jpe"="PhotoViewer.FileAssoc.Tiff"
-".jpeg"="PhotoViewer.FileAssoc.Tiff"
-".jpg"="PhotoViewer.FileAssoc.Tiff"
-".jxr"="PhotoViewer.FileAssoc.Tiff"
-".png"="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.jpg]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.jpeg]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.gif]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.png]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.bmp]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.tiff]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.ico]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.tif]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.wdp]
-@="PhotoViewer.FileAssoc.Wdp"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.jfif]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.dib]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.jpe]
-@="PhotoViewer.FileAssoc.Tiff"
-
-[HKEY_CURRENT_USER\SOFTWARE\Classes.jxr]
-@="PhotoViewer.FileAssoc.Tiff"
 
 ; disable windows default printer management
 
@@ -139,6 +130,11 @@ Windows Registry Editor Version 5.00
 "Label"=dword:00000000
 "ExtraIconsOnMinimized"=dword:00000000
 "ShowStatus"=dword:00000003
+
+; disable perf track
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-88dd50a6299d}]
+"ScenarioExecutionEnabled"=dword:00000000
 
 ; disable telemetry
 
@@ -183,8 +179,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\TabletPC]
 "PreventHandwritingDataSharing"=dword:00000001
-
-Windows Registry Editor Version 5.00
 
 ; disallow use of biometrics
 
@@ -239,9 +233,9 @@ Windows Registry Editor Version 5.00
 ; disable LMHOSTS
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
-"EnableLMHOSTS"=dword:0000000
+"EnableLMHOSTS"=dword:00000000
 
-; add `Windows Batch File`, `Hash`, `Registry Entries` in context menu
+; add `Windows Batch File`, `Hash`, `Registry Entries` in context menu, `Windows Powershell Script`
 
 [HKEY_CLASSES_ROOT\.bat\ShellNew]
 "NullFile"=""
@@ -306,17 +300,20 @@ Windows Registry Editor Version 5.00
   2d,00,34,00,37,00,30,00,00,00
 "NullFile"=""
 
+[HKEY_CLASSES_ROOT\.ps1]
+@="ps1legacy"
+
+[HKEY_CLASSES_ROOT\.ps1\ShellNew]
+"NullFile"=""
+
+[HKEY_CLASSES_ROOT\ps1legacy]
+@="Windows PowerShell Script"
+"FriendlyTypeName"="Windows PowerShell Script"
+
 ; reserve 10% of CPU resources for low-priority tasks instead of the default 20%
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
 "SystemResponsiveness"=dword:0000000a
-
-; remove pin to start from context menu
-
-[-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\PintoStartScreen]
-[-HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\PintoStartScreen]
-[-HKEY_CLASSES_ROOT\Microsoft.Website\ShellEx\ContextMenuHandlers\PintoStartScreen]
-[-HKEY_CLASSES_ROOT\mscfile\shellex\ContextMenuHandlers\PintoStartScreen]
 
 ; remove restore previous versions from context menu
 
@@ -370,27 +367,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter]
 "ActivationType"=dword:00000000
 
-; disable delivery optimization
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
-"DODownloadMode"=dword:00000000
-
 ; allocate processor resources primarily to programs
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:0000002a
+"Win32PrioritySeparation"=dword:00000026
 
-; disable-scheduled-maintenance
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\ScheduledDiagnostics]
-"EnabledExecution"=dword:00000000
-"EnabledExecutionLevel"=-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics]
-"EnabledExecution"=dword:00000000
-"EnabledExecutionLevel"=
-
-; disable-text-prediction
+; disable text prediction
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\TabletTip\1.7]
 "DisablePrediction"=dword:00000001
@@ -436,7 +418,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\AdvertisingInfo]
 "DisabledByGroupPolicy"=dword:00000001
 
-; disable license telemetry
+; disable activation telemetry
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
 "NoGenTicket"=dword:00000001
@@ -455,10 +437,10 @@ Windows Registry Editor Version 5.00
 "AllowSearchToUseLocation"=dword:00000000
 "ConnectedSearchUseWeb"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
 "DisableSearchBoxSuggestions"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]
 "WholeFileSystem"=dword:00000001
 "SystemFolders"=dword:00000000
 
@@ -474,38 +456,76 @@ Windows Registry Editor Version 5.00
 
 ; disable suggested content in the immersive control panel
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SubscribedContent-353694Enabled"=dword:00000000
 "SubscribedContent-353696Enabled"=dword:00000000
 "SubscribedContent-338393Enabled"=dword:00000000
 
-; clear image file execution options
+; configure ifeo
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DeviceCensus.exe]
+"debugger"="%windir%\System32\taskkill.exe"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ctfmon.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SearchIndexer.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\fontdrvhost.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+"IoPriority'"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\lsass.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sihost.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+"IoPriority'"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sppsvc.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+"IoPriority'"=dword:00000000
+
+; fix for VS not being allowed to install WebView2
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate]
+"InstallDefault"=dword:00000000
+"Install{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000000
+"Install{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000001
+"DoNotUpdateToEdgeWithChromium"=dword:00000001
+
+; disable WPBT
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
+"DisableWpbtExecution"=dword:00000001
 
 ; prevent windows marking file attachments with information about their zone of origin
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 
 ; disable shake to minimize
 ; disable sync provider notifications
 ; show file extensions
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "DisallowShaking"=dword:00000001
 "ShowSyncProviderNotifications"=dword:00000000
 "HideFileExt"=dword:00000000
 
-; disable Mouse menu delay and Autoend Tasks
+; disable Mouse menu delay
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "MenuShowDelay"="0"
 "AutoEndTasks"="1"
 
-; disable acessibility keys
+; disable AutoEnd Tasks
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"AutoEndTasks"="1"
+
+; disable accessibility keys
 
 [HKEY_CURRENT_USER\Control Panel\Accessibility\MouseKeys]
 "Flags"="0"
@@ -538,18 +558,20 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance]
 "fAllowToGetHelp"=dword:00000000
 
-; speed up sd time.
+; decrease Shutdown Time
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"HungAppTimeout"="2000"
+"WaitToKillAppTimeOut"="2000"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
-"WaitToKillServiceTimeout"="1500"
+"WaitToKillServiceTimeout"="2000"
 
 ; classic alt-tab
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "AltTabSettings"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Explorer]
-"AltTabSettings"=dword:00000001
+"HoverSelectDesktops"=dword:00000001
 
 ; Command Prompt in directory shit + right-click context menu
 ; Tutorial: https://www.tenforums.com/tutorials/72024-open-command-window-here-add-windows-10-a.html
@@ -590,13 +612,23 @@ Windows Registry Editor Version 5.00
 
 ; do nothing communications
 
-[HKEY_CURRENT_USER\Software\Microsoft\Multimedia\Audio]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Multimedia\Audio]
 "UserDuckingPreference"=dword:00000003
 
 ; disable auto maintenance
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
 "MaintenanceDisabled"=dword:00000001
+
+; configure scheduled maintenance behavior
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics]
+"EnabledExecution"=dword:00000000
+
+; disable RSoP Logging
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"RSoPLogging"=dword:00000000
 
 ; disable touch feedback
 
@@ -628,6 +660,21 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
 "DontSendAdditionalData"=dword:00000001
 
+; disable windows error reporting
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]
+"DoReport"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Settings]
+"DisableSendGenericDriverNotFoundToWER"=dword:00000001
+"DisableSendRequestAdditionalSoftwareToWER"=dword:00000001
+
 ; prevent media sharing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\WindowsMediaPlayer]
@@ -635,788 +682,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsMediaPlayer]
 "PreventLibrarySharing"=dword:00000001
-
-; configure Environment preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{0E28E245-9368-4853-AD84-6DA3BA35BB75}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{0E28E245-9368-4853-AD84-6DA3BA35BB75}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Files preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{7150F9BF-48AD-4da4-A49C-29EF4A8369BA}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{7150F9BF-48AD-4da4-A49C-29EF4A8369BA}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Folder Options preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{A3F3E39B-5D83-4940-B954-28315B82F0A8}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{A3F3E39B-5D83-4940-B954-28315B82F0A8}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Folders preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{6232C319-91AC-4931-9385-E70C2B099F0E}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{6232C319-91AC-4931-9385-E70C2B099F0E}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Ini Files preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{74EE6C03-5363-4554-B161-627540339CAB}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{74EE6C03-5363-4554-B161-627540339CAB}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Internet Settings preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{E47248BA-94CC-49c4-BBB5-9EB7F05183D0}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{E47248BA-94CC-49c4-BBB5-9EB7F05183D0}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Local Users and Groups preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{17D89FEC-5C44-4972-B12D-241CAEF74509}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{17D89FEC-5C44-4972-B12D-241CAEF74509}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Network Options preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{3A0DBA37-F8B2-4356-83DE-3E90BD5C261F}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{3A0DBA37-F8B2-4356-83DE-3E90BD5C261F}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Network Shares preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{6A4C88C6-C502-4f74-8F60-2CB23EDC24E2}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{6A4C88C6-C502-4f74-8F60-2CB23EDC24E2}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Power Options preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{E62688F0-25FD-4c90-BFF5-F508B9D2E31F}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{E62688F0-25FD-4c90-BFF5-F508B9D2E31F}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Printers preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{BC75B1ED-5833-4858-9BB8-CBF0B166DF9D}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{BC75B1ED-5833-4858-9BB8-CBF0B166DF9D}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Regional Options preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{E5094040-C46C-4115-B030-04FB2E545B00}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{E5094040-C46C-4115-B030-04FB2E545B00}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Registry preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{B087BE9D-ED37-454f-AF9C-04291E351182}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{B087BE9D-ED37-454f-AF9C-04291E351182}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Scheduled Tasks preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{AADCED64-746C-4633-A97C-D61349046527}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{AADCED64-746C-4633-A97C-D61349046527}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Services preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{91FBB303-0CD5-4055-BF42-E512A681B325}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{91FBB303-0CD5-4055-BF42-E512A681B325}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Shortcuts preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{C418DD9D-0D14-4efb-8FBF-CFE535C8FAC7}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{C418DD9D-0D14-4efb-8FBF-CFE535C8FAC7}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-; configure Start Menu preference logging and tracing
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{E4F48E54-F38D-4884-BFB9-D4D2E5729C18}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Group Policy\{E4F48E54-F38D-4884-BFB9-D4D2E5729C18}]
-"LogLevel"=dword:00000000
-"TraceLevel"=dword:00000000
-"TraceFilePathUser"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,00,\
-50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,70,\
-00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,00,\
-72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,55,\
-00,73,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,00
-"TraceFilePathMachine"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-43,00,6F,00,6D,00,70,00,75,00,74,00,65,00,72,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFilePathPlanning"=hex(2):25,00,43,00,4F,00,4D,00,4D,00,4F,00,4E,00,41,\
-00,50,00,50,00,44,00,41,00,54,00,41,00,25,00,5C,00,47,00,72,00,6F,00,75,00,\
-70,00,50,00,6F,00,6C,00,69,00,63,00,79,00,5C,00,50,00,72,00,65,00,66,00,65,\
-00,72,00,65,00,6E,00,63,00,65,00,5C,00,54,00,72,00,61,00,63,00,65,00,5C,00,\
-50,00,6C,00,61,00,6E,00,6E,00,69,00,6E,00,67,00,2E,00,6C,00,6F,00,67,00,00,\
-00
-"TraceFileMaxSize"=dword:00000000
 
 ; disable enumeration policy for external devices incompatible with Kernel DMA Protection
 
@@ -1466,9 +731,6 @@ Windows Registry Editor Version 5.00
 
 ; disable automatic update speech data
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Speech]
-"AllowSpeechModelUpdate"=dword:00000000
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Speech]
 "AllowSpeechModelUpdate"=dword:00000000
 
@@ -1491,34 +753,56 @@ Windows Registry Editor Version 5.00
 "EnableScriptBlockInvocationLogging"=-
 
 ; disable Meltdown and Inspectre
-; disable Prefetcher 
-; disable Superfetch
 ; disable Disk Checkup
-; disable Paging Drivers to SSD
+; disable Paging Settings
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "FeatureSettingsOverride"=dword:00000003
 "FeatureSettingsOverrideMask"=dword:00000003
-"EnablePrefetcher"=dword:00000000
-"EnableSuperfetch"=dword:00000000
-"EnableBootTrace"=dword:00000000
-"SfTracingState"=dword:00000000
 "BootExecute"=-
 "DisablePagingExecutive"=dword:00000001
+"DisablePageCombining"=dword:00000001
+
+; disable prefetcher/superfetch and readyboost
+
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Memory Management\PrefetchParameters]
+"EnablePrefetcher"=dword:00000000
+"EnableSuperfetch"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"EnablePrefetcher"=dword:00000000
+"EnableSuperfetch"=dword:00000000
+
+; disable superfetch`s eventlog connection
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/Main]
+"Enable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/PfApLog]
+"Enable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/StoreLog]
+"Enable"=dword:00000000
+
+; disable readyboost
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\EMDMgmt]
+"GroupPolicyDisallowCaches"=dword:00000001
+"AllowNewCachesByDefault"=dword:00000000
 
 ; hide frequent folders in quick access
 ; hide recent folders in quick access
 ; show all tray icons in the taskbar
 ; clear history of recently opened documents on exit
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "ShowFrequent"=dword:00000000
 "ShowRecent"=dword:00000000
 "EnableAutoTray"=dword:00000000
 "ShellState"=hex(3):24,00,00,00,3E,20,00,00,00,00,00,00,00,00,00,00,00,00,\
 00,00,01,00,00,00,12,00,00,00,00,00,00,00,22,00,00,00
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "ClearRecentDocsOnExit"=dword:00000001
 
 ; disable automatic setup of network devices
@@ -1526,17 +810,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\NcdAutoSetup\Private]
 "AutoSetup"=dword:00000000
 
-; apply the default account picture to all users
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"UseDefaultTile"=dword:00000001
-
 ; disable fault tolerant heap
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FTH]
 "Enabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization]
 "RestrictImplicitInkCollection"=dword:00000001
 "RestrictImplicitTextCollection"=dword:00000001
 
@@ -1545,12 +824,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx]
 "AllowAutomaticAppArchiving"=dword:00000000
 
-; disable windows feedback frequency
-
-[HKEY_CURRENT_USER\Software\Microsoft\Siuf\Rules]
-"NumberOfSIUFInPeriod"=dword:00000000
-"PeriodInNanoSeconds"=-
-
 ; disable recommended troubleshooting
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
@@ -1558,7 +831,7 @@ Windows Registry Editor Version 5.00
 
 ; disable suggestions in the search box and in search home
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SearchSettings]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings]
 "IsDeviceSearchHistoryEnabled"=dword:00000000
 
 ; disable hotspot
@@ -1568,7 +841,7 @@ Windows Registry Editor Version 5.00
 
 ; disable spell checking features
 
-[HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\TabletTip\1.7]
 "EnableSpellchecking"=dword:00000000
 "EnableTextPrediction"=dword:00000000
 "EnablePredictionSpaceInsertion"=dword:00000000
@@ -1587,7 +860,7 @@ Windows Registry Editor Version 5.00
 
 ; disable startup delay for desktop apps
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
 "StartupDelayInMSec"=dword:00000000
 
 ; add takeownership in context menu
@@ -1629,10 +902,10 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Appointments
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
 "Value"="Deny"
       
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
@@ -1640,10 +913,10 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Call History
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
@@ -1651,10 +924,10 @@ Windows Registry Editor Version 5.00
   
 ; disable apps access - Contacts 
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
@@ -1662,10 +935,10 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Diagnostic Information
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics]
@@ -1673,10 +946,10 @@ Windows Registry Editor Version 5.00
     
 ; disable apps access - Documents Library
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
@@ -1684,10 +957,10 @@ Windows Registry Editor Version 5.00
   
 ; disable apps access - Email
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
@@ -1695,10 +968,10 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - File System
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
@@ -1706,10 +979,10 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Messages (Text or MMS)
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
@@ -1717,10 +990,10 @@ Windows Registry Editor Version 5.00
     
 ; disable apps access - Notifications
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
@@ -1728,10 +1001,10 @@ Windows Registry Editor Version 5.00
   
 ; disable apps access - Phone Calls
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
@@ -1739,7 +1012,7 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Pictures Library
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
 "Value"="Deny"
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
@@ -1750,10 +1023,10 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Radios
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios]
@@ -1761,18 +1034,18 @@ Windows Registry Editor Version 5.00
     
 ; disable apps access - Shary and sync info with non-explicity paired wireless devices
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
 "Value"="Deny"
   
 ; disable apps access - Tasks
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
@@ -1780,10 +1053,10 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - User account info
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
@@ -1791,22 +1064,14 @@ Windows Registry Editor Version 5.00
 
 ; disable apps access - Videos Library
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
 "Value"="Deny"
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
 "Value"="Deny"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
 "Value"="Deny"
-    
-; disable experience improvement program (NVIDIA driver)
-
-[HKEY_CURRENT_USER\Software\NVIDIA Corporation\NVControlPanel2\Client]
-"OptInOrOutPreference"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Classes\Software\NVIDIA Corporation\NVControlPanel2\Client]
-"OptInOrOutPreference"=dword:00000000
 
 ; disable Experimentation
 
@@ -1823,12 +1088,12 @@ Windows Registry Editor Version 5.00
 "DisableLocationScripting"=dword:00000001
 "DisableLocation"=dword:00000001
 
-; disable automatic installation of suggested apps (Promotional tiles such as Minecraft, Candy Crush, Flipboard etc.)
+; disable automatic installation of suggested apps
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SilentInstalledAppsEnabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SilentInstalledAppsEnabled"=dword:00000000
 
 ; disable Cloud optimized content (Programmable Taskbar)
@@ -1855,16 +1120,16 @@ Windows Registry Editor Version 5.00
 "RestrictImplicitTextCollection"=dword:00000001
 "RestrictImplicitInkCollection"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization]
 "RestrictImplicitTextCollection"=dword:00000001
 "RestrictImplicitInkCollection"=dword:00000001
 
 ; disable Feedback Frequency
 
-[HKEY_CURRENT_USER\Software\Microsoft\Siuf\Rules]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Siuf\Rules]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
 
 ; disable Let apps on user's other devices use Bluetooth to open apps and continue experiences on this device
@@ -1875,18 +1140,18 @@ Windows Registry Editor Version 5.00
     
 ; disable apps use user advertising ID for experiences across apps
       
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
 
 ; disable Microsoft provide more tailored experiences with relevant tips and recommendations by using your diagnostic data
       
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy]
 "TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Privacy]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\Privacy]
 "TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
@@ -1897,7 +1162,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\International\User Profile]
 "HttpAcceptLanguageOptOut"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Classes\Control Panel\International\User Profile]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Control Panel\International\User Profile]
 "HttpAcceptLanguageOptOut"=dword:00000001
 
 ; disable Windows collect my activities from this PC ("Timeline")
@@ -1909,15 +1174,15 @@ Windows Registry Editor Version 5.00
 
 ; disable Windows track opened documents to populate Jump Lists
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "Start_TrackDocs"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "Start_TrackDocs"=dword:00000000
 
 ; disable Ocassionally show suggestions in StartMenu
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SystemPaneSuggestionsEnabled"=dword:00000000
 "SubscribedContent-338388Enabled"=dword:00000000
 
@@ -1932,7 +1197,7 @@ Windows Registry Editor Version 5.00
 
 ; disable Personalize your speech, typing and inking input by sending your input data to Microsoft
 
-[HKEY_CURRENT_USER\Software\Microsoft\Personalization\Settings]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
 "AcceptedPrivacyPolicy"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Personalization\Settings]
@@ -1944,12 +1209,12 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization\TrainedDataStore]
 "HarvestContacts"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Microsoft\Personalization\Settings]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
 "AcceptedPrivacyPolicy"=dword:00000000
 
 ; disable Pre-Installed apps
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "PreInstalledAppsEnabled"=dword:00000000
 "PreInstalledAppsEverEnabled"=dword:00000000
 "RemediationRequired"=dword:00000000
@@ -1957,7 +1222,7 @@ Windows Registry Editor Version 5.00
 "SubscribedContent-280815Enabled"=dword:00000000
 "SubscribedContent-314563Enabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "PreInstalledAppsEnabled"=dword:00000000
 "PreInstalledAppsEverEnabled"=dword:00000000
 "RemediationRequired"=dword:00000000
@@ -1967,23 +1232,23 @@ Windows Registry Editor Version 5.00
 
 ; disable Pre-Installed OEM apps
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "OemPreInstalledAppsEnabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "OemPreInstalledAppsEnabled"=dword:00000000
 
 ; disable Program Compatibility Assistant
 
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\AppCompat]
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Policies\Microsoft\Windows\AppCompat]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
 
 ; disable suggested content in the settings app
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SubscribedContent-338393Enabled"=dword:00000000
 "SubscribedContent-353694Enabled"=dword:00000000
 "SubscribedContent-353696Enabled"=dword:00000000
@@ -1995,37 +1260,37 @@ Windows Registry Editor Version 5.00
 
 ; disable Windows welcome experience after updates
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SubscribedContent-310093Enabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SubscribedContent-310093Enabled"=dword:00000000
 
 ; disable suggest ways I can finish setting up my device online
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
 "ScoobeSystemSettingEnabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
 "ScoobeSystemSettingEnabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Context\CloudExperienceHostIntent\Wireless]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Context\CloudExperienceHostIntent\Wireless]
 "ScoobeCheckCompleted"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Context\CloudExperienceHostIntent\Wireless]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Context\CloudExperienceHostIntent\Wireless]
 "ScoobeCheckCompleted"=dword:00000001
 
 ; disable Typing insights
 
-[HKEY_CURRENT_USER\Software\Microsoft\Input\Settings]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Input\Settings]
 "InsightsEnabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Input\Settings]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Input\Settings]
 "InsightsEnabled"=dword:00000000
 
 ; disable Windows Spotlight (Tips and suggestions)
 
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsSpotlightFeatures"=dword:00000001
 "ConfigureWindowsSpotlight"=dword:00000002
 "IncludeEnterpriseSpotlight"=dword:00000000
@@ -2033,7 +1298,7 @@ Windows Registry Editor Version 5.00
 "DisableWindowsSpotlightOnActionCenter"=dword:00000001
 "DisableWindowsSpotlightOnSettings"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Policies\Microsoft\Windows\CloudContent]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsSpotlightFeatures"=dword:00000001
 "ConfigureWindowsSpotlight"=dword:00000002
 "IncludeEnterpriseSpotlight"=dword:00000000
@@ -2045,7 +1310,7 @@ Windows Registry Editor Version 5.00
 "DisableThirdPartySuggestions"=dword:00000001
 "DisableSoftLanding"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SoftLandingEnabled"=dword:00000000
 "RotatingLockScreenEnabled"=dword:00000000
 "RotatingLockScreenOverlayEnabled"=dword:00000000
@@ -2054,7 +1319,7 @@ Windows Registry Editor Version 5.00
 "SubscribedContent-338389Enabled"=dword:00000000
 "SubscribedContent-353698Enabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SoftLandingEnabled"=dword:00000000
 "RotatingLockScreenEnabled"=dword:00000000
 "RotatingLockScreenOverlayEnabled"=dword:00000000
