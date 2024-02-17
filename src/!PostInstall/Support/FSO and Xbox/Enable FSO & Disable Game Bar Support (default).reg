@@ -32,11 +32,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar]
 "GamePanelStartupTipIndex"=dword:00000003
 
-; Disable Game Bar Presence Writer
-
-[HKLM\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter]
-"ActivationType"=dword:00000000
-
 ; Disable Windows Game Recording and Broadcasting
 ; It automatically disables Game Bar
 

@@ -29,11 +29,6 @@ Windows Registry Editor Version 5.00
 "ShowStartupPanel"=dword:00000000
 "UseNexusForGameBarEnabled"=dword:00000000
 
-; Disable Game Bar Presence Writer
-
-[HKLM\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter]
-"ActivationType"=dword:00000000
-
 ; Disable Windows Game Recording and Broadcasting
 ; It automatically disables Game Bar
 

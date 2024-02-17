@@ -1,70 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>01/23/2024 22:35:38</Date>
+	<Date>02/16/2024 20:04:33</Date>
 	<AppInfo>
-		<Version>2023.12.9552</Version>
+		<Version>2023.12.9553</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 11 Pro 23H2 x64 - 10.0.22631.2861 (en-US)</Host>
+		<Host>Windows 11 Pro 23H2 x64 - 10.0.22631.3085 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
-		<Version mode="offline">Windows 11 Professional 23H2 x64 - 10.0.22631.3078 (en-US)</Version>
-		<GUID>{E0C46F38-A956-89BC-1233-9DDB17D771D1}</GUID>
+		<Version mode="offline">Windows 11 Professional 23H2 x64 - 10.0.22631.3227 (en-US)</Version>
+		<GUID>{D5422F51-3649-E6AA-7119-7AA13AB63317}</GUID>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="Custom">
-		<c>aarsvc 'Agent Activation Runtime'</c>
-		<c>actioncenter 'Action Center'</c>
-		<c>asimov 'Telemetry Client'</c>
-		<c>assembly.net '.NET assembly cache'</c>
-		<c>assignedaccess 'Assigned Access'</c>
-		<c>biometric 'Biometric - Support'</c>
-		<c>biometricservice 'Biometric - Service'</c>
-		<c>branchcacheclient 'BranchCache Client'</c>
+		<c>bingsearch 'Bing Search (InboxApp)'</c>
 		<c>clipchamp.clipchamp 'Clipchamp'</c>
 		<c>clouddesktop 'Cloud Desktop'</c>
 		<c>clouddownload 'Windows Recovery (WinRE) - Cloud download'</c>
-		<c>cloudnotifications 'Cloud Notifications'</c>
-		<c>dcsvc 'Declared Configuration (DC) service'</c>
 		<c>deviceexperience 'Device Experience'</c>
 		<c>devicesync 'Microsoft Sync Framework'</c>
-		<c>deviceupdatecenter 'Device Update Center'</c>
-		<c>directml 'Direct Machine Learning (DirectML)'</c>
-		<c>driver_c_biometric.inf</c>
-		<c>driver_c_smartcard.inf</c>
-		<c>driver_c_smartcardfilter.inf</c>
-		<c>driver_c_smartcardreader.inf</c>
-		<c>driver_helloface.inf</c>
-		<c>driver_msclmd.inf</c>
-		<c>driver_scrawpdo.inf</c>
-		<c>driver_scunknown.inf</c>
-		<c>driver_tpmvsc.inf</c>
-		<c>driver_usbcciddriver.inf</c>
-		<c>driver_wudfusbcciddriver.inf</c>
 		<c>edgeupdate 'Microsoft Edge Update'</c>
 		<c>edgewebview 'Microsoft Edge WebView'</c>
-		<c>edgewebviewlegacy 'WebView2 Runtime (Legacy)'</c>
-		<c>embeddedmode 'Embedded Mode'</c>
-		<c>encprovider 'Windows Encryption Provider Host Service'</c>
 		<c>enterprisedataprotection 'Enterprise Data Protection (EDP/WIP)'</c>
-		<c>errorreporting 'Windows Error Reporting'</c>
-		<c>facerecognition 'Face Recognition'</c>
+		<c>flipgridpwa 'Flipgrid PWA (InboxApp)'</c>
 		<c>guardedhost 'Guarded Host'</c>
 		<c>help 'Windows Help content'</c>
 		<c>helpsupport 'Help file support (CHM)'</c>
-		<c>hwsupport_smartcard 'Smartcard'</c>
 		<c>insiderhub 'Windows Insider Program'</c>
-		<c>ipt 'Identity Protection Technology (Intel IPT)'</c>
-		<c>laps 'Windows Local Administrator Password Solution(LAPS)'</c>
 		<c>mail 'Windows Mail'</c>
 		<c>mailcommdll 'Windows Mail Communications Library'</c>
 		<c>manifestbackup 'Manifest Backup (WinSxS\Backup)'</c>
 		<c>manualsetup 'Manual Setup'</c>
-		<c>mapcontrol 'Map Control'</c>
-		<c>memorydiagnostic 'Memory Diagnostic'</c>
 		<c>microsoft.549981c3f5f10 'Cortana'</c>
 		<c>microsoft.bingnews 'Microsoft News'</c>
 		<c>microsoft.bingweather 'MSN Weather'</c>
-		<c>microsoft.bioenrollment 'Windows Hello Setup'</c>
 		<c>microsoft.gamingapp 'Xbox App'</c>
 		<c>microsoft.gethelp 'Get Help'</c>
 		<c>microsoft.getstarted 'Tips (Get Started)'</c>
@@ -80,18 +48,13 @@
 		<c>microsoft.people 'Microsoft People'</c>
 		<c>microsoft.powerautomatedesktop 'Power Automate'</c>
 		<c>microsoft.rawimageextension 'Raw Image Extension'</c>
-		<c>microsoft.sechealthui 'Windows Defender'</c>
 		<c>microsoft.services.store.engagement 'Microsoft Engagement Framework'</c>
 		<c>microsoft.todos 'Microsoft To Do'</c>
 		<c>microsoft.vp9videoextensions 'VP9 Video Extensions'</c>
 		<c>microsoft.webmediaextensions 'Web Media Extensions'</c>
 		<c>microsoft.webpimageextension 'Webp Image Extensions'</c>
-		<c>microsoft.windows.apprep.chxapp 'SmartScreen'</c>
-		<c>microsoft.windows.assignedaccesslockapp 'Assigned Access Lock app'</c>
 		<c>microsoft.windows.devhome 'Dev Home'</c>
-		<c>microsoft.windows.parentalcontrols 'Microsoft family features'</c>
 		<c>microsoft.windows.photos 'Microsoft Photos'</c>
-		<c>microsoft.windows.secureassessmentbrowser 'Take a Test'</c>
 		<c>microsoft.windowsalarms 'Windows Clock'</c>
 		<c>microsoft.windowsappruntime.1.3 'WindowsAppRuntime.1.3'</c>
 		<c>microsoft.windowscamera 'Windows Camera'</c>
@@ -113,33 +76,19 @@
 		<c>microsoftteams 'Microsoft Teams'</c>
 		<c>microsoftwindows.client.webexperience 'Windows Web Experience Pack'</c>
 		<c>migwiz 'Easy Transfer'</c>
-		<c>mobiledevicemanagement 'Mobile Device Management (MDM)'</c>
-		<c>ncsiuwpapp 'Network Connectivity Status Indicator (NCSI)'</c>
-		<c>offlinefiles 'Offline Files'</c>
 		<c>onedrive</c>
+		<c>outlookpwa 'Outlook PWA (InboxApp)'</c>
 		<c>pdfreader 'Windows Reader (PDF)'</c>
-		<c>pimindexmaintenancesvc 'Contact Data'</c>
-		<c>pinsignin 'PIN sign-in support'</c>
 		<c>reliabilityanalysis 'Reliability Analysis Services'</c>
 		<c>retaildemo 'Retail Demo Content'</c>
-		<c>screensavers</c>
 		<c>securestartup 'BitLocker Drive Encryption'</c>
-		<c>securitycenter 'Security Center'</c>
 		<c>settingsync 'Setting Sync'</c>
 		<c>skypeortc 'Skype ORTC'</c>
 		<c>stepsrecorder 'Steps Recorder'</c>
 		<c>supportdir 'Support directory'</c>
-		<c>sustainabilityservice 'Sustainability Service'</c>
 		<c>synccenter 'Sync Center'</c>
-		<c>systemguard 'System Guard'</c>
 		<c>systemreset 'System Reset for Windows'</c>
-		<c>targetedcontent32 'Targeted Content Service - 32 bit'</c>
 		<c>tempcache 'Cache and temp files'</c>
-		<c>unistoresvc 'User Data Storage'</c>
-		<c>unp 'Universal Notification Platform (UNP)'</c>
-		<c>userdatasvc 'User Data Access'</c>
-		<c>wallpapers 'Wallpapers (Themes)'</c>
-		<c>winai 'Windows AI Machine Learning'</c>
 		<c>windowstogo 'Windows To Go'</c>
 		<c>winre 'Windows Recovery (WinRE)'</c>
 		<c>wordpad</c>
@@ -148,7 +97,7 @@
 	<Compatibility protectHidden="true">
 		<ComponentFeatures>
 			<Feature enabled="no">AppGuard</Feature>
-			<Feature enabled="no">YubiKey</Feature>
+			<Feature enabled="yes">YubiKey</Feature>
 			<Feature enabled="yes">Bluetooth</Feature>
 			<Feature enabled="yes">USBCamera</Feature>
 			<Feature enabled="yes">CapFrameX</Feature>
@@ -176,7 +125,7 @@
 			<Feature enabled="yes">DefaultFonts</Feature>
 			<Feature enabled="no">SafeMode</Feature>
 			<Feature enabled="yes">TeamViewer</Feature>
-			<Feature enabled="no">Recommended-Tablet</Feature>
+			<Feature enabled="yes">Recommended-Tablet</Feature>
 			<Feature enabled="no">USBModem</Feature>
 			<Feature enabled="yes">USB</Feature>
 			<Feature enabled="yes">VideoPlayback</Feature>
@@ -224,7 +173,6 @@
 		<Feature name="WindowsMediaPlayer">false</Feature>
 		<Feature name="MicrosoftWindowsPowerShellV2">false</Feature>
 		<Feature name="MicrosoftWindowsPowerShellV2Root">false</Feature>
-		<Feature name="Microsoft.Windows.PowerShell.ISE~~~~0.0.1.0">false</Feature>
 		<Feature name="SearchEngine-Client-Package">false</Feature>
 		<Feature name="WorkFolders-Client">false</Feature>
 	</Features>
@@ -243,7 +191,6 @@
 		<EditionPrompt>false</EditionPrompt>
 		<settings pass="oobeSystem">
 			<component name="Microsoft-Windows-Shell-Setup">
-				<TimeZone>Coordinated Universal Time</TimeZone>
 				<OOBE>
 					<HideOnlineAccountScreens>true</HideOnlineAccountScreens>
 					<HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
@@ -289,25 +236,6 @@
 	</Unattended>
 	<Tweaks>
 		<Settings>
-			<TweakGroup name="AutoLogger">
-				<Tweak name="Circular Kernel Context Logger\Start">0</Tweak>
-				<Tweak name="DefenderApiLogger\Start">0</Tweak>
-				<Tweak name="DefenderAuditLogger\Start">0</Tweak>
-				<Tweak name="DiagLog\Start">0</Tweak>
-				<Tweak name="Diagtrack-Listener\Start">0</Tweak>
-				<Tweak name="LwtNetLog\Start">0</Tweak>
-				<Tweak name="Microsoft-Windows-Rdp-Graphics-RdpIdd-Trace\Start">0</Tweak>
-				<Tweak name="Microsoft-Windows-Setup\Start">0</Tweak>
-				<Tweak name="NetCore\Start">0</Tweak>
-				<Tweak name="NtfsLog\Start">0</Tweak>
-				<Tweak name="RadioMgr\Start">0</Tweak>
-				<Tweak name="ReadyBoot\Start">0</Tweak>
-				<Tweak name="ReFSLog\Start">0</Tweak>
-				<Tweak name="SpoolerLogger\Start">0</Tweak>
-				<Tweak name="UBPM\Start">0</Tweak>
-				<Tweak name="WdiContextLog\Start">0</Tweak>
-				<Tweak name="WiFiSession\Start">0</Tweak>
-			</TweakGroup>
 			<TweakGroup name="CrashControl">
 				<Tweak name="CrashControl\AutoReboot">0</Tweak>
 				<Tweak name="CrashControl\EnableLogFile">0</Tweak>
@@ -338,9 +266,13 @@
 			<TweakGroup name="Explorer">
 				<Tweak name="AutoplayHandlers\DisableAutoplay">1</Tweak>
 				<Tweak name="Explorer\EnableLegacyBalloonNotifications">0</Tweak>
+				<Tweak name="ControlPanel\AllItemsIconView">0</Tweak>
 				<Tweak name="{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}\System.IsPinnedToNameSpaceTree">0</Tweak>
+				<Tweak name="{031E4825-7B94-4dc3-B131-E946B44C8DD5}\System.IsPinnedToNameSpaceTree">0</Tweak>
 				<Tweak name="{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder\Attributes">-1332477852</Tweak>
+				<Tweak name="Advanced\NavPaneShowAllFolders">0</Tweak>
 				<Tweak name="Advanced\LaunchTo">1</Tweak>
+				<Tweak name="Explorer\NoReadingPane">1</Tweak>
 				<Tweak name=".jpg\PhotoViewer.FileAssoc.Tiff">PhotoViewer.FileAssoc.Tiff</Tweak>
 				<Tweak name="Explorer\ShowCloudFilesInQuickAccess">0</Tweak>
 				<Tweak name="Explorer\NoNetConnectDisconnect">1</Tweak>
@@ -444,10 +376,10 @@
 			<TweakGroup name="System">
 				<Tweak name="Windows\DisableATMFD">1</Tweak>
 				<Tweak name="DiskQuota\Enable">0</Tweak>
+				<Tweak name="System\HideFastUserSwitching">0</Tweak>
 				<Tweak name="kernel\GlobalTimerResolutionRequests">1</Tweak>
 				<Tweak name="GraphicsDrivers\HwSchMode">2</Tweak>
 				<Tweak name="System\NoConnectedUser">3</Tweak>
-				<Tweak name="Memory Management\PagingFiles1">?:\pagefile.sys</Tweak>
 				<Tweak name="3\1806">0</Tweak>
 				<Tweak name="RDP-Tcp\UserAuthentication">0</Tweak>
 				<Tweak name="Device\DevicePasswordLessBuildVersion">0</Tweak>
@@ -457,6 +389,11 @@
 				<Tweak name="UserGpuPreferences\DirectXUserGlobalSettings">VRROptimizeEnable=0</Tweak>
 				<Tweak name="System\VerboseStatus">0</Tweak>
 				<Tweak name="DeviceGuard\EnableVirtualizationBasedSecurity">0</Tweak>
+			</TweakGroup>
+			<TweakGroup name="WindowsUpdateTasks">
+				<Tweak name="DevHomeUpdate\DevHomeUpdate">0</Tweak>
+				<Tweak name="EdgeUpdate\EdgeUpdate">0</Tweak>
+				<Tweak name="OutlookUpdate\OutlookUpdate">0</Tweak>
 			</TweakGroup>
 			<TweakGroup name="UAC">
 				<Tweak name="System\EnableLUA">0</Tweak>
@@ -474,16 +411,11 @@
 				<Tweak name="Device Metadata\PreventDeviceMetadataFromNetwork">1</Tweak>
 				<Tweak name="Settings\AllowAutoWindowsUpdateDownloadOverMeteredNetwork">0</Tweak>
 				<Tweak name="WindowsUpdate\DisableWUfBSafeguards">1</Tweak>
-				<Tweak name="Settings\IsContinuousInnovationOptedIn">0</Tweak>
+				<Tweak name="Settings\IsContinuousInnovationOptedIn">1</Tweak>
 				<Tweak name="7971f918-a847-4430-9279-4a52d1efe18d\RegisterWithAU">0</Tweak>
-				<Tweak name="WindowsUpdate\ExcludeWUDriversInQualityUpdate">1</Tweak>
+				<Tweak name="MRT\DontOfferThroughWUAU">1</Tweak>
 				<Tweak name="Settings\HideMCTLink">1</Tweak>
-				<Tweak name="Settings\IsExpedited">0</Tweak>
 				<Tweak name="Settings\RestartNotificationsAllowed2">0</Tweak>
-				<Tweak name="WindowsUpdate\TargetReleaseVersionInfo">23H2</Tweak>
-				<Tweak name="WindowsStore\AutoDownload">0</Tweak>
-				<Tweak name="AU\NoAutoUpdate">1</Tweak>
-				<Tweak name="AU\AUOptions">2</Tweak>
 			</TweakGroup>
 		</Settings>
 		<Services></Services>
@@ -493,11 +425,11 @@
 	<ApplyOptions>
 		<ImageTasks>
 			<Task>imageSaveTrim</Task>
-			<Task>imageFormatEsd</Task>
+			<Task>imageFormatWim</Task>
 			<Task>imageOptionsCreateIso</Task>
 		</ImageTasks>
-		<AutoIsoFile>C:\Users\rax\Desktop\RaxOS 23H2 V004.iso</AutoIsoFile>
-		<AutoIsoLabel>RaxOS 23H2 V004</AutoIsoLabel>
+		<AutoIsoFile>C:\Users\rax\Desktop\RaxOS 23H2 V005.iso</AutoIsoFile>
+		<AutoIsoLabel>RaxOS 23H2 V005</AutoIsoLabel>
 		<AutoSplitSize>4000</AutoSplitSize>
 		<CleanHotfixedLeftovers>0</CleanHotfixedLeftovers>
 		<OptimizeAppX>false</OptimizeAppX>

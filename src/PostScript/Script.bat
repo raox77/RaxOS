@@ -1,17 +1,9 @@
-@Echo off 
-Title RaxOS 
+@Echo offn
+Title RaxOS
 setlocal EnableDelayedExpansion
 
 Echo "Installing Visual C Runtimes"
 start /b /wait "" "C:\Modules\VisualCAIO\install_all.bat" >nul 2>&1
-cls
-
-Echo "Installing 7zip"
-start /b /wait "" "C:\Modules\7z2301-x64.msi" /passive >nul 2>&1
-cls
-
-Echo "7zip settings"
-Regedit /s "C:\Modules\7-zip_Alternate_Context_Menu.reg" >nul 2>&1
 cls
 
 Echo "Installing OpenShell"
@@ -86,7 +78,6 @@ bcdedit /set {current} nx optin
 label C: RaxOS
 bcdedit /set {current} description "RaxOS w11 V005"
 bcdedit /set disabledynamictick yes
-bcdedit /set useplatformtick yes
 bcdedit /deletevalue useplatformclock
 bcdedit /set bootux disabled
 bcdedit /set bootmenupolicy legacy
@@ -164,36 +155,50 @@ devmanview /disable "Remote Desktop Device Redirector Bus" > NUL 2>&1
 cls
 
 Echo "Optimizing Scheduled Tasks"
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64 Critical" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 Critical" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\CertificateServicesClient\AikCertEnrollTask" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\CertificateServicesClient\KeyPreGenTask" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Clip\License Validation" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Device Setup\Metadata Refresh" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\RecommendedTroubleshootingScanner" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\Scheduled" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskFootprint\Diagnostics" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\InstallService\ScanForUpdates" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\InstallService\ScanForUpdatesAsUser" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\InstallService\SmartRetry" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Registry\RegIdleBackup" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Security\Pwdless\IntelligentPwdlessTask" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\SoftwareProtectionPlatform\SvcRestartTaskNetwork" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\StateRepository\MaintenanceTasks" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Subscription\EnableLicenseAcquisition" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Subscription\LicenseAcquisition" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\ResPriStaticDbSync" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\WsSwapAssessmentTask" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\SystemRestore\SR" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\WDI\ResolutionHost" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Windows Error Reporting\QueueReporting" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Windows Filtering Platform\BfeOnServiceStartTypeChange" >nul 2>&1
-powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Wininet\CacheTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\ApplicationData\appuriverifierdaily" >nul 2>&11
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Application Experience\StartupAppTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Application Experience\MareBackup" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Application Experience\ProgramDataUpdater" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Autochk\Proxy" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Device Information\Device User" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Device Information\Device" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Feedback\Siuf\DmClient" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Flighting\FeatureConfig\ReconcileFeatures" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Flighting\FeatureConfig\UsageDataFlushing" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Flighting\FeatureConfig\UsageDataReporting" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Input\InputSettingsRestoreDataAvailable" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Input\LocalUserSyncDataAvailable" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Input\MouseSyncDataAvailable" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Input\PenSyncDataAvailable" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Input\syncpensettings" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Input\TouchpadSyncDataAvailable" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Location\Notifications" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Location\WindowsActionDialog" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\ApplicationData\DsSvcCleanup" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\CloudExperienceHost\CreateObjectTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maintenance\WinSAT" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\PI\Sqm-Tasks" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Shell\IndexerAutomaticMaintenance" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsToastTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsUpdateTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\TaskScheduler" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WaaSMedic" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WindowsUpdate" >nul 2>&1
@@ -227,10 +232,6 @@ fsutil behavior set disable8dot3 1 > NUL 2>&1
 fsutil behavior set disablelastaccess 1 > NUL 2>&1
 cls
 
-Echo "Disabling DMA Remapping"
-for %%a in (DmaRemappingCompatible) do for /f "delims=" %%b in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f "%%a" ^| findstr "HKEY"') do Reg.exe add "%%b" /v "%%a" /t REG_DWORD /d "0" /f >nul 2>&1
-cls
-
 Echo "Disable Driver PowerSaving"
 %SYSTEMROOT%\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.enable = $false; $_.psbase.put(); }"
 cls
@@ -256,10 +257,6 @@ reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
 cls
 
-Echo "RW Fix for w11"
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\CI\Config" /v "VulnerableDriverBlocklistEnable" /t REG_DWORD /d "0" /f >NUL 2>&1
-cls
-
 Echo "Change NTP server to pool.ntp.org"
 w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org" >nul 2>&1
 cls
@@ -270,7 +267,7 @@ PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Classes\
 PowerRun.exe /SW:0 Reg.exe add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f >nul 2>&1
 cls
 
-Echo "Set Sound Scheme to no sound"
+Echo "Set Sound Scheme to No Sound"
 powershell C:\Modules\sound.ps1 >nul 2>&1
 cls
 
@@ -286,185 +283,159 @@ PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Serv
 Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform" /v "InactivityShutdownDelay" /t REG_DWORD /d "4294967295" /f
 for %%z in (
 	AppVClient
-	AJRouter
 	AppIDSvc
-        DusmSvc
-        DsmSvc
-        autotimesvc
-        SharedAccess
-        W32Time
-        icssvc
-        WaaSMedicSvc
-        MSiSCSI
-        defragsvc
-        AxInstSV
-        DsSvc
-	FontCache
-	FontCache3.0.0.0
-        IKEEXT
-	PcaSvc
-	ShellHWDetection
-        PenService
-        MessagingService
-        WalletService
-        DialogBlockingService
-        wbengine
-        GraphicsPerfSvc
-	SysMain
-	Themes
-	TrkWks
-        lfsvc
-        webthreatdefsvc
-        webthreatdefusersvc
-        WpnService
-        SCardSvr
-        ScDeviceEnum
-        SCPolicySvc
-        WbioSrvc
-        scfilter
-        dispbrokerdesktopsvc
-	ehstorclass
-	ehstortcgdrv
-        lltdio
-        mslldp
-        rspndr
-        WEPHOSTSVC
-	tzautoupdate
-        Ndu
-	OneSyncSvc
-	SensorDataService
-	SensrSvc
-        SensorService
+      autotimesvc
+      AxInstSV
+      AarSvc
+      acpiex
+      acpipagr
+      acpipmi
+      acpitime
+      arcsas
 	Beep
-	cdrom
-        acpiex
-        acpipagr
-        acpipmi
-        acpitime
-	cnghwassist
-	VerifierExt
-	udfs
-        MixedRealityOpenXRSvc
-        SharedRealitySvc
-        VacSvc
-        spectrum
-        perceptionsimulation
-        svsvc
-        ALG
-	NdisVirtualBus
-        TieringEngineService
-        WebClient
-        WSearch
-        luafv
-        UsoSvc
-        WinRM
-        WPDBusEnum
-        cloudidsvc
-        BcastDVRUserService
-	rdyboost
-        rdpbus
-        umbus
-        vdrvroot
-        Vid
-        CompositeBus
-	NetBIOS
-	NetBT
-	spaceport
-        VaultSvc
-        EventSystem
-	storqosflt
-	bam
-        dam
-	wdiservicehost
-	wdisystemhost
-        troubleshootingsvc
-	spooler
-	stisvc
-	printworkflowusersvc
-        SEMgrSvc
-        RasAuto
-        PhoneSvc
-        TapiSrv
-        diagsvc
-        DPS
-        RasAcd
-        terminpt
-        TsUsbGD
-        diagnosticshub.standardcollector.service
-        Wecsvc
-        dmwappushservice
-        WMPNetworkSvc
-        TermService
-        UmRdpService
-        3ware
-        arcsas
-        buttonconverter
-        VSS
-        cdfs
-        circlass
-        Dfsc
-        ErrDev
-        QWAVEdrv
-        tcpipreg
-        SstpSvc
-        SSDPSRV
-        SmsRouter
-	CldFlt
-	iphlpsvc
-        IpxlatCfgSvc
-        P9RdrService
-        PNRPsvc
-        PNRPAutoReg
-        p2psvc
-        p2pimsvc
-        wlpasvc
-        NetTcpPortSharing
-	lmhosts
-        EntAppSvc
-        EapHost
-        QWAVE
-	RmSvc
-	RFCOMM
-	BthEnum
+      BcastDVRUserService
 	bthleenum
 	BTHMODEM
 	BthA2dp
-	microsoft_bluetooth_avrcptransport
+	BthEnum
 	BthHFEnum
 	BTAGService
 	bthserv
 	BluetoothUserService
 	BthAvctpSvc
+      bttflt
+      HidBth
+      BthMini
+      BTHPORT
+      BTHUSB
+      CscService
+	cdrom
+	cnghwassist
+      cloudidsvc
+	CldFlt
+      cdfs
+      circlass
+      CompositeBus
+      DusmSvc
+      defragsvc
+      DsSvc
+      DialogBlockingService
+      dispbrokerdesktopsvc
+      DiagTrack
+      diagsvc
+      DPS
+      diagnosticshub.standardcollector.service
+      dmwappushservice
+      dam
+	ehstorclass
+      ehstortcgdrv
+      embeddedmode
+	FontCache
+	FontCache3.0.0.0
+      GraphicsPerfSvc
+	gencounter
+	hyperkbd
+	hypervideo
+	hvservice
+	hvcrash
+	HvHost
+      IpxlatCfgSvc
+      lfsvc
+      lltdio
+      luafv
+	lmhosts
+      MSiSCSI
+      MessagingService
+      mslldp
+      MixedRealityOpenXRSvc
+	microsoft_bluetooth_avrcptransport
+      MapsBroker
+      Ndu
+	NetBIOS
+	NetBT
+      NetTcpPortSharing
+	OneSyncSvc
+      UsoSvc
+	PcaSvc
+      PimIndexMaintenanceSvc
+	printworkflowusersvc
+      PenService
+      P9RdrService
+      PNRPsvc
+      p2psvc
+      p2pimsvc
+      PhoneSvc
+      perceptionsimulation
+      PeerDistSvc
+      QWAVE
+      QWAVEdrv
+      rspndr
+	rdyboost
+      rdpbus
+      RasAuto
+      RasAcd
+      RDPDR
+      RdpVideominiport
+	RmSvc
+	RFCOMM
+      SharedAccess
+	SysMain
+	ShellHWDetection
+      SCardSvr
+      ScDeviceEnum
+      SCPolicySvc
+      scfilter
+      spectrum
+      SharedRealitySvc
+	spooler
+      SEMgrSvc
+      SSDPSRV
+      storflt
+      SmsRouter
+	spaceport
+	Themes
+	TrkWks
+	tzautoupdate
+      troubleshootingsvc
+      TapiSrv
+      terminpt
+      TsUsbGD
+      TermService
+      tcpipreg
+      TsUsbFlt
+      tsusbhub
+      UserDataSvc
+      UnistoreSvc
+	udfs
+      UmRdpService
+      VacSvc
+      Vid
 	vmickvpexchange
 	vmicguestinterface
 	vmicshutdown
 	vmicheartbeat
 	vmicvmsession
-        vpci
-        TsUsbFlt
-        tsusbhub
-        storflt
-        RDPDR
-        RdpVideominiport
-        bttflt
-        HidBth
-        BthMini
-        BTHPORT
-        BTHUSB
+      vpci
 	vmicrdv
 	vmictimesync
 	vmicvss
-	hyperkbd
-	hypervideo
-	gencounter
 	vmgid
-	hvservice
-	hvcrash
-	HvHost
-        XboxNetApiSvc
-        XblGameSave
-        XblAuthManager
-        XboxGipSvc
+      VSS
+      W32Time
+      WaaSMedicSvc
+      WalletService
+      wbengine
+      WpnService
+      WbioSrvc
+      WEPHOSTSVC
+      WerSvc
+      wercplsupport
+      WSearch
+      WPDBusEnum
+	wdiservicehost
+	wdisystemhost
+      WMPNetworkSvc
+      WpcMonSvc
 ) do (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
 )
@@ -484,7 +455,7 @@ icacls "C:\Windows\System32\mcupdate_GenuineIntel.dll" /grant Administrators:F
 ren mcupdate_GenuineIntel.dll mcupdate_GenuineIntel.old
 cls
 
-Echo "Disabling variable services"
+Echo "Disable powerthorttling on laptop"
 for /f "delims=:{}" %%a in ('wmic path Win32_SystemEnclosure get ChassisTypes ^| findstr [0-9]') do set "CHASSIS=%%a"
 set "DEVICE_TYPE=PC"
 for %%a in (8 9 10 11 12 13 14 18 21 30 31 32) do if "%CHASSIS%" == "%%a" (set "DEVICE_TYPE=LAPTOP")
@@ -499,6 +470,7 @@ if "%DEVICE_TYPE%" == "LAPTOP" (
 )
 ) else (
     Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DisplayEnhancementService" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
     Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f  >nul 2>&1
     cls
 )
@@ -509,10 +481,6 @@ taskkill /f /im explorer.exe
 taskkill /f /im SearchHost.exe
 C:\Modules\NSudo.exe -U:S -P:E cmd.exe /c ren C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe StartMenuExperienceHost.old
 C:\Modules\NSudo.exe -U:S -P:E cmd.exe /c ren C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe SearchHost.old
-cls
-
-Echo "Enabling FSE & Disabling Gamebar"
-call "C:\!PostInstall\Support\Xbox and Fse\enable-fse-and-disable-gamebar.bat" >NUL 2>&1
 cls
 
 echo "Creating Default Services Backup"

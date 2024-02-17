@@ -23,30 +23,13 @@ Windows Registry Editor Version 5.00
 "DeferQualityUpdates"=dword:00000001
 "DeferQualityUpdatesPeriodInDays"=dword:00000006
 
-; disable windows update auto reboot
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-"AUPowerManagement"=dword:00000000
-"NoAutoRebootWithLoggedOnUsers"=dword:00000001
-
-; disable delivery optimization
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
-"DODownloadMode"=dword:00000000
-
 ; disable feature updates
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 "DeferFeatureUpdates"=dword:00000001
 "DeferFeatureUpdatesPeriodInDays"=dword:00000365
-"TargetReleaseVersion"=dword:00000001
 "BranchReadinessLevel"=dword:00000020
 "TargetReleaseVersion"=dword:00000000
-
-; disable MSRT installtion
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
-"DontOfferThroughWUAU"=dword:00000001
 
 ; disable windows update nagging
 
@@ -60,6 +43,11 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 "SetAutoRestartNotificationDisable"=dword:00000000
 "SetUpdateNotificationLevel"=dword:00000002
+
+; disable delivery optimization
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
+"DODownloadMode"=dword:00000000
 
 ; disable automatic driver updates
 
@@ -103,6 +91,14 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 "DisableOSUpgrade"=dword:00000001
 
+; turn-off automatic download and update of map-data
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps]
+"AutoDownloadAndUpdateMapData"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Maps]
+"AutoDownloadAndUpdateMapData"=dword:00000000
+
 ; prevent software like razer synapse etc from installing
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Installer]
@@ -112,6 +108,72 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "EnableTransparency"=dword:00000000
+
+; hide unused windows security pages
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Family options]
+"UILockdown"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]
+"UILockdown"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Account protection]
+"UILockdown"=dword:00000001
+
+; configure watson events
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting]
+"DisableGenericRePorts"=dword:00000001
+
+; allow notifications to disable security intelligence based reports to microsoft maps
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\\Policies\Microsoft\Windows Defender\Signature Update]
+"SignatureDisableNotification"=dword:00000000
+
+; allow real-time security intelligence updates based on reports to microsoft maps
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]
+"ForceUpdateFromMU"=dword:00000000
+
+; allow security intelligence updates when running on battery power
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
+"DisableScheduledSignatureUpdateOnBattery"=dword:00000001
+
+; check for the latest virus and spyware security intelligence on startup
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
+"UpdateOnStartUp"=dword:00000000
+
+; initiate security intelligence update on startup
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
+"DisableUpdateOnStartupWithoutEngine"=dword:00000001
+
+; turn on scan after security intelligence update
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
+"DisableScanOnUpdate"=dword:00000001
+
+; configure smartscreen
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SmartScreen]
+"onfigureAppInstallControlEnabled"=dword:00000001
+"ConfigureAppInstallControl"="Anywhere"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\System]
+"EnableSmartScreen"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
+"EnabledV9"=dword:00000000
+
+; hide windows security systray
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray]
+"HideSystray"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+"SecurityHealth"=""
 
 ; disable windows default printer management
 
@@ -144,8 +206,30 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
 "AllowTelemetry"=dword:00000000
 "AllowDeviceNameInTelemetry"=dword:00000000
-"MaxTelemetryAllowed"=dword:00000001
-"DoNotShowFeedbackNotifications"=dword:00000000
+"MaxTelemetryAllowed"=dword:00000000
+"DoNotShowFeedbackNotifications"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack]
+"ShowedToastAtLevel"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener]
+"Start"=dword:00000000
+
+; disable application telemetry 
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
+"AITEnable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\AppCompat]
+"AITEnable"=dword:00000000
+
+; disable app launch tracking
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\EdgeUI]
+"DisableMFUTracking"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+"DisableMFUTracking"=dword:00000001
 
 ; disable ceip
 
@@ -310,6 +394,13 @@ Windows Registry Editor Version 5.00
 @="Windows PowerShell Script"
 "FriendlyTypeName"="Windows PowerShell Script"
 
+; remove scan with windows defender in context menu
+
+[-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\EPP]
+[-HKEY_CLASSES_ROOT\CLSID\{09A47860-11B0-4DA5-AFA5-26D86198A780}]
+[-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\EPP]
+[-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\EPP]
+
 ; reserve 10% of CPU resources for low-priority tasks instead of the default 20%
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
@@ -367,6 +458,14 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter]
 "ActivationType"=dword:00000000
 
+; disable game mode
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar]
+"AllowAutoGameMode"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar]
+"AutoGameModeEnabled"=dword:00000000
+
 ; allocate processor resources primarily to programs
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
@@ -387,6 +486,20 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "AllowOnlineTips"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Settings\AllowOnlineTips]
+"value"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableSoftLanding"=dword:00000001
+
+; turn off branchecahe
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PeerDist\Service]
+"Enable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\PeerDist\Service]
+"Enable"=dword:00000000
 
 ; disable appv client
 
@@ -463,7 +576,13 @@ Windows Registry Editor Version 5.00
 
 ; configure ifeo
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe]
+"debugger"="%windir%\System32\taskkill.exe"
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DeviceCensus.exe]
+"debugger"="%windir%\System32\taskkill.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AggregatorHost.exe]
 "debugger"="%windir%\System32\taskkill.exe"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ctfmon.exe\PerfOptions]
@@ -548,6 +667,28 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Accessibility\TimeOut]
 "Flags"="0"
 
+; disable "Always read and scan this section"
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Ease of Access]
+"selfscan"=dword:00000000
+"selfvoice"=dword:00000000
+
+; disable accessibility tool shortcut
+
+[HKEY_CURRENT_USER\Control Panel\Accessibility\SlateLaunch]
+"LaunchAT"=dword:00000000
+
+; disable ease of access sounds
+
+[HKEY_CURRENT_USER\Control Panel\Accessibility]
+"Warning Sounds"=dword:00000000
+"Sound on Activation"=dword:00000000
+
+; disable visual warning for sounds in ease of access
+
+[HKEY_CURRENT_USER\Control Panel\Accessibility\SoundSentry]
+"WindowsEffect"="0"
+
 ; disable ForegroundLockTimeout
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -556,6 +697,7 @@ Windows Registry Editor Version 5.00
 ; disable Remote assistance
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance]
+"fAllowFullControl"=dword:00000000
 "fAllowToGetHelp"=dword:00000000
 
 ; decrease Shutdown Time
@@ -610,11 +752,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Diagnostics\Performance]
 "DisableDiagnosticTracing"=dword:00000001
 
-; do nothing communications
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Multimedia\Audio]
-"UserDuckingPreference"=dword:00000003
-
 ; disable auto maintenance
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
@@ -630,19 +767,44 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "RSoPLogging"=dword:00000000
 
-; disable touch feedback
+; disable touch visual feedback
 
 [HKEY_CURRENT_USER\Control Panel\Cursors]
 "ContactVisualization"=dword:00000000
 "GestureVisualization"=dword:00000000
 
-; turn off autoplay 
+; disable autorun/autoplay 
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"NoDriveTypeAutoRun"=dword:000000ff
+"NoAutorun"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"NoDriveTypeAutoRun"=dword:000000ff
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
+"DisableAutoplay"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoDriveTypeAutoRun"=dword:00000255
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"NoAutoplayfornonVolume"=dword:00000001
+
+; disable "notify about usb issues"
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Shell\USB]
+"NotifyOnUsbErrors"=dword:00000000
+"NotifyOnWeakCharger"=dword:00000000
+
+; disable windows feedback
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
+"NumberOfSIUFInPeriod"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
+"DoNotShowFeedbackNotifications"=dword:00000001
+
+; do not reduce sounds while in a call
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Multimedia\Audio]
+"UserDuckingPreference"=dword:00000003
 
 ; disable logging
 
@@ -670,6 +832,17 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
 "Disabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PCHealth\ErrorReporting]
+"DoReport"=dword:00000000
+"ShowUI"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\PCHealth\ErrorReporting]
+"DoReport"=dword:00000000
+"ShowUI"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Settings]
 "DisableSendGenericDriverNotFoundToWER"=dword:00000001
@@ -734,6 +907,34 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Speech]
 "AllowSpeechModelUpdate"=dword:00000000
 
+; turn off lltdio driver
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD]
+"EnableLLTDIO"=dword:00000000
+"AllowLLTDIOOnDomain"=dword:00000000
+"AllowLLTDIOOnPublicNet"=dword:00000000
+"ProhibitLLTDIOOnPrivateNet"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD]
+"EnableLLTDIO"=dword:00000000
+"AllowLLTDIOOnDomain"=dword:00000000
+"AllowLLTDIOOnPublicNet"=dword:00000000
+"ProhibitLLTDIOOnPrivateNet"=dword:00000000
+
+; turn off responder driver
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD]
+"EnableRspndr"=dword:00000000
+"AllowRspndrOnDomain"=dword:00000000
+"AllowRspndrOnPublicNet"=dword:00000000
+"ProhibitRspndrOnPrivateNet"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD]
+"EnableRspndr"=dword:00000000
+"AllowRspndrOnDomain"=dword:00000000
+"AllowRspndrOnPublicNet"=dword:00000000
+"ProhibitRspndrOnPrivateNet"=dword:00000000
+
 ; turn off module logging
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging]
@@ -754,7 +955,7 @@ Windows Registry Editor Version 5.00
 
 ; disable Meltdown and Inspectre
 ; disable Disk Checkup
-; disable Paging Settings
+; disable Paging
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "FeatureSettingsOverride"=dword:00000003
@@ -766,10 +967,6 @@ Windows Registry Editor Version 5.00
 ; disable prefetcher/superfetch and readyboost
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Memory Management\PrefetchParameters]
-"EnablePrefetcher"=dword:00000000
-"EnableSuperfetch"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "EnablePrefetcher"=dword:00000000
 "EnableSuperfetch"=dword:00000000
 
@@ -815,10 +1012,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FTH]
 "Enabled"=dword:00000000
 
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputPersonalization]
-"RestrictImplicitInkCollection"=dword:00000001
-"RestrictImplicitTextCollection"=dword:00000001
-
 ; disable archiving infrequently used apps
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx]
@@ -834,10 +1027,13 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings]
 "IsDeviceSearchHistoryEnabled"=dword:00000000
 
-; disable hotspot
+; disable hotspot authentication
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
-"OsuRegistrationStatus"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HotspotAuthentication]
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\HotspotAuthentication]
+"Enabled"=dword:00000000
 
 ; disable spell checking features
 
@@ -847,6 +1043,13 @@ Windows Registry Editor Version 5.00
 "EnablePredictionSpaceInsertion"=dword:00000000
 "EnableDoubleTapSpace"=dword:00000000
 "EnableAutocorrection"=dword:00000000
+
+; disable unnecessary touch keyboard settings
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\TabletTip\1.7]
+"EnableAutoShiftEngage"=dword:00000000
+"EnableKeyAudioFeedback"=dword:00000000
+"EnableShiftLock"=dword:00000000
 
 ; disable powershell telemetry
 
@@ -862,6 +1065,13 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
 "StartupDelayInMSec"=dword:00000000
+
+; disable reserved storage
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager]
+"MiscPolicyInfo"=dword:00000002
+"PassedPolicy"=dword:00000000
+"ShippedWithReserves"=dword:00000000
 
 ; add takeownership in context menu
 
@@ -1146,6 +1356,11 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
 
+; disable bluetooth advertising
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"AllowAdvertising"=dword:00000000
+
 ; disable Microsoft provide more tailored experiences with relevant tips and recommendations by using your diagnostic data
       
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy]
@@ -1208,9 +1423,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\InputPersonalization\TrainedDataStore]
 "HarvestContacts"=dword:00000000
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Personalization\Settings]
-"AcceptedPrivacyPolicy"=dword:00000000
 
 ; disable Pre-Installed apps
 
@@ -1288,6 +1500,11 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Classes\Software\Microsoft\Input\Settings]
 "InsightsEnabled"=dword:00000000
 
+; disable improve inking and typing recongnition
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Input\TIPC]
+"Enabled"=dword:00000000
+
 ; disable Windows Spotlight (Tips and suggestions)
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
@@ -1338,5 +1555,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]
 "Manufacturer"="Rax | 77"
-"Model"="RaxOS"
+"Model"="RaxOS V005"
+"SupportPhone"="https://github.com/raox77/RaxOS"
 "SupportURL"="https://discord.gg/5pXdNUq8bg"

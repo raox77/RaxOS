@@ -30,11 +30,6 @@ Windows Registry Editor Version 5.00
 "ShowStartupPanel"=-
 "UseNexusForGameBarEnabled"=-
 
-; Enable Game Bar Presence Writer
-
-[HKLM\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter]
-"ActivationType"=dword:00000001
-
 ; Enable Windows Game Recording and Broadcasting (DVR)
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
