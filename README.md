@@ -19,7 +19,6 @@
 ## Stripped / Not Working Features:
 - Windows installation from setup.exe
 - BitLocker Drive Encryption
-- Windows Defender & SmartScreen & Security Center & System Guard
 - Microsoft To Do
 - Cortana
 - OneDrive
@@ -29,38 +28,37 @@
 - Cloud Desktop
 - System Reset & Recovery
 
-## Stripped Devices & Drivers:
-- Smart Cards
-- Biometric Devices (finger print, face recognition)
-
 ### Download
 
-https://drive.google.com/file/d/1RpNfStpxdMGA3eBP1m-XmItAaQXGPe1V/view
+https://drive.google.com/file/d/131UmlGiZyyOc16q0Bz5XTKEs9Wh4BGZa/view?usp=sharing
 
 <details>
 <br>
-<summary>Changelog 23H2 V004</summary>
+<summary>Changelog 23H2 V005</summary>
 
-- Updated Build to 22631.3085
-- Compatibility improvements
-- Renamed microcode updates instead of removing
-- Disabled Search in script instead of doing it manually 
-- Set Timer Res to startup in script instead of doing it manually 
-- Removed "Reset Firewall Rules" line
-- Disabled ceip instead of removing
-- Disabled reserved storage
-- Added a fix CS2, The Finals in Support folder
-- Added NIP to enable ReBAR
-  - Minor Changes to NIP
-- Fixed VIsual Effects
-- Fixed Calendar on taskbar
-- Backed up "RaxOS-Default-Services" and "Windows-Default-Services" in script instead of doing it manually
-- Changed bcdedit boot name from "RaxOS W11" to "RaxOS w11 V004"
-- Enabled Power Throttling for Laptop Users and set Balanced Powerplan for Laptop Users and Disabled Power Throttling for Desktop Users
+- Updated Build to 22631.3227
+- Compatibility Improvements
+- Intergrated Chocolatey
+- Brought back Maps
+- Brought back Windows Backup
+- Brought back Smart Card & Biometric Devices (finger print, face recognition)
+- Enabled SerializeTimerExpiration (can be changed in support folder)
+- Added UAC toggle in support folder
+- Added NTFS Encryption toggle in support folder
+- Used NSudo to rename Search/Startmenu to rename
+- Xbox GameBar & FSO in now enabled by default (can be changed in support folder)
+- Removed 7zip from being installed
+- Revamped Registry
+- Revamped Services
+- Removed useplatformtick yes
+- Configured IFEO
+- Fixed Efficiency mode (only enabled for laptop users)
+- Brought back Windows Defender & SmartScreen & Security Center & System Guard (enabled by default, can be disabled)
+- Windows Update is now support (enable windows default services)
 </details>
 
 ### Always have a backup USB with default Windows 10 Or 11 if something goes wrong and your network driver in the USB
 
-SHA-256: 76368C12C0814E67A07719DA299ED640352B5AF1BC9A775F76B034C26F94A39C
+SHA-256: B5305C7AF976F6CD1B5EEB2EA0FCEEEC40F4EC0E6BC9BC7479092639FFD05C56
 
-SHA-1: 5C0D6BC95537C8AEC3B854211C04068BEDFB8B95
+SHA-1: 08F2DB16882D2552C2D427EF18CFB34F1D61A39E
