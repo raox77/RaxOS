@@ -319,7 +319,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
 "EnableLMHOSTS"=dword:00000000
 
-; add `Windows Batch File`, `Hash`, `Registry Entries` in context menu, `Windows Powershell Script`
+; add `Windows Batch File`, `Hash`, `Registry Entries` `Windows Powershell Script` in context menu,
 
 [HKEY_CLASSES_ROOT\.bat\ShellNew]
 "NullFile"=""
@@ -593,18 +593,18 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\fontdrvhost.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000001
-"IoPriority'"=dword:00000000
+"IoPriority"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\lsass.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sihost.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000001
-"IoPriority'"=dword:00000000
+"IoPriority"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sppsvc.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000001
-"IoPriority'"=dword:00000000
+"IoPriority"=dword:00000000
 
 ; fix for VS not being allowed to install WebView2
 
