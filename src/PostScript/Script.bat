@@ -236,10 +236,6 @@ Echo "Disable Driver PowerSaving"
 %SYSTEMROOT%\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.enable = $false; $_.psbase.put(); }"
 cls
 
-Echo "Set svchost to ffffffff works best for all RAM size"
-Reg add HKLM\SYSTEM\CurrentControlSet\Control /t REG_DWORD /v SvcHostSplitThresholdInKB /d 0xffffffff /f >nul 2>&1
-cls
-
 Echo "Enabling MSI mode & set to undefined"
 for /f %%i in ('wmic path Win32_USBController get PNPDeviceID^| findstr /L "PCI\VEN_"') do reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
 for /f %%i in ('wmic path Win32_USBController get PNPDeviceID^| findstr /L "PCI\VEN_"') do reg delete "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f >nul 2>nul
@@ -258,7 +254,13 @@ reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extens
 cls
 
 Echo "Change NTP server to pool.ntp.org"
-w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org" >nul 2>&1
+w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org"
+SC queryex "w32time"|Find "STATE"|Find /v "RUNNING">Nul||(
+    net stop w32time
+)
+net start w32time
+w32tm /config /update
+w32tm /resync
 cls
 
 Echo "Removing Quick access"
