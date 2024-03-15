@@ -1,0 +1,1158 @@
+Windows Registry Editor Version 5.00
+
+; add Script
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce]
+"POST INSTALL"="\"C:\\Windows\\Modules\\Script.bat\""
+
+; disable user account control
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"ConsentPromptBehaviorAdmin"=dword:00000000
+"EnableLUA"=dword:00000000
+"PromptOnSecureDesktop"=dword:00000000
+"EnableInstallerDetection"=dword:00000000
+"EnableSecureUIAPaths"=dword:00000000
+
+; defer updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DeferQualityUpdates"=dword:00000001
+"DeferQualityUpdatesPeriodInDays"=dword:00000003
+"PauseQualityUpdatesStartTime"=""
+
+; disable feature updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DeferFeatureUpdates"=dword:00000001
+"DeferFeatureUpdatesPeriodInDays"=dword:0000016d
+"BranchReadinessLevel"=dword:00000040
+"TargetReleaseVersion"=dword:00000000
+"PauseFeatureUpdatesStartTime"=""
+
+; disable windows update nagging
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"NoAUAsDefaultShutdownOption"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
+"HideMCTLink"=dword:00000001
+"RestartNotificationsAllowed2"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"SetAutoRestartNotificationDisable"=dword:00000000
+"SetUpdateNotificationLevel"=dword:00000002
+
+; disable all notification, including restart warnings
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"UpdateNotificationLevel"=dword:00000002
+
+; disable delivery optimization
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
+"DODownloadMode"=dword:00000000
+
+; disable automatic driver updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Update]
+"ExcludeWUDriversInQualityUpdate"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Update]
+"ExcludeWUDriversInQualityUpdate"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
+"ExcludeWUDriversInQualityUpdate"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"ExcludeWUDriversInQualityUpdate"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Update\ExcludeWUDriversInQualityUpdate]
+"value"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
+"PreventDeviceMetadataFromNetwork"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching]
+"SearchOrderConfig"=dword:00000000
+"DontSearchWindowsUpdate"=dword:00000001
+"DriverUpdateWizardWuSearchEnabled"=dword:00000000
+
+; turn off automatic download and install of updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+"AutoDownload"=dword:00000004
+
+; disable safeguards for Feature Updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DisableWUfBSafeguards"=dword:00000004
+
+; disable windows insider
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"ManagePreviewBuilds"=dword:00000001
+"ManagePreviewBuildsPolicyValue"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuild]
+"AllowBuildPrevie"=dword:00000000
+"EnableConfigFlighting"=dword:00000000
+"EnableExperimentation"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibilit]
+"HideInsiderPage"=dword:00000001
+
+; configure Automatic Updates
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"NoAutoUpdate"=dword:00000002
+
+; turn off the offer to update to the latest version of windows
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+"DisableOSUpgrade"=dword:00000001
+
+; turn-off automatic download and update of map-data
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps]
+"AutoDownloadAndUpdateMapData"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Maps]
+"AutoDownloadAndUpdateMapData"=dword:00000000
+
+; prevent Software like razer synapse etc from installing
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Installer]
+"DisableCoInstallers"=dword:00000000
+
+; allow microsoft account to be optional
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"MSAOptional"=dword:00000001
+
+; hide unused windows security pages
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Family options]
+"UILockdown"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]
+"UILockdown"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Account protection]
+"UILockdown"=dword:00000001
+
+; disable watson events
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting]
+"DisableGenericRePorts"=dword:00000001
+
+; disable notifications to disable security intelligence based reports to microsoft maps
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
+"SignatureDisableNotification"=dword:00000000
+
+; disable real-time security intelligence updates based on reports to microsoft maps
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]
+"RealtimeSignatureDelivery"=dword:00000000
+
+; disable security intelligence updates from Microsoft Update
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]
+"ForceUpdateFromMU"=dword:00000000
+
+; disable security intelligence updates when running on battery power
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
+"DisableScheduledSignatureUpdateOnBattery"=dword:00000001
+
+; disable check for the latest virus and spyware security intelligence on startup
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
+"UpdateOnStartUp"=dword:00000000
+
+; disable initiate security intelligence update on startup
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
+"DisableUpdateOnStartupWithoutEngine"=dword:00000001
+
+; disable turn on scan after security intelligence update
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
+"DisableScanOnUpdate"=dword:00000001
+
+; configure smartscreen
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SmartScreen]
+"ConfigureAppInstallControlEnabled"=dword:00000001
+"ConfigureAppInstallControl"="Anywhere"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\System]
+"EnableSmartScreen"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
+"EnabledV9"=dword:00000000
+
+; hide windows security systray
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray]
+"HideSystray"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+"SecurityHealth"=""
+
+; disable Non Critical Notifications
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications]
+"DisableEnhancedNotifications"=dword:00000001
+
+; disable background disk defragmentation
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction]
+"Enable"="N"
+
+; disable display highly detailed status Messages
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"VerboseStatus"=dword:00000000
+
+; disable message service cloud sync
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Messaging]
+"AllowMessageSync"=dword:00000000
+
+; disable background auto-layout
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OptimalLayout]
+"EnableAutoLayout"=dword:00000000
+
+; block outlook & dev home from installing
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\CrossDeviceUpdate]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\EdgeUpdate]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Orchestrator\UScheduler\DevHomeUpdate]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Orchestrator\UScheduler\OutlookUpdate]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Orchestrator\UScheduler\CrossDeviceUpdate]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Orchestrator\UScheduler\EdgeUpdate]
+
+; disable performance track
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-88dd50a6299d}]
+"ScenarioExecutionEnabled"=dword:00000000
+
+; restore windows photo viewer
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities]
+"ApplicationDescription"="@%ProgramFiles%\\Windows Photo Viewer\\photoviewer.dll,-3069"
+"ApplicationName"="@%ProgramFiles%\\Windows Photo Viewer\\photoviewer.dll,-3009"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]
+".cr2"="PhotoViewer.FileAssoc.Tiff"
+".jpg"="PhotoViewer.FileAssoc.Jpeg"
+".wdp"="PhotoViewer.FileAssoc.Wdp"
+".jfif"="PhotoViewer.FileAssoc.JFIF"
+".dib"="PhotoViewer.FileAssoc.Bitmap"
+".png"="PhotoViewer.FileAssoc.Png"
+".jxr"="PhotoViewer.FileAssoc.Wdp"
+".bmp"="PhotoViewer.FileAssoc.Bitmap"
+".jpe"="PhotoViewer.FileAssoc.Jpeg"
+".jpeg"="PhotoViewer.FileAssoc.Jpeg"
+".gif"="PhotoViewer.FileAssoc.Gif"
+".tif"="PhotoViewer.FileAssoc.Tiff"
+".tiff"="PhotoViewer.FileAssoc.Tiff"
+
+; disable disk quota
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\DiskQuota]
+"Enable"=dword:00000000
+"Enforce"=dword:00000000
+
+; disable news and interests on the taskbar
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\NewsAndInterests\AllowNewsAndInterests]
+"value"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Dsh]
+"AllowNewsAndInterests"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds]
+"EnableFeeds"=dword:00000000
+
+; disable windows ink workspace
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
+"AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000001
+
+; disable meet now
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"HideSCAMeetNow"=dword:00000001
+
+; remove Gallery in Explorer
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace_41040327\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}]
+
+; disable telemetry
+; disable comercial data pipeline
+; disable device name to be sent in windows diagnostic data
+; disable authenticated proxy usage for the connected user experience and telemetry service
+; disable sending internet history
+; disable telemetry change notifications
+; disable telemetry opt-in settings
+; do not show feedback notifications
+; disable windows analytics
+; disable user control over insider builds
+; limit diagnostic log collection
+; limit dump collection
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
+"AllowTelemetry"=dword:00000000
+"AllowCommercialDataPipeline"=dword:00000000
+"AllowDeviceNameInTelemetry"=dword:00000000
+"DisableEnterpriseAuthProxy"=dword:00000001
+"MicrosoftEdgeDataOptIn"=dword:00000000
+"DisableTelemetryOptInChangeNotification"=dword:00000001
+"DisableTelemetryOptInSettingsUx"=dword:00000001
+"DoNotShowFeedbackNotifications"=dword:00000001
+"LimitEnhancedDiagnosticDataWindowsAnalytics"=dword:00000000
+"AllowBuildPreview"=dword:00000000
+"LimitDiagnosticLogCollection"=dword:00000001
+"LimitDumpCollection"=dword:00000001
+
+; disable telemetry
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
+"AllowTelemetry"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
+"AllowTelemetry"=dword:00000000
+
+; disable pre-release features or settings
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]
+"EnableConfigFlighting"=dword:00000000
+
+; disable help tips
+; turn off tracking of app usage
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+"DisableHelpSticker"=dword:00000001
+
+; disable vbs
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+"EnableVirtualizationBasedSecurity"=dword:00000000
+
+; dont sync app settings
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableApplicationSettingSync"=dword:00000002
+"DisableApplicationSettingSyncUserOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync]
+"DisableApplicationSettingSync"=dword:00000002
+"DisableApplicationSettingSyncUserOverride"=dword:00000000
+
+; dont sync apps
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync]
+"DisableAppSyncSettingSync"=dword:00000002
+"DisableAppSyncSettingSyncUserOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableAppSyncSettingSync"=dword:00000002
+"DisableAppSyncSettingSyncUserOverride"=dword:00000000
+
+; dont sync browser settings
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableWebBrowserSettingSync"=dword:00000002
+"DisableWebBrowserSettingSyncUserOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync]
+"DisableWebBrowserSettingSync"=dword:00000002
+"DisableWebBrowserSettingSyncUserOverride"=dword:00000000
+
+; dont sync desktop personalization
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync]
+"DisableDesktopThemeSettingSync"=dword:00000002
+"DisableDesktopThemeSettingSyncUserOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableDesktopThemeSettingSync"=dword:00000002
+"DisableDesktopThemeSettingSyncUserOverride"=dword:00000000
+
+; dont sync other widows settings
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableWindowsSettingSync"=dword:00000002
+"DisableWindowsSettingSyncUserOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync]
+"DisableWindowsSettingSync"=dword:00000002
+"DisableWindowsSettingSyncUserOverride"=dword:00000000
+
+; dont sync passwords
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableWindowsSettingSync"=dword:00000002
+"DisableWindowsSettingSyncUserOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync]
+"DisableWindowsSettingSync"=dword:00000002
+"DisableWindowsSettingSyncUserOverride"=dword:00000000
+
+; dont sync personalize
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisablePersonalizationSettingSync"=dword:00000002
+"DisablePersonalizationSettingSyncUserOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync]
+"DisablePersonalizationSettingSync"=dword:00000002
+"DisablePersonalizationSettingSyncUserOverride"=dword:00000000
+
+; dont sync start settings
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync]
+"DisableStartLayoutSettingSync"=dword:00000002
+"DisableStartLayoutSettingSyncUserOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableStartLayoutSettingSync"=dword:00000002
+"DisableStartLayoutSettingSyncUserOverride"=dword:00000000
+
+; dont sync settings
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableSettingSync"=dword:00000002
+"DisableSettingSyncUserOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\SettingSync]
+"DisableSettingSync"=dword:00000002
+"DisableSettingSyncUserOverride"=dword:00000000
+
+; turn off application compatbility engine
+; turn off application telemetry 
+; turn off problem step recoreder
+; turn off program compatibility assistant
+; turn off program inventory
+; turn off switchback compatibility engine
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
+"DisableEngine"=dword:00000001
+"AITEnable"=dword:00000000
+"DisableUAR"=dword:00000001
+"DisablePCA"=dword:00000001
+"DisableInventory"=dword:00000001
+"SbEnable"=dword:00000001
+
+; restrict internet communications
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InternetManagement]
+"RestrictCommunication"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoPublishingWizard"=dword:00000001
+"NoWebServices"=dword:00000001
+"NoOnlinePrintsWizard"=dword:00000001
+"NoInternetOpenWith"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
+"NoGenTicket"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Messenger\Client]
+"CEIP"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\HelpSvc]
+"Headlines"=dword:00000000
+"MicrosoftKBSearch"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]
+"DoReport"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Internet Connection Wizard]
+"ExitOnMSICW"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EventViewer]
+"MicrosoftEventVwrDisableLinks"=dword:00000001
+
+; disable app launch tracking
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+"DisableMFUTracking"=dword:00000001
+
+; disable ceip
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppV\CEIP]
+"CEIPEnable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\AppV\CEIP]
+"CEIPEnable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows]
+"CEIPEnable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Messenger\Client]
+"CEIP"=dword:00000002
+
+; turn off handwariting reconfnition error reporting
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\HandwritingErrorReports]
+"PreventHandwritingErrorReports"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports]
+"PreventHandwritingErrorReports"=dword:00000001
+
+; turn off handwariting personalization data sharing
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC]
+"PreventHandwritingDataSharing"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\TabletPC]
+"PreventHandwritingDataSharing"=dword:00000001
+
+; disallow use of biometrics
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Biometrics]
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Biometrics]
+"Enabled"=dword:00000000
+
+; turn off smart card plug and play service
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScPnP]
+"EnableScPnP"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\ScPnP]
+"EnableScPnP"=dword:00000000
+
+; disable uev
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\UEV\Agent]
+"Enabled"=dword:00000000
+"RegisterInboxTemplates"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\UEV\Agent]
+"Enabled"=dword:00000000
+"RegisterInboxTemplates"=-
+
+; dont sync settings over metered connections even when roaming
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration]
+"SyncOverMeteredNetworkWhenRoaming"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\UEV\Agent\Configuration]
+"SyncOverMeteredNetworkWhenRoaming"=dword:00000000
+
+; dont sync saettings over metered connections
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\UEV\Agent\Configuration]
+"SyncOverMeteredNetwork"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration]
+"SyncOverMeteredNetwork"=dword:00000000
+
+; dont use uev
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration]
+"SyncEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\UEV\Agent\Configuration]
+"SyncEnabled"=dword:00000000
+
+; reserve 10% of CPU resources for low-priority tasks instead of the default 20%
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
+"SystemResponsiveness"=dword:0000000a
+
+; remove map network drive and disconnect network drive from context menu
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoNetConnectDisconnect"=dword:00000001
+
+; disable sign-in and lock last interactive user after a restart
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisableAutomaticRestartSignOn"=dword:00000001
+
+; disable gamebarpresencewriter
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter]
+"ActivationType"=dword:00000000
+
+; prevent windows marking file attachments with information about their zone of origin
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments]
+"SaveZoneInformation"=dword:00000001
+
+; disable windows track app launches to improve Start and search results
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackProgs"=dword:00000000
+
+; disable text prediction
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\TabletTip\1.7]
+"DisablePrediction"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\TabletTip\1.7]
+"DisablePrediction"=dword:00000001
+
+; disable onlinetips
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"AllowOnlineTips"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"AllowOnlineTips"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Settings\AllowOnlineTips]
+"value"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableSoftLanding"=dword:00000001
+
+; turn off branchecahe
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PeerDist\Service]
+"Enable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\PeerDist\Service]
+"Enable"=dword:00000000
+
+; disable appv client
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AppV\Client]
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppV\Client]
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\AppV\Client]
+"Enabled"=dword:00000000
+
+; disable dynamic virtualization
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\AppV\Client\Virtualization]
+"EnableDynamicVirtualization"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppV\Client\Virtualization]
+"EnableDynamicVirtualization"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AppV\Client\Virtualization]
+"EnableDynamicVirtualization"=dword:00000000
+
+; turn off ad-id
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo]
+"DisabledByGroupPolicy"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\AdvertisingInfo]
+"DisabledByGroupPolicy"=dword:00000001
+
+; disable apps use advertising ID to make ads more interesting to you based on your app activity
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+"Enabled"=dword:00000000
+
+; remove 3D objects from explorer pane
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
+
+; disable ballon notifications
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"EnableLegacyBalloonNotifications"=dword:00000000
+
+; disable cloud search
+; disable cortana
+; do not allow search and cortana to use location
+; disable search the web or display web results in Search
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"AllowCloudSearch"=dword:00000000
+"AllowCortana"=dword:00000000
+"AllowSearchToUseLocation"=dword:00000000
+"ConnectedSearchUseWeb"=dword:00000000
+
+; Delete Edge keys
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components\{9459C573-B17A-45AE-9F64-1857B5D58CEE}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeUpdate]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeWebView]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\MicrosoftEdge]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-e..crosoftedgedevtools_31bf3856ad364e35_none_36ea1b9c278f068b]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-e..ftedgeenlightenment_31bf3856ad364e35_none_5f983b78df52c72d]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-e..microsoftedgebchost_31bf3856ad364e35_none_9a0c052dbd2ddbe0]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-edge-angle_31bf3856ad364e35_none_8c95285b8836d727]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-edge-edgecontent_31bf3856ad364e35_none_20e866e90cc4832a]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-edge-edgemanager_31bf3856ad364e35_none_b87270ef4cdc2206]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-edge-microsoftedgecp_31bf3856ad364e35_none_b5753426e9c1e936]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-edge-microsoftedgesh_31bf3856ad364e35_none_b4c03316ea4add8e]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-flipgridpwa-deployment_31bf3856ad364e35_none_8d35e6e3434ee2ad]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-flipgridpwa_31bf3856ad364e35_none_bae579f02ef4d95b]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-m..osoftedge.appxsetup_31bf3856ad364e35_none_d0472dbbd37cfd67]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-microsoftedgebrowser_31bf3856ad364e35_none_cc4c2155158afa1d]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-outlookpwa-deployment_31bf3856ad364e35_none_57ccf3d182b3da05]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoft-windows-outlookpwa_31bf3856ad364e35_none_cebed0418fa8fc51]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SideBySide\Winners\amd64_microsoftedge-autologger_31bf3856ad364e35_none_dd39fb9187e61e2e]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Microsoft.MicrosoftEdge.ContentProcessComponent]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\ClientState\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Config\Microsoft.MicrosoftEdge_8wekyb3d8bbwe]
+[-HKEY_LOCAL_MACHINE\Edge\WOW6432Node\Microsoft\Windows\CurrentVersion\MicrosoftEdge]
+
+; disable show files from office.com
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableGraphRecentItems"=dword:00000001
+
+; disable teams from installting
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications]
+"ConfigureChatAutoInstall"=dword:00000000
+
+; disable continue experiences on this device
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"EnableCdp"=dword:00000000
+
+; configure ifeo
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe]
+"debugger"="noop.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DeviceCensus.exe]
+"debugger"="noop.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AggregatorHost.exe]
+"debugger"="noop.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mobsync.exe]
+"debugger"="noop.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\FeatureLoader.exe]
+"debugger"="noop.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ctfmon.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SearchIndexer.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\fontdrvhost.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+"IoPriority"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\lsass.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sihost.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+"IoPriority"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sppsvc.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+"IoPriority"=dword:00000000
+
+; fix for VS not being allowed to install WebView2
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate]
+"InstallDefault"=dword:00000000
+"Install{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000000
+"Install{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000001
+"DoNotUpdateToEdgeWithChromium"=dword:00000001
+
+; disable auto maintenance
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
+"MaintenanceDisabled"=dword:00000001
+
+; configure scheduled maintenance behavior
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics]
+"EnabledExecution"=dword:00000000
+
+; disable RSoP Logging
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"RSoPLogging"=dword:00000000
+
+; disable autorun/autoplay 
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoAutorun"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoDriveTypeAutoRun"=dword:00000255
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"NoAutoplayfornonVolume"=dword:00000001
+
+; disable logging
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Windows Error Reporting]
+"LoggingDisabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+"LoggingDisabled"=dword:00000001
+
+; dont send additional date
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Windows Error Reporting]
+"DontSendAdditionalData"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+"DontSendAdditionalData"=dword:00000001
+
+; disable windows error reporting
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PCHealth\ErrorReporting]
+"DoReport"=dword:00000000
+"ShowUI"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\PCHealth\ErrorReporting]
+"DoReport"=dword:00000000
+"ShowUI"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Settings]
+"DisableSendGenericDriverNotFoundToWER"=dword:00000001
+"DisableSendRequestAdditionalSoftwareToWER"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Report]
+"AutoApproveOSDumps"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\Consent]
+"value"="0"
+
+; prevent media sharing
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\WindowsMediaPlayer]
+"PreventLibrarySharing"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsMediaPlayer]
+"PreventLibrarySharing"=dword:00000001
+
+; disable enumeration policy for external devices incompatible with Kernel DMA Protection
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Kernel DMA Protection]
+"DeviceEnumerationPolicy"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Kernel DMA Protection]
+"DeviceEnumerationPolicy"=dword:00000000
+
+; turn off windows startup sound
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisableStartupSound"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisableStartupSound"=dword:00000001
+
+; disable system restore
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows NT\SystemRestore]
+"DisableConfig"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]
+"DisableConfig"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]
+"DisableSR"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows NT\SystemRestore]
+"DisableSR"=dword:00000001
+
+; turn off file history 
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\FileHistory]
+"Disabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\FileHistory]
+"Disabled"=dword:00000001
+
+; turn off sensors 
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LocationAndSensors]
+"DisableSensors"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]
+"DisableSensors"=dword:00000001
+
+; disable automatic update speech data
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Speech]
+"AllowSpeechModelUpdate"=dword:00000000
+
+; turn off lltdio driver
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD]
+"EnableLLTDIO"=dword:00000000
+"AllowLLTDIOOnDomain"=dword:00000000
+"AllowLLTDIOOnPublicNet"=dword:00000000
+"ProhibitLLTDIOOnPrivateNet"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD]
+"EnableLLTDIO"=dword:00000000
+"AllowLLTDIOOnDomain"=dword:00000000
+"AllowLLTDIOOnPublicNet"=dword:00000000
+"ProhibitLLTDIOOnPrivateNet"=dword:00000000
+
+; turn off responder driver
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD]
+"EnableRspndr"=dword:00000000
+"AllowRspndrOnDomain"=dword:00000000
+"AllowRspndrOnPublicNet"=dword:00000000
+"ProhibitRspndrOnPrivateNet"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD]
+"EnableRspndr"=dword:00000000
+"AllowRspndrOnDomain"=dword:00000000
+"AllowRspndrOnPublicNet"=dword:00000000
+"ProhibitRspndrOnPrivateNet"=dword:00000000
+
+; turn off module logging
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging]
+"EnableModuleLogging"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ModuleLogging]
+"EnableModuleLogging"=dword:00000000
+
+; turn off powershell script block logging
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging]
+"EnableScriptBlockLogging"=dword:00000000
+"EnableScriptBlockInvocationLogging"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging]
+"EnableScriptBlockLogging"=dword:00000000
+"EnableScriptBlockInvocationLogging"=-
+
+; disable superfetch`s eventlog connection
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/Main]
+"Enable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/PfApLog]
+"Enable"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/StoreLog]
+"Enable"=dword:00000000
+
+; disable readyboost
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\EMDMgmt]
+"GroupPolicyDisallowCaches"=dword:00000001
+"AllowNewCachesByDefault"=dword:00000000
+
+; disable automatic setup of network devices
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\NcdAutoSetup\Private]
+"AutoSetup"=dword:00000000
+
+; disable fault tolerant heap
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FTH]
+"Enabled"=dword:00000000
+
+; disable archiving infrequently used apps
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx]
+"AllowAutomaticAppArchiving"=dword:00000000
+
+; disable recommended troubleshooting
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
+"UserPreference"=dword:00000001
+
+; disable hotspot authentication
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HotspotAuthentication]
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\HotspotAuthentication]
+"Enabled"=dword:00000000
+
+; disable notifications network usage
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
+"NoCloudApplicationNotification"=dword:00000001
+
+; disable reserved storage
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager]
+"MiscPolicyInfo"=dword:00000002
+"PassedPolicy"=dword:00000000
+"ShippedWithReserves"=dword:00000000
+
+; disable apps access - Appointments
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments]
+"Value"="Deny"    
+
+; disable apps access - Call History
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory]
+"Value"="Deny"
+  
+; disable apps access - Contacts 
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts]
+"Value"="Deny"
+
+; disable apps access - Diagnostic Information
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics]
+"Value"="Deny"
+    
+; disable apps access - Documents Library
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary]
+"Value"="Deny"
+  
+; disable apps access - Email
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email]
+"Value"="Deny"
+
+; disable apps access - File System
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess]
+"Value"="Deny"
+
+; disable apps access - Messages (Text or MMS)
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
+"Value"="Deny"
+    
+; disable apps access - Notifications
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener]
+"Value"="Deny"
+  
+; disable apps access - Phone Calls
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall]
+"Value"="Deny"
+
+; disable apps access - Pictures Library
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary]
+"Value"="Deny"
+
+; disable apps access - Radios
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios]
+"Value"="Deny"
+  
+; disable apps access - Tasks
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks]
+"Value"="Deny"
+
+; disable apps access - User account info
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
+"Value"="Deny"
+
+; disable apps access - Videos Library
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary]
+"Value"="Deny"
+
+; disable Experimentation
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\System]
+"AllowExperimentation"=dword:00000000
+
+; disable Location services
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\System]
+"AllowLocation"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]
+"DisableWindowsLocationProvider"=dword:00000001
+"DisableLocationScripting"=dword:00000001
+"DisableLocation"=dword:00000001
+
+; disable Cloud optimized content (Programmable Taskbar)
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableCloudOptimizedContent"=dword:00000001
+ 
+; turn off automatic learning
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization]
+"RestrictImplicitTextCollection"=dword:00000001
+"RestrictImplicitInkCollection"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\InputPersonalization]
+"RestrictImplicitTextCollection"=dword:00000001
+"RestrictImplicitInkCollection"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\InputPersonalization]
+"RestrictImplicitTextCollection"=dword:00000001
+"RestrictImplicitInkCollection"=dword:00000001
+
+; disable Let apps on user's other devices use Bluetooth to open apps and continue experiences on this device
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass]
+"UserAuthPolicy"=dword:00000000
+"BluetoothPolicy"=dword:00000000
+
+; disable bluetooth advertising
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"AllowAdvertising"=dword:00000000
+
+; disable Microsoft provide more tailored experiences with relevant tips and recommendations by using your diagnostic data
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
+
+; disable Windows collect my activities from this PC ("Timeline")
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"EnableActivityFeed"=dword:00000000
+"PublishUserActivities"=dword:00000000
+"UploadUserActivities"=dword:00000000
+
+; disable Online speech recognition services
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization]
+"AllowInputPersonalization"=dword:00000000
+
+; disable Personalize your speech, typing and inking input by sending your input data to Microsoft
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\TextInput]
+"AllowLinguisticDataCollection"=dword:00000000
+
+; disable Windows Spotlight (Tips and suggestions)
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableThirdPartySuggestions"=dword:00000001
+"DisableSoftLanding"=dword:00000001
+
+; oeminformations
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]
+"Manufacturer"="Rax | 77"
+"Model"="RaxOS"
+"SupportURL"="https://discord.gg/5pXdNUq8bg"

@@ -1,0 +1,1 @@
+git archive -o "$(get-date -format "yyyy.MM.dd-HH.mm").zip" HEAD

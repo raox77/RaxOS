@@ -1,0 +1,46 @@
+Windows Registry Editor Version 5.00
+
+;   HKEY_CURRENT_USER\
+; becomes
+;   HKEY_USER\.DEFAULT\
+
+; disable ease of access features
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\MouseKeys]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\StickyKeys]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\Keyboard Response]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\ToggleKeys]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\HighContrast]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\SoundSentry]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\TimeOut]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\AudioDescription]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\Blind Access]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\Keyboard Preference]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\On]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\ShowSounds]
+"Flags"="0"
+
+[HKEY_USER\.DEFAULT\Control Panel\Accessibility\SlateLaunch]
+"Flags"="0"

@@ -1,0 +1,9 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig]
+"BypassTPMCheck"=dword:00000001 ; insider preview period ; Rufus
+"BypassSecureBootCheck"=dword:00000001 ; insider preview period ; Rufus
+"BypassRAMCheck"=dword:00000001 ; insider preview period ; Rufus
+"BypassCPUCheck"=dword:00000001 ; insider preview period ; strings.exe winsetup.dll | find /i "Bypass", don't appear to exist
+"BypassDiskCheck"=dword:00000001 ; strings.exe winsetup.dll | find /i "Bypass", don't appear to exist
+"BypassStorageCheck"=dword:00000001 ; strings.exe winsetup.dll | find /i "Bypass", don't appear to exist

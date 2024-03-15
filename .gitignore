@@ -1,0 +1,10 @@
+/extractImage
+/extractWIMImage
+/extractBootImage
+/_FINISH_ISO/*.iso
+/_UUPdump_ISO/*.iso
+*.iso
+*.wim
+*.esd
+*.zip
+autounattend.xml
