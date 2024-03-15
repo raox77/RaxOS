@@ -1,6 +1,6 @@
 # RaxOS
 
-## [Server Link](https://discord.gg/6Y5CZqWHFa) , [Faq](https://github.com/raox77/WinISO/blob/main/docs/Faq.md)
+## [Server Link](https://discord.gg/6Y5CZqWHFa) , [Faq](https://github.com/raox77/RaxOS/blob/main/Docs/Faq.md)
 
 ## Stripped / Not Working Features:
 - BitLocker Drive Encryption
