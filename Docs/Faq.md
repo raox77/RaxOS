@@ -53,4 +53,4 @@ The build number we can search and configure on [UUP dump](https://uupdump.net/)
 | *How to update windows*  :question: |
 |----------------------------------------------|
 
-**To update your windows the correct way you would need to apply windows default services then get download your update from [ Microsoft®Update Catalog](https://www.catalog.update.microsoft.com/Home.aspx) download and install latest **Security** update
+**To update your windows the correct way you would need to apply windows default services then get download your update from [ Microsoft®Update Catalog](https://www.catalog.update.microsoft.com/Home.aspx) download and install latest **Security** update**
