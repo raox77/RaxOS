@@ -34,7 +34,7 @@ Set-ExecutionPolicy Unrestricted
 
 **Enable Meltdown if you play Faceit 'https://www.grc.com/inspectre.htm'**
 
-| *Why is my network speed slow*  :question: |     Set-ExecutionPolicy Unrestricted
+| *Why is my network speed slow*  :question: |
 |----------------------------------------------|
 
 **Update your drivers**
