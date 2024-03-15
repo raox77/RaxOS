@@ -20,6 +20,10 @@ The build number we can search and configure on [UUP dump](https://uupdump.net/)
 2. Place your .ISO file into _UUPdump_ISO
 3. Edit HereWeGo.ps1 rename ISO_Image to the same name that downloaded
 4. Open Powershell and cd to wherever HereWeGo.ps1 is located and then run it ***Do not run it by right clicking and Run with Powershell***
+5. If you got any error "about_Execution_Policies" run this command in powershell 
+```powershell
+Set-ExecutionPolicy Unrestricted
+```
 
 ---
 
@@ -30,7 +34,7 @@ The build number we can search and configure on [UUP dump](https://uupdump.net/)
 
 **Enable Meltdown if you play Faceit 'https://www.grc.com/inspectre.htm'**
 
-| *Why is my network speed slow*  :question: |
+| *Why is my network speed slow*  :question: |     Set-ExecutionPolicy Unrestricted
 |----------------------------------------------|
 
 **Update your drivers**
