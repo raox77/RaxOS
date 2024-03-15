@@ -14,12 +14,12 @@ Why? Using Spddl Winiso-Wizard is much eaiser to use because i know what i remov
 The build number we can search and configure on [UUP dump](https://uupdump.net/).
 - Language: (personal preferences)
 - Edition: I recommend to select only "Windows Pro"
-- Download method: "Download and convert to ISO" with the checkbox "Include updates (Windows converter only) & "Run component cleanup (Windows converter only)".
-1. After Downloading the .Zip Extract it then Run uup_download_windows.cmd.
-2. Download the github files [Here](https://github.com/raox77/RaxOS/archive/refs/heads/main.zip)
-3. Place your .ISO file into _UUPdump_ISO
-4. Edit HereWeGo.ps1 rename ISO_Image to the same name that downloaded
-5. Open Powershell and cd to wherever HereWeGo.ps1 is located and then run it ***Do not run it by right clicking and Run with Powershell***
+- Download method: "Download and convert to ISO" with the checkbox "Include updates (Windows converter only) & "Run component cleanup (Windows converter only)"
+- After Downloading the .Zip Extract it then Run uup_download_windows.cmd.
+1. Download the github files [Here](https://github.com/raox77/RaxOS/archive/refs/heads/main.zip)
+2. Place your .ISO file into _UUPdump_ISO
+3. Edit HereWeGo.ps1 rename ISO_Image to the same name that downloaded
+4. Open Powershell and cd to wherever HereWeGo.ps1 is located and then run it ***Do not run it by right clicking and Run with Powershell***
 
 ---
 
