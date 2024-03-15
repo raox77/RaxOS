@@ -24,6 +24,10 @@ The build number we can search and configure on [UUP dump](https://uupdump.net/)
 ```powershell
 Set-ExecutionPolicy Unrestricted
 ```
+6. Or open cmd cd to Root folder and run this command
+```bat
+PowerShell.exe -ExecutionPolicy Bypass -File _HereWeGo.ps1
+```
 
 ---
 
