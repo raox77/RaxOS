@@ -482,12 +482,18 @@ PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Serv
 )
 cls
 
-Echo "Disable Background apps"
+Echo "Setting Timer Resolution"
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" /f
+cls
+
+Echo "Disable Background apps & Deleting TimerRes on W10"
 ver | findstr /i "10\.0\.[0-1][0-8][0-9][0-9][0-9]*" > nul
 if %errorlevel% equ 0 (
     Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t Reg_DWORD /d "1" /f >nul 2>&1
     Reg add "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t Reg_DWORD /d "2" /f >nul 2>&1
     Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle" /t Reg_DWORD /d "0" /f >nul 2>&1
+    Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" >nul 2>&1
+    del /q "C:\Windows\SetTimerResolution.exe" >nul 2>&1
     cls
 ) else (
     echo "This script is compatible with Windows build 19045 or lower."
