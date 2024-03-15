@@ -487,7 +487,7 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolu
 cls
 
 Echo "Disable Background apps & Deleting TimerRes on W10"
-ver | findstr /i "10\.0\.[0-1][0-8][0-9][0-9][0-9]*" > nul
+ver | findstr /i "10\.0\.[0-1][0-9][0-9][0-9][0-9]*" > nul
 if %errorlevel% equ 0 (
     Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t Reg_DWORD /d "1" /f >nul 2>&1
     Reg add "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t Reg_DWORD /d "2" /f >nul 2>&1
