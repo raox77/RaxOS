@@ -17,10 +17,10 @@ $Global:VerbosePreference = 'Continue'
 $Global:DebugPreference = 'Continue'
 
 $Global:Debug = $false
-$Global:OSName = "WinISO_Wizard"
+$Global:OSName = 'WinISO_Wizard'
 
 $data = @(
-     [pscustomobject]@{ ProjectName = 'RaxOS'; ISO_Image = '22631.3235.240225-1138.23H2_NI_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO' }
+    [pscustomobject]@{ ProjectName = 'RaxOS'; ISO_Image = '22631.3235.240225-1138.23H2_NI_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO' }
 )
 
 foreach ($item in $data) {
@@ -30,28 +30,37 @@ foreach ($item in $data) {
     $item | Add-Member -MemberType NoteProperty -Name Version -Value {}
     $Global:settings = [pscustomobject]$item
 
-    Write-Host ((Get-Date).ToString("HH:mm:ss"), "ISO: $($item.ProjectName) {0:hh}h:{0:mm}m:{0:ss}s" -f (Measure-Command {
-        #
-        0_Preparation
-        1_ISO_unpack
+    try {
+        Write-Host ((Get-Date).ToString('HH:mm:ss'), "ISO: $($item.ProjectName) {0:hh}h:{0:mm}m:{0:ss}s" -f (Measure-Command {
+                    #
+                    0_Preparation
+                    1_ISO_unpack
 
-        boot_1_Backup
-        boot_2_TPM_ByPass
-        boot_3_Dismount_Image
+                    boot_1_Backup
+                    boot_2_TPM_ByPass
+                    boot_3_Dismount_Image
 
-        image_1_Backup
-        image_2_extractWIM
-        image_3_AppxProvisionedPackage
-        image_4_CleanUp
-        image_5_AddDotNet
-        image_6_CopyFileSystem
-        image_7_Registry
-        image_8_Dismount_Image
+                    image_1_Backup
+                    image_2_extractWIM
+                    image_3_AppxProvisionedPackage
+                    image_4_CleanUp
+                    image_5_AddDotNet
+                    image_6_CopyFileSystem
+                    image_7_Registry
+                    image_8_Dismount_Image
 
-        2_CopyData
-        3_ISO_create
-        #
-    })) -ForegroundColor Yellow
-    [gc]::collect()
-    [gc]::WaitForPendingFinalizers()
+                    2_CopyData
+                    3_ISO_create
+                    #
+                })) -ForegroundColor Yellow
+        [gc]::collect()
+        [gc]::WaitForPendingFinalizers()
+    } Catch {
+        $item | Format-Table | Out-String | Write-Host
+        Write-Host $_.Exception.Message -Foreground Red
+        Write-Host $_.ScriptStackTrace -Foreground DarkGray
+        [console]::beep(800, 200)
+        Pause
+        exit 1
+    }
 }
