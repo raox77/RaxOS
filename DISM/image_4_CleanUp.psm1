@@ -60,7 +60,7 @@ function image_4_CleanUp {
         "Windows\HelpPane.exe",
         "Windows\SysWOW64\help.exe",
         "Windows\System32\help.exe",
-        "Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.Ink",
+        "Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk",
         "Windows\WinSxS\Backup"
     ) | ForEach-Object {
         Invoke-Command $deleteFiles -ArgumentList "$RootDir\extractWIMImage\$_"
