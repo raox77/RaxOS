@@ -8,8 +8,8 @@ If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     Exit
 }
 
-Get-ChildItem .\DISM -Filter *.psm1 | ForEach-Object {
-    Import-Module .\DISM\$_ -Force
+Get-ChildItem $PSScriptRoot\DISM -Filter *.psm1 -Name | ForEach-Object {
+    Import-Module $PSScriptRoot\DISM\$_ -Force
 }
 
 $Global:ErrorActionPreference = 'Stop'
@@ -20,8 +20,26 @@ $Global:Debug = $false
 $Global:OSName = 'WinISO_Wizard'
 
 $data = @(
-    [pscustomobject]@{ ProjectName = 'RaxOS'; ISO_Image = '22631.3235.240225-1138.23H2_NI_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO' }
+    # [pscustomobject]@{ ProjectName = 'RaxOS'; ISO_Image = '22631.3235.240225-1138.23H2_NI_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO' }
 )
+
+If ($data.Count -eq 0) {
+    [System.Reflection.Assembly]::LoadWithPartialName('System.windows.forms') | Out-Null
+
+    $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
+    $OpenFileDialog.Multiselect = $true
+    if (Test-Path $PSScriptRoot\_UUPdump_ISO -PathType Container) {
+        $OpenFileDialog.initialDirectory = "$PSScriptRoot\_UUPdump_ISO"
+    } else {
+        $OpenFileDialog.initialDirectory = $PSScriptRoot
+    }
+    $OpenFileDialog.filter = 'Windows UUP Dump Image (*.iso)|*iso'
+    $OpenFileDialog.ShowDialog() | Out-Null
+
+    foreach ($FileName in $OpenFileDialog.SafeFileNames) {
+        $data += [pscustomobject]@{ ISO_Image = $FileName }
+    }
+} 
 
 foreach ($item in $data) {
     Clear-Variable settings -Scope Global -ErrorAction SilentlyContinue
