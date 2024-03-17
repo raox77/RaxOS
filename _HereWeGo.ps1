@@ -20,7 +20,7 @@ $Global:Debug = $false
 $Global:OSName = 'WinISO_Wizard'
 
 $data = @(
-    # [pscustomobject]@{ ProjectName = 'RaxOS'; ISO_Image = '22631.3235.240225-1138.23H2_NI_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO' }
+     [pscustomobject]@{ ProjectName = 'RaxOS'; ISO_Image = '22631.3235.240225-1138.23H2_NI_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO' }
 )
 
 If ($data.Count -eq 0) {
