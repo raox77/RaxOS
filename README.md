@@ -22,3 +22,11 @@
 [Phlegm](https://dsc.gg/ggos)
 [Revi team](https://github.com/meetrevision)
 [Spddl](https://github.com/spddl)
+
+<a href="https://star-history.com/#raox77/RaxOS&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=raox77/RaxOS&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=raox77/RaxOS&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=raox77/RaxOS&type=Date" />
+ </picture>
+</a>
