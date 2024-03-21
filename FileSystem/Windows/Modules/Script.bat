@@ -64,15 +64,18 @@ Reg.exe delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "DisableNo
 cls
 
 Echo "Editing Bcdedit"
-bcdedit /set {current} description "RaxOS"
 bcdedit /set {current} nx optin
-label C: RaxOS
 bcdedit /set disabledynamictick yes
 bcdedit /deletevalue useplatformclock
 bcdedit /set bootmenupolicy legacy
 bcdedit /set hypervisorlaunchtype off
 bcdedit /set isolatedcontext No
+bcdedit /set {globalsettings} custom:16000067 true
+bcdedit /set {globalsettings} custom:16000068 true
+bcdedit /set {globalsettings} custom:16000069 true
 bcdedit /timeout 10
+bcdedit /set {current} description "RaxOS"
+label C: RaxOS
 cls
 
 Echo "Restore old context menu"
