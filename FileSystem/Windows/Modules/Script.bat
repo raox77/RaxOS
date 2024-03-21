@@ -69,17 +69,9 @@ bcdedit /set {current} nx optin
 label C: RaxOS
 bcdedit /set disabledynamictick yes
 bcdedit /deletevalue useplatformclock
-bcdedit /set bootux disabled
 bcdedit /set bootmenupolicy legacy
 bcdedit /set hypervisorlaunchtype off
-bcdedit /set quietboot yes
-bcdedit /set debug No
-bcdedit /set ems No
-bcdedit /set vm No
-bcdedit /set {globalsettings} custom:16000067 true
-bcdedit /set {globalsettings} custom:16000068 true
-bcdedit /set {globalsettings} custom:16000069 true
-bcdedit /set {current} recoveryenabled no
+bcdedit /set isolatedcontext No
 bcdedit /timeout 10
 cls
 
@@ -529,6 +521,7 @@ if "%DEVICE_TYPE%" == "LAPTOP" (
     Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f  >nul 2>&1
     cls
 )
+cls
 
 Echo "Creating RaxOS Services Backup"
 set BACKUP="C:\Windows\srvbackup\RaxOS-Default-services.reg"
