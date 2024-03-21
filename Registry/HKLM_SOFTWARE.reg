@@ -269,6 +269,39 @@ Windows Registry Editor Version 5.00
 "Enable"=dword:00000000
 "Enforce"=dword:00000000
 
+; configure oobe
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE]
+"HideOnlineAccountScreens"=dword:00000001
+"HideEULAPage"=dword:00000001
+"SkipMachineOOBE"=dword:00000000
+"SkipUserOOBE"=dword:00000000
+"HideWirelessSetupInOOBE"=dword:00000001
+"NetworkLocation"="Home"
+"ProtectYourPC"=dword:00000003
+"DisablePrivacyExperience"=dword:00000001
+"HideOEMRegistrationScreen"=dword:00000001
+"EnableCortanaVoice"=dword:00000000
+"DisableVoice"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OOBE]
+"HideOnlineAccountScreens"=dword:00000001
+"HideEULAPage"=dword:00000001
+"SkipMachineOOBE"=dword:00000000
+"SkipUserOOBE"=dword:00000000
+"HideWirelessSetupInOOBE"=dword:00000001
+"NetworkLocation"="Home"
+"ProtectYourPC"=dword:00000003
+"DisablePrivacyExperience"=dword:00000001
+"HideOEMRegistrationScreen"=dword:00000001
+"EnableCortanaVoice"=dword:00000000
+"DisableVoice"=dword:00000001
+
+; hide useless settings
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"SettingsPageVisibility"="hide:recovery;autoplay;usb;maps;maps-downloadmaps;findmydevice;privacy;privacy-speechtyping;privacy-speech;privacy-feedback;privacy-activityhistory;search-permissions;privacy-location;privacy-general;sync;printers;cortana-windowssearch;mobile-devices;mobile-devices-addphone;family-group;deviceusage;home;windowsupdate"
+
 ; disable news and interests on the taskbar
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\NewsAndInterests\AllowNewsAndInterests]
@@ -279,6 +312,11 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds]
 "EnableFeeds"=dword:00000000
+
+; disable show recently added apps on startmenu
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"HideRecentlyAddedApps"=dword:00000001
 
 ; disable windows ink workspace
 
