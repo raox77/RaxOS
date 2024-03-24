@@ -20,6 +20,8 @@ Windows Registry Editor Version 5.00
 "DeferQualityUpdates"=dword:00000001
 "DeferQualityUpdatesPeriodInDays"=dword:00000003
 "PauseQualityUpdatesStartTime"=""
+"TargetReleaseVersion"="23H2"
+"ProductVersion"="Windows 11"
 
 ; disable feature updates
 
