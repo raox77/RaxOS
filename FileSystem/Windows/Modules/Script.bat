@@ -70,6 +70,9 @@ bcdedit /deletevalue useplatformclock
 bcdedit /set bootmenupolicy legacy
 bcdedit /set hypervisorlaunchtype off
 bcdedit /set isolatedcontext No
+bcdedit /set vsmlaunchtype Off 
+bcdedit /set vm No
+bcdedit /set disableelamdrivers Yes
 bcdedit /set {globalsettings} custom:16000067 true
 bcdedit /set {globalsettings} custom:16000068 true
 bcdedit /set {globalsettings} custom:16000069 true
