@@ -61,7 +61,28 @@ function image_4_CleanUp {
         "Windows\SysWOW64\help.exe",
         "Windows\System32\help.exe",
         "Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk",
-        "Windows\WinSxS\Backup"
+        "Windows\WinSxS\Backup",
+        "Windows\PolicyDefinitions\MicrosoftEdge.admx",
+        "Windows\servicing\InboxFodMetadataCache\metadata\Microsoft.Wallpapers.Extended~~1.0.mum",
+        "Windows\servicing\Packages\Microsoft-Windows-Shell-Wallpaper-Common-Package~31bf3856ad364e35~amd64~~10.0.22621.2506.cat",
+        "Windows\servicing\Packages\microsoft-windows-wallpaper-content-extended-fod-package-Wrapper~31bf3856ad364e35~amd64~~10.0.22621.3296.cat",
+        "Windows\servicing\Packages\Microsoft-Windows-Wallpaper-Content-Extended-FoD-Package~31bf3856ad364e35~amd64~~10.0.22621.3296.cat",
+        "Windows\servicing\Packages\Microsoft-Windows-Wallpaper-Content-Extended-Package~31bf3856ad364e35~amd64~~10.0.22621.1.cat",
+        "Windows\servicing\Packages\Microsoft-Windows-Shell-Wallpaper-Common-Package~31bf3856ad364e35~amd64~~10.0.22621.2506.mum",
+        "Windows\servicing\Packages\microsoft-windows-wallpaper-content-extended-fod-package-Wrapper~31bf3856ad364e35~amd64~~10.0.22621.3296.mum",
+        "Windows\servicing\Packages\Microsoft-Windows-Wallpaper-Content-Extended-FoD-Package~31bf3856ad364e35~amd64~~10.0.22621.3296.mum",
+        "Windows\servicing\Packages\Microsoft-Windows-Wallpaper-Content-Extended-Package~31bf3856ad364e35~amd64~~10.0.22621.1.mum",
+        "Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-Windows-Shell-Wallpaper-Common-Package~31bf3856ad364e35~amd64~~10.0.22621.2506.cat",
+        "Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\microsoft-windows-wallpaper-content-extended-fod-package-Wrapper~31bf3856ad364e35~amd64~~10.0.22621.3296.cat",
+        "Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-Windows-Wallpaper-Content-Extended-FoD-Package~31bf3856ad364e35~amd64~~10.0.22621.3296.cat",
+        "Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-Windows-Wallpaper-Content-Extended-Package~31bf3856ad364e35~amd64~~10.0.22621.1.cat",
+        "Windows\System32\edgeangle.dll",
+        "Windows\System32\EdgeContent.dll",
+        "Windows\System32\EdgeResetPlugin.dll",
+        "Windows\System32\MicrosoftEdgeBCHost.exe",
+        "Windows\System32\MicrosoftEdgeCP.exe",
+        "Windows\System32\MicrosoftEdgeDevTools.exe",
+        "Windows\System32\MicrosoftEdgeSH.exe"
     ) | ForEach-Object {
         Invoke-Command $deleteFiles -ArgumentList "$RootDir\extractWIMImage\$_"
     }
