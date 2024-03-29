@@ -11,6 +11,19 @@ function 1_ISO_unpack {
         Start-Process -FilePath $RootDir\Tools\7z.exe -ArgumentList "x -y -o`"$RootDir\extractImage`" `"$RootDir\_UUPdump_ISO\$ISO_Image`"" -NoNewWindow -Wait
     })) -ForegroundColor Yellow
 
+    Get-ChildItem -Path "$RootDir\extractImage" -Exclude bootmgr.efi, bootmgr, sources, efi, boot | ForEach-Object -Process {
+    Remove-Item -Path $_.FullName -Force -Recurse
+}
+
+    $Execution = 'boot.wim', 'install.wim', 'setup.exe'
+    Get-ChildItem -LiteralPath "$RootDir\extractImage\sources" -Recurse | ForEach-Object -Process {
+    if ($Execution -contains $_.Name) {
+        Write-Host 'IGNORE:' $_.Name -ForegroundColor Gray
+    } else {
+        Remove-Item -Path $_.FullName -Force -Recurse
+    }
+}
+
     if (Test-Path -Path "$RootDir\extractImage\sources\install.esd" -PathType Leaf) {
         Start-Process "$RootDir\Tools\wimlib-imagex.exe" -ArgumentList "info `"$RootDir\extractImage\sources\install.esd`" --extract-xml $RootDir\info" -NoNewWindow -Wait
     } elseif (Test-Path -Path "$RootDir\extractImage\sources\install.wim" -PathType Leaf) {

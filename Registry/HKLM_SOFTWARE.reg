@@ -183,17 +183,27 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Update]
 "DisableScanOnUpdate"=dword:00000001
 
-; configure smartscreen
+; disable defender stuff
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SmartScreen]
-"ConfigureAppInstallControlEnabled"=dword:00000001
-"ConfigureAppInstallControl"="Anywhere"
+"ConfigureAppInstallControlEnabled"=dword:00000000
+"ConfigureAppInstallControl"=dword:00000000
+"EnableSmartScreen"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\System]
 "EnableSmartScreen"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
 "EnabledV9"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"SmartScreenEnabled"="Off"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost]
+"EnableWebContentEvaluation"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender]
+"PUAProtection"=dword:00000000
 
 ; hide windows security systray
 
@@ -790,9 +800,6 @@ Windows Registry Editor Version 5.00
 "debugger"="noop.exe"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\AggregatorHost.exe]
-"debugger"="noop.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mobsync.exe]
 "debugger"="noop.exe"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\FeatureLoader.exe]

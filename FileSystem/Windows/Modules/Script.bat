@@ -200,6 +200,10 @@ powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Sc
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan Static Task" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Wake To Work" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Start Oobe Expedite Work" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Cleanup" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Verification" >nul 2>&1
 cls
 
 Echo "Creating Default Services Backup"
@@ -280,8 +284,8 @@ for %%z in (
       AJRouter
       ALG
       AssignedAccessManagerSvc
-	AppVClient
-	AppIDSvc
+      AppVClient
+      AppIDSvc
       autotimesvc
       AxInstSV
       AarSvc
@@ -291,17 +295,17 @@ for %%z in (
       acpitime
       arcsas
       BDESVC
-	Beep
+      Beep
       BcastDVRUserService
-	bthleenum
-	BTHMODEM
-	BthA2dp
-	BthEnum
-	BthHFEnum
-	BTAGService
-	bthserv
-	BluetoothUserService
-	BthAvctpSvc
+      bthleenum
+      BTHMODEM
+      BthA2dp
+      BthEnum
+      BthHFEnum
+      BTAGService
+      bthserv
+      BluetoothUserService
+      BthAvctpSvc
       bttflt
       HidBth
       BthMini
@@ -312,10 +316,10 @@ for %%z in (
       COMSysApp
       ConsentUXUserSvc
       CscService
-	cdrom
-	cnghwassist
+      cdrom
+      cnghwassist
       cloudidsvc
-	CldFlt
+      CldFlt
       cdfs
       circlass
       CompositeBus
@@ -333,25 +337,25 @@ for %%z in (
       DevQueryBroker
       DmEnrollmentSvc
       dam
-	ehstorclass
+      ehstorclass
       ehstortcgdrv
       embeddedmode
       EapHost
       EFS
       EntAppSvc
-	FontCache
-	FontCache3.0.0.0
+      FontCache
+      FontCache3.0.0.0
       fdPHost
       fhsvc
       FDResPub
       GraphicsPerfSvc
-	gencounter
+      gencounter
       GameInputSvc
-	hyperkbd
-	hypervideo
-	hvservice
-	hvcrash
-	HvHost
+      hyperkbd
+      hypervideo
+      hvservice
+      hvcrash
+      HvHost
       IpxlatCfgSvc
       lfsvc
       lltdio
@@ -360,26 +364,26 @@ for %%z in (
       InventorySvc
       lltsdvc
       IKEEXT
-	lmhosts
+      lmhosts
       KtmRM
       MSiSCSI
       MessagingService
       McpManagementService
       mslldp
       MixedRealityOpenXRSvc
-	microsoft_bluetooth_avrcptransport
+      microsoft_bluetooth_avrcptransport
       MapsBroker
       Ndu
-	NetBIOS
-	NetBT
+      NetBIOS
+      NetBT
       NetTcpPortSharing
       NaturalAuthentication
       NPSMSvc
-	OneSyncSvc
+      OneSyncSvc
       UsoSvc
-	PcaSvc
+      PcaSvc
       PimIndexMaintenanceSvc
-	printworkflowusersvc
+      printworkflowusersvc
       PolicyAgent
       PrintNotify
       PenService
@@ -401,11 +405,11 @@ for %%z in (
       RasAcd
       RDPDR
       RdpVideominiport
-	RmSvc
-	RFCOMM
+      RmSvc
+      RFCOMM
       SharedAccess
-	SysMain
-	ShellHWDetection
+      SysMain
+      ShellHWDetection
       SCardSvr
       ScDeviceEnum
       SCPolicySvc
@@ -418,15 +422,17 @@ for %%z in (
       swprv
       spectrum
       SharedRealitySvc
-	spooler
+      spooler
       SEMgrSvc
       SSDPSRV
       storflt
       SmsRouter
-	spaceport
-	Themes
-	TrkWks
-	tzautoupdate
+      spaceport
+      SgrmAgent
+      SgrmBroker
+      Themes
+      TrkWks
+      tzautoupdate
       troubleshootingsvc
       TapiSrv
       terminpt
@@ -439,20 +445,20 @@ for %%z in (
       upnphost
       UserDataSvc
       UnistoreSvc
-	udfs
+      udfs
       UmRdpService
       VacSvc
       Vid
-	vmickvpexchange
-	vmicguestinterface
-	vmicshutdown
-	vmicheartbeat
-	vmicvmsession
+      vmickvpexchange
+      vmicguestinterface
+      vmicshutdown
+      vmicheartbeat
+      vmicvmsession
       vpci
-	vmicrdv
-	vmictimesync
-	vmicvss
-	vmgid
+      vmicrdv
+      vmictimesync
+      vmicvss
+      vmgid
       VSS
       W32Time
       WaaSMedicSvc
@@ -465,16 +471,18 @@ for %%z in (
       wercplsupport
       WSearch
       WPDBusEnum
-	wdiservicehost
+      wdiservicehost
       WarpJITSvc
       wisvc
       wlpasvc
       wmpApSrv
-	wdisystemhost
+      wdisystemhost
       WMPNetworkSvc
       WpcMonSvc
       wmiApSrv
       WebClient
+      webthreatdefsvc
+      webthreatdefusersvc
 ) do (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
 )

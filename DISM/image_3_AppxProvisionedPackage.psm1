@@ -15,7 +15,6 @@ function image_3_AppxProvisionedPackage {
         $_.DisplayName -ne "Microsoft.Paint" -and `
         $_.DisplayName -notlike "Microsoft.UI.Xaml.*" -and `
         $_.DisplayName -notlike "Microsoft.VCLibs*" -and `
-        $_.DisplayName -notlike "Microsoft.SecHealthUI*" -and `
         $_.DisplayName -notlike "Microsoft.WindowsStore*" -and `
         $_.DisplayName -notlike "Microsoft.NET.Native.Framework.*" -and `
         $_.DisplayName -notlike "Microsoft.NET.Native.Runtime.*" -and `
