@@ -289,7 +289,6 @@ function image_4_CleanUp {
                 $_.Name -ne "Shared" -and `
                 $_.Name -ne "ShellExperienceHost_cw5n1h2txyewy" -and `
                 $_.Name -ne "Microsoft.Windows.Search_cw5n1h2txyewy" -and `
-                $_.Name -ne "Microsoft.Windows.SecHealthUI_cw5n1h2txyewy" -and `
                 $_.Name -ne "Windows.CBSPreview_cw5n1h2txyewy"
             } | ForEach-Object {
                 Invoke-Command $deleteFiles -ArgumentList "$RootDir\extractWIMImage\Windows\SystemApps\$_"
