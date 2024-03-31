@@ -192,9 +192,26 @@ powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsToastT
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsUpdateTask" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\defrag\ScheduledDefrag" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\RecommendedTroubleshootingScanner" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DUSM\dusmtask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\FileHistory\File History (maintenance mode)" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\defrag\ScheduledDefrag" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Printing\EduPrintProv" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Printing\PrinterCleanupTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Printing\PrintJobCleanupTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\RemoteAssistance\RemoteAssistanceTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\ResPriStaticDbSync" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\WsSwapAssessmentTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\UPnP\UPnPHostConfig" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskFootprint\StorageSense" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Chkdsk\ProactiveScan" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Chkdsk\SyspartRepair" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Data Integrity Scan\Data Integrity Check And Scan" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Data Integrity Scan\Data Integrity Scan" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Data Integrity Scan\Data Integrity Scan for Crash Recovery" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\TaskScheduler" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WaaSMedic" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WindowsUpdate" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan Static Task" >nul 2>&1
@@ -204,6 +221,22 @@ powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Wind
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Cleanup" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Verification" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\BitLocker\BitLocker Encrypt All Drives" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\BitLocker\BitLocker MDM policy Refresh" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\BitLocker" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP\EDP App Launch Task" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP\EDP Auth Task" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP\EDP Inaccessible Credentials Task" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP\StorageCardEncryption Task" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RecoveryEnvironment\VerifyWinRE" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RecoveryEnvironment" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\SharedPC\Account Cleanup" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\SharedPC" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\SyncCenter" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RetailDemo\CleanupOfflineContent" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RetailDemo" >nul 2>&1
 cls
 
 Echo "Creating Default Services Backup"
@@ -294,7 +327,6 @@ for %%z in (
       acpipmi
       acpitime
       arcsas
-      BDESVC
       Beep
       BcastDVRUserService
       bthleenum
