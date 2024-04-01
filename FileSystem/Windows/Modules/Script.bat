@@ -18,6 +18,10 @@ Echo "Disabling reserved storage"
 DISM /Online /Set-ReservedStorageState /State:Disabled >nul 2>&1
 cls
 
+Echo "Set the maximum password age to never expire"
+net accounts /maxpwage:unlimited >nul 2>&1
+cls
+
 Echo "Configuring "Keyboard and Mouse Settings"
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "InitialKeyboardIndicators" /t REG_SZ /d "0" /f >nul 2>&1
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "KeyboardDelay" /t REG_SZ /d "0" /f >nul 2>&1
@@ -354,7 +358,6 @@ for %%z in (
       DPS
       diagnosticshub.standardcollector.service
       dmwappushservice
-      dcsvc
       DevQueryBroker
       DmEnrollmentSvc
       dam

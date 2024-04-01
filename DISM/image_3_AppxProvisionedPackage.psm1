@@ -52,7 +52,13 @@ function image_3_AppxProvisionedPackage {
             $_.Name -like "App.Support.QuickAssist*" -or `
             $_.Name -like "Print.Fax.Scan*" -or `
             $_.Name -like "OneCoreUAP.OneSync*" -or `
-            $_.Name -like "Media.WindowsMediaPlayer*" `
+            $_.Name -like "Media.WindowsMediaPlayer*" -or `
+            $_.Name -like "Language.Handwriting*" -or `
+            $_.Name -like "Language.OCR*" -or `
+            $_.Name -like "Language.Speech*" -or `
+            $_.Name -like "Language.TextToSpeech*" -or `
+            $_.Name -like "Language.Basic*" -or `
+            $_.Name -like "Microsoft.Wallpapers.Extended*" `
         )
     } | ForEach-Object {
         try {

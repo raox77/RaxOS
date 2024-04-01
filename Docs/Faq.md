@@ -50,20 +50,3 @@ PowerShell.exe -ExecutionPolicy Bypass -File _HereWeGo.ps1
 
 | *How to fix "X" not working*  :question: |
 |----------------------------------------------|
-
-**Revert To Windows Deafult Services in 3-Services folder**
-
-| *How to fix can`t find Windows Default services*  :question: |
-|----------------------------------------------|
-
-**Disable Defender**
-
-| *How to update windows*  :question: |
-|----------------------------------------------|
-
-**To update your windows the correct way you would need to apply windows default services then get download your update from [ Microsoft®Update Catalog](https://www.catalog.update.microsoft.com/Home.aspx) download and install latest **Security** update**
-
-| *How do i skip microsoft account in oobe*  :question: |
-|----------------------------------------------|
-
-**https://www.tomshardware.com/how-to/install-windows-11-without-microsoft-account**

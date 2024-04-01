@@ -139,6 +139,7 @@ Windows Registry Editor Version 5.00
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RetailDemo]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\shpamsvc]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wisvc]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dcsvc]
 
 ; block CEIP, Telemetry, and Windows Insider via Firewall
 
