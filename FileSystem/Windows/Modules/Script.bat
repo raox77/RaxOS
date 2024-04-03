@@ -85,11 +85,6 @@ bcdedit /set {current} description "RaxOS"
 label C: RaxOS
 cls
 
-Echo "Restore old context menu"
-Reg add "HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32"
-@=""
-cls
-
 Echo "Disabling network adapters"
 powershell -NoProfile -Command "Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6, ms_msclient, ms_server, ms_rspndr, ms_lltdio, ms_implat, ms_lldp" >nul 2>&1
 cls
@@ -226,21 +221,9 @@ powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Wind
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Verification" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\BitLocker\BitLocker Encrypt All Drives" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\BitLocker\BitLocker MDM policy Refresh" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\BitLocker" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP\EDP App Launch Task" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP\EDP Auth Task" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP\EDP Inaccessible Credentials Task" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP\StorageCardEncryption Task" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\EDP" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RecoveryEnvironment\VerifyWinRE" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RecoveryEnvironment" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\SharedPC\Account Cleanup" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\SharedPC" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\SyncCenter" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RetailDemo\CleanupOfflineContent" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RetailDemo" >nul 2>&1
 cls
 
 Echo "Creating Default Services Backup"
@@ -284,12 +267,6 @@ cls
 Echo "Remove Share from context menu"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
-cls
-
-Echo "Removing Quick access"
-Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "HubMode" /t REG_DWORD /d "1" /f >nul 2>&1
-PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f >nul 2>&1
-PowerRun.exe /SW:0 Reg.exe add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f >nul 2>&1
 cls
 
 Echo "Set Sound Scheme to No Sound"
@@ -336,6 +313,7 @@ for %%z in (
       BthMini
       BTHPORT
       BTHUSB
+      BDESVC
       CertPropSvc
       CloudBackupRestoreSvc
       COMSysApp
@@ -361,6 +339,7 @@ for %%z in (
       DevQueryBroker
       DmEnrollmentSvc
       dam
+      dcsvc
       ehstorclass
       ehstortcgdrv
       EapHost
@@ -396,6 +375,7 @@ for %%z in (
       MixedRealityOpenXRSvc
       microsoft_bluetooth_avrcptransport
       MapsBroker
+      MSDTC
       Ndu
       NetBIOS
       NetBT
@@ -429,6 +409,7 @@ for %%z in (
       RdpVideominiport
       RmSvc
       RFCOMM
+      RetailDemo
       SharedAccess
       SysMain
       ShellHWDetection
@@ -452,6 +433,7 @@ for %%z in (
       spaceport
       SgrmAgent
       SgrmBroker
+      shpamsvc
       Themes
       TrkWks
       tzautoupdate
@@ -504,23 +486,36 @@ for %%z in (
       WebClient
       webthreatdefsvc
       webthreatdefusersvc
+      WiaRpc
 ) do (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
 )
 cls
 
-Echo "Setting Timer Resolution"
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" /f
+Echo "Windows 11 stuff"
+ver | findstr /b /c:"Version 10.0.1" >nul
+if %errorlevel% equ 0 (
+    echo "Skipping commands because it's Windows 10"
+) else (
+    ver | findstr /b /c:"Version 10.0.2" >nul
+    if %errorlevel% equ 0 (
+        echo "Running commands because it's Windows 11"
+        Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" /f > NUL 2>&1
+        Regedit.exe /s "C:\Modules\Classic Context.reg" /f > NUL 2>&1
+        Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "GlobalTimerResolutionRequests" /t REG_DWORD /d "1" /f > NUL 2>&1
+    ) else (
+        echo "This script is only for Windows 10 or 11"
+    )
+)
 cls
 
-Echo "Disable Background apps & Deleting TimerRes on W10"
+
+Echo "Windows 10 stuff"
 ver | findstr /i "10\.0\.[0-1][0-9][0-9][0-9][0-9]*" > nul
 if %errorlevel% equ 0 (
     Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t Reg_DWORD /d "1" /f >nul 2>&1
     Reg add "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t Reg_DWORD /d "2" /f >nul 2>&1
     Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle" /t Reg_DWORD /d "0" /f >nul 2>&1
-    Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" >nul 2>&1
-    Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "GlobalTimerResolutionRequests" >nul 2>&1
     del /q "C:\Windows\SetTimerResolution.exe" >nul 2>&1
     cls
 ) else (

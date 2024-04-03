@@ -3,6 +3,7 @@
 ## [Server Link](https://discord.gg/6Y5CZqWHFa) , [Faq](https://github.com/raox77/RaxOS/blob/main/Docs/Faq.md)
 
 ## Stripped / Not Working Features:
+- Action Center
 - BitLocker Drive Encryption
 - Windows Mail
 - Windows Recovery
@@ -10,8 +11,6 @@
 - Windows Insider
 - Settings Sync
 - Cloud Desktop
-- Microsoft To Do
-- Windows To Go
 
 ## Supported Builds:
 - Windows 10 22H2 `19045`

@@ -104,12 +104,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]
 "POWERSHELL_TELEMETRY_OPTOUT"="1"
 
-; fixing timing precision in Windows after "The Great Rule Change"
-; https://github.com/amitxv/TimerResolution
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
-"GlobalTimerResolutionRequests"=dword:00000001
-
 ; disable defender stuff
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\CI\Policy]
@@ -132,14 +126,10 @@ Windows Registry Editor Version 5.00
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MDCoreSvc]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BDESVC]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdate]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdatem]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\embeddedmode]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RetailDemo]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\shpamsvc]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wisvc]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dcsvc]
 
 ; block CEIP, Telemetry, and Windows Insider via Firewall
 
