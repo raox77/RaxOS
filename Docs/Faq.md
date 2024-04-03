@@ -27,7 +27,6 @@ Set-ExecutionPolicy Unrestricted
 ```bat
 PowerShell.exe -ExecutionPolicy Bypass -File _HereWeGo.ps1
 ```
-https://github.com/raox77/RaxOS/assets/116083042/632644dd-51fb-4e26-950a-1da14d0be843
 
 ---
 
