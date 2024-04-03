@@ -51,6 +51,8 @@ https://github.com/raox77/RaxOS/assets/116083042/632644dd-51fb-4e26-950a-1da14d0
 | *How to fix "X" not working*  :question: |
 |----------------------------------------------|
 
+**Revert To Windows Deafult Services in 3-Services folder**
+
 | *How to update windows*  :question: |
 |----------------------------------------------|
 
