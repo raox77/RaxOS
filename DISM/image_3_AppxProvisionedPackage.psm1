@@ -70,26 +70,6 @@ function image_3_AppxProvisionedPackage {
         }
     }
 
-    Get-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" | ForEach-Object {
-        try {
-            if ($_.State -eq "Enabled") {
-                Write-Verbose "'$($_.FeatureName)' will be switched off (Disable-WindowsOptionalFeature)"
-                Disable-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" -FeatureName $_.FeatureName
-            }
-        }
-        catch {
-            Write-Warning "Failed: $_"
-        }
-    }
-    Enable-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" -FeatureName 'LegacyComponents' -Verbose:$false
-    Enable-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" -FeatureName 'DirectPlay' -Verbose:$false
-    Enable-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" -FeatureName 'NetFx4-AdvSrvs' -Verbose:$false
-    if ($Debug -eq $true) {
-        Get-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" | where-object { $_.State -eq "Enabled" } | ForEach-Object {
-            Write-Verbose "'$($_.FeatureName)' remains on" -ForegroundColor Green
-        }
-    }
-
     # https://docs.microsoft.com/en-us/powershell/module/dism/get-nonremovableappspolicy
     # Get-NonRemovableAppsPolicy -Path "$RootDir\extractWIMImage" | Out-GridView -Passthru -Title "Get-NonRemovableAppsPolicy"
 }
