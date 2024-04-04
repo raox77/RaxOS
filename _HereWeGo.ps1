@@ -66,9 +66,9 @@ foreach ($item in $data) {
                     image_2_extractWIM
                     image_3_AppxProvisionedPackage
                     image_4_CleanUp
-                    image_5_CopyFileSystem
-                    image_6_Registry
-                    image_7_Dismount_Image
+                    image_6_CopyFileSystem
+                    image_7_Registry
+                    image_8_Dismount_Image
 
                     2_CopyData
                     3_ISO_create
@@ -85,15 +85,3 @@ foreach ($item in $data) {
         exit 1
     }
 }
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\22631.3296.240301-1734.23H2_NI_RELEASE_SVC_PROD1_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\22631.3296.240301-1734.23H2_NI_RELEASE_SVC_PROD1_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4123.240222-1942.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4123.240222-1942.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4123.240222-1942.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4123.240222-1942.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4239.240318-1332.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4239.240318-1332.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4239.240318-1332.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4239.240318-1332.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4239.240318-1332.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
-$selectedISOPath = 'D:\RaxWinOS\_UUPdump_ISO\19045.4239.240318-1332.22H2_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO'
