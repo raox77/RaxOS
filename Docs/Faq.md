@@ -10,7 +10,7 @@ Why? Using Spddl Winiso-Wizard is much eaiser to use because i know what i remov
 |----------------------------------------------|
 
 
-0. First we need a Windows ISO, if it is not clear which build number from which channel is the latest recommend using the overview [changewindows.org](https://changewindows.org/timeline/pc).
+0. First we need a Windows ISO, if it is not clear which build number from which channel is the latest recommend using the overview [changewindows](https://changewindows.org/platforms/pc).
 The build number we can search and configure on [UUP dump](https://uupdump.net/).
 - Language: (personal preferences)
 - Edition: I recommend to select only "Windows Pro"
