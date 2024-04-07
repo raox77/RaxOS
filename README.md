@@ -3,7 +3,6 @@
 ## [Server Link](https://discord.gg/6Y5CZqWHFa) , [Faq](https://github.com/raox77/RaxOS/blob/main/Docs/Faq.md)
 
 ## Stripped / Not Working Features:
-- Action Center
 - BitLocker Drive Encryption
 - Windows Mail
 - Windows Recovery
