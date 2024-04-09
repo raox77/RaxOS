@@ -136,6 +136,7 @@ function image_4_CleanUp {
         "ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\ODBC Data Sources (64-bit).lnk",
         "ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\System Configuration.lnk",
         "ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\RecoveryDrive.lnk",
+        "ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\Defragment and Optimize Drives.lnk",
         "Windows\SysWOW64\wpbcreds.dll",
         "Windows\SysWOW64\ctac.json",
         "Windows\System32\BingFilterDS.dll",
@@ -382,7 +383,10 @@ function image_4_CleanUp {
         "Windows\SysWOW64\winipcsecproc.dll",
         "Windows\SysWOW64\winmsipc.dll",
         "Windows\SysWOW64\WinMsoIrmProtector.dll",
-        "Windows\SysWOW64\WinOpcIrmProtector.dll"
+        "Windows\SysWOW64\WinOpcIrmProtector.dll",
+        "ProgramData\Microsoft\Windows\Start Menu\Programs\Accessibility",
+        "ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories",
+        "ProgramData\Microsoft\Windows\Start Menu\Programs\Maintenance"
     ) | ForEach-Object {
         Invoke-Command $deleteFiles -ArgumentList "$RootDir\extractWIMImage\$_"
     }
