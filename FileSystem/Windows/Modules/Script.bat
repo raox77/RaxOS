@@ -77,6 +77,7 @@ bcdedit /set isolatedcontext No
 bcdedit /set vsmlaunchtype Off 
 bcdedit /set vm No
 bcdedit /set disableelamdrivers Yes
+bcdedit /set {current} recoveryenabled no
 bcdedit /set {globalsettings} custom:16000067 true
 bcdedit /set {globalsettings} custom:16000068 true
 bcdedit /set {globalsettings} custom:16000069 true
@@ -247,6 +248,23 @@ cls
 Echo "Changing fsutil behaviors"
 fsutil behavior set disable8dot3 1 > NUL 2>&1
 fsutil behavior set disablelastaccess 1 > NUL 2>&1
+fsutil behavior set disabledeletenotify 0 > NUL 2>&1
+cls
+
+Echo "Disabling powersaving features"
+for %%a in (
+	EnhancedPowerManagementEnabled
+	AllowIdleIrpInD3
+	EnableSelectiveSuspend
+	DeviceSelectiveSuspended
+	SelectiveSuspendEnabled
+	SelectiveSuspendOn
+	WaitWakeEnabled
+	D3ColdSupported
+	WdfDirectedPowerTransitionEnable
+	EnableIdlePowerManagement
+	IdleInWorkingState
+) do for /f "delims=" %%b in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum" /s /f "%%a" ^| findstr "HKEY"') do Reg.exe add "%%b" /v "%%a" /t REG_DWORD /d "0" /f > NUL 2>&1
 cls
 
 Echo "Disable Driver PowerSaving"
@@ -563,6 +581,15 @@ cls
 
 Echo "Disable website access to language list"
 reg add "HKEY_CURRENT_USER\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut" /t REG_DWORD /d 1 /f
+cls
+
+Echo "Configure Steam, thanks imribiy"
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "SmoothScrollWebViews" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "DWriteEnable" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "StartupMode" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "H264HWAccel" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "DPIScaling" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "GPUAccelWebViews" /t REG_DWORD /d "0" /f
 cls
 
 Echo "Fix explorer white bar bug"
