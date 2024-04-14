@@ -6,6 +6,10 @@
 - BitLocker Drive Encryption
 - Windows Mail
 - Windows Recovery
+- Windows Defender
+- Windows Insider
+- Settings Sync
+- Cloud Desktop
 
 ## Supported Builds:
 - Windows 10 22H2 `19045`

@@ -18,6 +18,10 @@ Echo "Disabling reserved storage"
 DISM /Online /Set-ReservedStorageState /State:Disabled >nul 2>&1
 cls
 
+Echo "Set the maximum password age to never expire"
+net accounts /maxpwage:unlimited >nul 2>&1
+cls
+
 Echo "Configuring "Keyboard and Mouse Settings"
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "InitialKeyboardIndicators" /t REG_SZ /d "0" /f >nul 2>&1
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "KeyboardDelay" /t REG_SZ /d "0" /f >nul 2>&1
@@ -73,17 +77,13 @@ bcdedit /set isolatedcontext No
 bcdedit /set vsmlaunchtype Off 
 bcdedit /set vm No
 bcdedit /set disableelamdrivers Yes
+bcdedit /set {current} recoveryenabled no
 bcdedit /set {globalsettings} custom:16000067 true
 bcdedit /set {globalsettings} custom:16000068 true
 bcdedit /set {globalsettings} custom:16000069 true
 bcdedit /timeout 10
 bcdedit /set {current} description "RaxOS"
 label C: RaxOS
-cls
-
-Echo "Restore old context menu"
-Reg add "HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32"
-@=""
 cls
 
 Echo "Disabling network adapters"
@@ -192,14 +192,39 @@ powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsToastT
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsUpdateTask" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\defrag\ScheduledDefrag" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Diagnosis\RecommendedTroubleshootingScanner" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DUSM\dusmtask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\FileHistory\File History (maintenance mode)" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\defrag\ScheduledDefrag" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Printing\EduPrintProv" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Printing\PrinterCleanupTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Printing\PrintJobCleanupTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\RemoteAssistance\RemoteAssistanceTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\ResPriStaticDbSync" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\WsSwapAssessmentTask" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\UPnP\UPnPHostConfig" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\DiskFootprint\StorageSense" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Chkdsk\ProactiveScan" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Chkdsk\SyspartRepair" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Data Integrity Scan\Data Integrity Check And Scan" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Data Integrity Scan\Data Integrity Scan" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Data Integrity Scan\Data Integrity Scan for Crash Recovery" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\TaskScheduler" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WaaSMedic" >nul 2>&1
-powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WindowsUpdate" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan Static Task" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Wake To Work" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\UpdateOrchestrator\Start Oobe Expedite Work" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Cleanup" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender\Windows Defender Verification" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\Windows Defender" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RecoveryEnvironment\VerifyWinRE" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\RecoveryEnvironment" >nul 2>&1
+powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\SyncCenter" >nul 2>&1
 cls
 
 Echo "Creating Default Services Backup"
@@ -223,6 +248,23 @@ cls
 Echo "Changing fsutil behaviors"
 fsutil behavior set disable8dot3 1 > NUL 2>&1
 fsutil behavior set disablelastaccess 1 > NUL 2>&1
+fsutil behavior set disabledeletenotify 0 > NUL 2>&1
+cls
+
+Echo "Disabling powersaving features"
+for %%a in (
+	EnhancedPowerManagementEnabled
+	AllowIdleIrpInD3
+	EnableSelectiveSuspend
+	DeviceSelectiveSuspended
+	SelectiveSuspendEnabled
+	SelectiveSuspendOn
+	WaitWakeEnabled
+	D3ColdSupported
+	WdfDirectedPowerTransitionEnable
+	EnableIdlePowerManagement
+	IdleInWorkingState
+) do for /f "delims=" %%b in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum" /s /f "%%a" ^| findstr "HKEY"') do Reg.exe add "%%b" /v "%%a" /t REG_DWORD /d "0" /f > NUL 2>&1
 cls
 
 Echo "Disable Driver PowerSaving"
@@ -232,7 +274,6 @@ cls
 Echo "Enabling MSI mode & set to undefined"
 for /f %%i in ('wmic path Win32_USBController get PNPDeviceID^| findstr /L "PCI\VEN_"') do reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
 for /f %%i in ('wmic path Win32_USBController get PNPDeviceID^| findstr /L "PCI\VEN_"') do reg delete "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f >nul 2>nul
-:: Probably will be reset by installing GPU driver
 for /f %%i in ('wmic path Win32_VideoController get PNPDeviceID^| findstr /L "PCI\VEN_"') do reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
 for /f %%i in ('wmic path Win32_VideoController get PNPDeviceID^| findstr /L "PCI\VEN_"') do reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f >nul 2>nul
 for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID^| findstr /L "PCI\VEN_"') do reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
@@ -244,26 +285,6 @@ cls
 Echo "Remove Share from context menu"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
 reg add "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}" /t REG_SZ /d "" /f > nul
-cls
-
-Echo "Change NTP server to pool.ntp.org"
-w32tm /config /syncfromflags:manual /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org"
-SC queryex "w32time"|Find "STATE"|Find /v "RUNNING">Nul||(
-    net stop w32time
-)
-net start w32time
-w32tm /config /update
-w32tm /resync
-cls
-
-Echo "Removing Quick access"
-Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "HubMode" /t REG_DWORD /d "1" /f >nul 2>&1
-PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f >nul 2>&1
-PowerRun.exe /SW:0 Reg.exe add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f >nul 2>&1
-cls
-
-Echo "Set Sound Scheme to No Sound"
-powershell C:\Modules\sound.ps1 >nul 2>&1
 cls
 
 Echo "Disabling Drivers and Services"
@@ -280,8 +301,8 @@ for %%z in (
       AJRouter
       ALG
       AssignedAccessManagerSvc
-	AppVClient
-	AppIDSvc
+      AppVClient
+      AppIDSvc
       autotimesvc
       AxInstSV
       AarSvc
@@ -290,32 +311,32 @@ for %%z in (
       acpipmi
       acpitime
       arcsas
-      BDESVC
-	Beep
+      Beep
       BcastDVRUserService
-	bthleenum
-	BTHMODEM
-	BthA2dp
-	BthEnum
-	BthHFEnum
-	BTAGService
-	bthserv
-	BluetoothUserService
-	BthAvctpSvc
+      bthleenum
+      BTHMODEM
+      BthA2dp
+      BthEnum
+      BthHFEnum
+      BTAGService
+      bthserv
+      BluetoothUserService
+      BthAvctpSvc
       bttflt
       HidBth
       BthMini
       BTHPORT
       BTHUSB
+      BDESVC
       CertPropSvc
       CloudBackupRestoreSvc
       COMSysApp
       ConsentUXUserSvc
       CscService
-	cdrom
-	cnghwassist
+      cdrom
+      cnghwassist
       cloudidsvc
-	CldFlt
+      CldFlt
       cdfs
       circlass
       CompositeBus
@@ -329,29 +350,29 @@ for %%z in (
       DPS
       diagnosticshub.standardcollector.service
       dmwappushservice
-      dcsvc
       DevQueryBroker
       DmEnrollmentSvc
       dam
-	ehstorclass
+      dcsvc
+      ehstorclass
       ehstortcgdrv
-      embeddedmode
       EapHost
       EFS
       EntAppSvc
-	FontCache
-	FontCache3.0.0.0
+      FontCache
+      FontCache3.0.0.0
       fdPHost
       fhsvc
       FDResPub
       GraphicsPerfSvc
-	gencounter
+      gencounter
+      GpuEnergyDrv
       GameInputSvc
-	hyperkbd
-	hypervideo
-	hvservice
-	hvcrash
-	HvHost
+      hyperkbd
+      hypervideo
+      hvservice
+      hvcrash
+      HvHost
       IpxlatCfgSvc
       lfsvc
       lltdio
@@ -360,26 +381,27 @@ for %%z in (
       InventorySvc
       lltsdvc
       IKEEXT
-	lmhosts
+      lmhosts
       KtmRM
       MSiSCSI
       MessagingService
       McpManagementService
       mslldp
       MixedRealityOpenXRSvc
-	microsoft_bluetooth_avrcptransport
+      microsoft_bluetooth_avrcptransport
       MapsBroker
+      MSDTC
       Ndu
-	NetBIOS
-	NetBT
+      NetBIOS
+      NetBT
       NetTcpPortSharing
       NaturalAuthentication
       NPSMSvc
-	OneSyncSvc
+      OneSyncSvc
       UsoSvc
-	PcaSvc
+      PcaSvc
       PimIndexMaintenanceSvc
-	printworkflowusersvc
+      printworkflowusersvc
       PolicyAgent
       PrintNotify
       PenService
@@ -394,18 +416,18 @@ for %%z in (
       QWAVE
       QWAVEdrv
       rspndr
-	rdyboost
+      rdyboost
       rdpbus
-      RetailDemo
       RasAuto
       RasAcd
       RDPDR
       RdpVideominiport
-	RmSvc
-	RFCOMM
+      RmSvc
+      RFCOMM
+      RetailDemo
       SharedAccess
-	SysMain
-	ShellHWDetection
+      SysMain
+      ShellHWDetection
       SCardSvr
       ScDeviceEnum
       SCPolicySvc
@@ -418,15 +440,18 @@ for %%z in (
       swprv
       spectrum
       SharedRealitySvc
-	spooler
+      spooler
       SEMgrSvc
       SSDPSRV
       storflt
       SmsRouter
-	spaceport
-	Themes
-	TrkWks
-	tzautoupdate
+      spaceport
+      SgrmAgent
+      SgrmBroker
+      shpamsvc
+      Themes
+      TrkWks
+      tzautoupdate
       troubleshootingsvc
       TapiSrv
       terminpt
@@ -439,20 +464,20 @@ for %%z in (
       upnphost
       UserDataSvc
       UnistoreSvc
-	udfs
+      udfs
       UmRdpService
       VacSvc
       Vid
-	vmickvpexchange
-	vmicguestinterface
-	vmicshutdown
-	vmicheartbeat
-	vmicvmsession
+      vmickvpexchange
+      vmicguestinterface
+      vmicshutdown
+      vmicheartbeat
+      vmicvmsession
       vpci
-	vmicrdv
-	vmictimesync
-	vmicvss
-	vmgid
+      vmicrdv
+      vmictimesync
+      vmicvss
+      vmgid
       VSS
       W32Time
       WaaSMedicSvc
@@ -465,32 +490,37 @@ for %%z in (
       wercplsupport
       WSearch
       WPDBusEnum
-	wdiservicehost
+      wdiservicehost
       WarpJITSvc
-      wisvc
       wlpasvc
       wmpApSrv
-	wdisystemhost
+      wdisystemhost
       WMPNetworkSvc
       WpcMonSvc
       wmiApSrv
       WebClient
+      webthreatdefsvc
+      webthreatdefusersvc
+      WiaRpc
+      Wecsvc
 ) do (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
 )
 cls
 
-Echo "Setting Timer Resolution"
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" /f
+Echo "Add TimerRes"
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" /f > NUL 2>&1
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "GlobalTimerResolutionRequests" /t REG_DWORD /d "1" /f > NUL 2>&1
 cls
 
-Echo "Disable Background apps & Deleting TimerRes on W10"
+Echo "Windows 10 stuff"
 ver | findstr /i "10\.0\.[0-1][0-9][0-9][0-9][0-9]*" > nul
 if %errorlevel% equ 0 (
     Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t Reg_DWORD /d "1" /f >nul 2>&1
     Reg add "HKLM\Software\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /t Reg_DWORD /d "2" /f >nul 2>&1
     Reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle" /t Reg_DWORD /d "0" /f >nul 2>&1
-    Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" >nul 2>&1
+    Reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /f >nul 2>&1
+    Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "GlobalTimerResolutionRequests" /f >nul 2>&1
     del /q "C:\Windows\SetTimerResolution.exe" >nul 2>&1
     cls
 ) else (
@@ -508,6 +538,11 @@ icacls "C:\Windows\System32\mcupdate_GenuineIntel.dll" /grant Administrators:F
 ren mcupdate_GenuineIntel.dll mcupdate_GenuineIntel.old
 cls
 
+Echo "Restore old context menu"
+Reg.exe add "HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /ve /t REG_SZ /d "" /f >nul 2>&1
+Reg.exe add "HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /ve /t REG_SZ /d "" /f >nul 2>&1
+cls
+
 Echo "Laptop stuff"
 for /f "delims=:{}" %%a in ('wmic path Win32_SystemEnclosure get ChassisTypes ^| findstr [0-9]') do set "CHASSIS=%%a"
 set "DEVICE_TYPE=PC"
@@ -517,14 +552,14 @@ if "%DEVICE_TYPE%" == "LAPTOP" (
     Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\serenum" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
     Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sermouse" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
     Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\serial" /v "Start" /t REG_DWORD /d "3" /f >nul 2>&1
-    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "0" /f
-    powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e
+    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "0" /f >nul 2>&1
+    powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e >nul 2>&1
     cls
 )
 ) else (
     Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DisplayEnhancementService" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
     Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
-    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f  >nul 2>&1
+    Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f >nul 2>&1
     cls
 )
 cls
@@ -548,6 +583,15 @@ cls
 
 Echo "Disable website access to language list"
 reg add "HKEY_CURRENT_USER\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut" /t REG_DWORD /d 1 /f
+cls
+
+Echo "Configure Steam, thanks imribiy"
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "SmoothScrollWebViews" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "DWriteEnable" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "StartupMode" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "H264HWAccel" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "DPIScaling" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCU\SOFTWARE\Valve\Steam" /v "GPUAccelWebViews" /t REG_DWORD /d "0" /f
 cls
 
 Echo "Fix explorer white bar bug"

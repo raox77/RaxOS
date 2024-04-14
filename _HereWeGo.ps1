@@ -17,10 +17,10 @@ $Global:VerbosePreference = 'Continue'
 $Global:DebugPreference = 'Continue'
 
 $Global:Debug = $false
-$Global:OSName = 'WinISO_Wizard'
+$Global:OSName = 'RaxOS'
 
 $data = @(
-     [pscustomobject]@{ ProjectName = 'RaxOS'; ISO_Image = '22631.3235.240225-1138.23H2_NI_RELEASE_SVC_PROD3_CLIENTPRO_OEMRET_X64FRE_EN-US.ISO' }
+   #  [pscustomobject]@{ ProjectName = 'RaxOS'; ISO_Image = '' }
 )
 
 If ($data.Count -eq 0) {
@@ -37,7 +37,11 @@ If ($data.Count -eq 0) {
     $OpenFileDialog.ShowDialog() | Out-Null
 
     foreach ($FileName in $OpenFileDialog.SafeFileNames) {
-        $data += [pscustomobject]@{ ISO_Image = $FileName }
+        $selectedISOPath = $OpenFileDialog.FileName  # Store the selected ISO file path in a variable
+        
+        Add-Content -Path $MyInvocation.MyCommand.Path -Value "`$selectedISOPath = '$selectedISOPath'"
+        
+        $data += [pscustomobject]@{ ProjectName = 'RaxOS'; ISO_Image = $FileName }
     }
 } 
 
@@ -62,7 +66,6 @@ foreach ($item in $data) {
                     image_2_extractWIM
                     image_3_AppxProvisionedPackage
                     image_4_CleanUp
-                    image_5_AddDotNet
                     image_6_CopyFileSystem
                     image_7_Registry
                     image_8_Dismount_Image

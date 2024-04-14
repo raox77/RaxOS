@@ -15,7 +15,6 @@ function image_3_AppxProvisionedPackage {
         $_.DisplayName -ne "Microsoft.Paint" -and `
         $_.DisplayName -notlike "Microsoft.UI.Xaml.*" -and `
         $_.DisplayName -notlike "Microsoft.VCLibs*" -and `
-        $_.DisplayName -notlike "Microsoft.SecHealthUI*" -and `
         $_.DisplayName -notlike "Microsoft.WindowsStore*" -and `
         $_.DisplayName -notlike "Microsoft.NET.Native.Framework.*" -and `
         $_.DisplayName -notlike "Microsoft.NET.Native.Runtime.*" -and `
@@ -53,7 +52,13 @@ function image_3_AppxProvisionedPackage {
             $_.Name -like "App.Support.QuickAssist*" -or `
             $_.Name -like "Print.Fax.Scan*" -or `
             $_.Name -like "OneCoreUAP.OneSync*" -or `
-            $_.Name -like "Media.WindowsMediaPlayer*" `
+            $_.Name -like "Media.WindowsMediaPlayer*" -or `
+            $_.Name -like "Language.Handwriting*" -or `
+            $_.Name -like "Language.OCR*" -or `
+            $_.Name -like "Language.Speech*" -or `
+            $_.Name -like "Language.TextToSpeech*" -or `
+            $_.Name -like "Language.Basic*" -or `
+            $_.Name -like "Microsoft.Wallpapers.Extended*" `
         )
     } | ForEach-Object {
         try {
@@ -62,26 +67,6 @@ function image_3_AppxProvisionedPackage {
         }
         catch {
             Write-Warning "Failed: $_"
-        }
-    }
-
-    Get-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" | ForEach-Object {
-        try {
-            if ($_.State -eq "Enabled") {
-                Write-Verbose "'$($_.FeatureName)' will be switched off (Disable-WindowsOptionalFeature)"
-                Disable-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" -FeatureName $_.FeatureName
-            }
-        }
-        catch {
-            Write-Warning "Failed: $_"
-        }
-    }
-    Enable-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" -FeatureName 'LegacyComponents' -Verbose:$false
-    Enable-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" -FeatureName 'DirectPlay' -Verbose:$false
-    Enable-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" -FeatureName 'NetFx4-AdvSrvs' -Verbose:$false
-    if ($Debug -eq $true) {
-        Get-WindowsOptionalFeature -Path "$RootDir\extractWIMImage" | where-object { $_.State -eq "Enabled" } | ForEach-Object {
-            Write-Verbose "'$($_.FeatureName)' remains on" -ForegroundColor Green
         }
     }
 

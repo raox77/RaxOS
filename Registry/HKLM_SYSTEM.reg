@@ -26,16 +26,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
 "DisableWpbtExecution"=dword:00000001
 
-; enable hardware-accelerated GPU scheduling
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\GraphicsDrivers]
-"HwSchMode"=dword:00000002
-
-; delete MS Edge Services
-
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdate]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdatem]
-
 ; disable device encryption
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker]
@@ -114,11 +104,32 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]
 "POWERSHELL_TELEMETRY_OPTOUT"="1"
 
-; fixing timing precision in Windows after "The Great Rule Change"
-; https://github.com/amitxv/TimerResolution
+; disable defender stuff
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
-"GlobalTimerResolutionRequests"=dword:00000001
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\CI\Policy]
+"VerifiedAndReputablePolicyState"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\CI\Config]
+"VulnerableDriverBlocklistEnable"=dword:00000000
+
+; remove stripped services
+
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MsSecCore]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MsSecFlt]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MsSecWfp]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Sense]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdBoot]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdFilter]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisDrv]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisSvc]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MDCoreSvc]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdate]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdatem]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\embeddedmode]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wisvc]
 
 ; block CEIP, Telemetry, and Windows Insider via Firewall
 
