@@ -76,7 +76,6 @@ bcdedit /set hypervisorlaunchtype off
 bcdedit /set isolatedcontext No
 bcdedit /set vsmlaunchtype Off 
 bcdedit /set vm No
-bcdedit /set disableelamdrivers Yes
 bcdedit /set {current} recoveryenabled no
 bcdedit /set {globalsettings} custom:16000067 true
 bcdedit /set {globalsettings} custom:16000068 true

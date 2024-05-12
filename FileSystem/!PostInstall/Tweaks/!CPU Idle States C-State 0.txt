@@ -1,0 +1,11 @@
+!CPU Idle States C-State 0## CPU Idle States/C-State 0
+
+Disabling idle states force C-State 0, which can be seen in [HWiNFO](https://www.hwinfo.com), and is in Microsoft's recommendations for configuring devices for real-time performance ([1](https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/soft-real-time/soft-real-time-device)). Forcing C-State 0 mitigates the undesirable delay to execute new instructions on a CPU that has entered a deeper power-saving state at the expense of higher idle temperatures and power consumption. The CPU temperature should not increase to the point of thermal throttling because you should have already assessed that in [docs/physical-setup.md](/docs/physical-setup.md). If a static CPU frequency is not set, the effects of forcing C-State 0 should be assessed in terms of frequency boosting behavior (e.g. Precision Boost Overdrive, Turbo Boost). Avoid disabling idle states with Hyper-Threading/Simultaneous Multithreading enabled as single-threaded performance is usually negatively impacted. The commands below can be used to toggle idle states.
+
+### Disable Idle States
+
+powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 && powercfg /setactive scheme_current
+
+### Enable Idle States (default)
+
+powercfg /setacvalueindex scheme_current sub_processor 5d76a2ca-e8c0-402f-a133-2158492d58ad 0 && powercfg /setactive scheme_current

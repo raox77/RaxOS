@@ -19,6 +19,8 @@ function image_3_AppxProvisionedPackage {
         $_.DisplayName -notlike "Microsoft.NET.Native.Framework.*" -and `
         $_.DisplayName -notlike "Microsoft.NET.Native.Runtime.*" -and `
         $_.DisplayName -ne "Microsoft.WindowsCalculator" -and `
+        $_.DisplayName -ne "Microsoft.Windows.Photos" -and `
+        $_.DisplayName -ne "Microsoft.ZuneMusic" -and `
         $_.DisplayName -ne "Microsoft.StorePurchaseApp" -and `
         $_.DisplayName -ne "Microsoft.WindowsNotepad"
     } | ForEach-Object {
