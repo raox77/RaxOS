@@ -1,15 +1,6 @@
 # RaxOS
 
-## [Server Link](https://discord.gg/6Y5CZqWHFa) , [Faq](https://github.com/raox77/RaxOS/blob/main/Docs/Faq.md)
-
-## Stripped / Not Working Features:
-- BitLocker Drive Encryption
-- Windows Mail
-- Windows Recovery
-- Windows Defender
-- Windows Insider
-- Settings Sync
-- Cloud Desktop
+## [Server Link](https://discord.gg/6Y5CZqWHFa)
 
 ## Supported Builds:
 - Windows 10 22H2 `19045`

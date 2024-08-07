@@ -1,0 +1,62 @@
+---
+title: configure-search-and-cortana
+description: configure-search-and-cortana
+privilege: TrustedInstaller
+actions:
+
+# - Add primary intranet search location - https://www.google.com/
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'PrimaryIntranetSearchScopeUrl', type: REG_SZ, data: 'http://www.google.com/search?q={searchTerms}'}
+
+# - Add secondary intranet search locations - https://duckduckgo.com/
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'SecondaryIntranetSearchScopeUrl', type: REG_SZ, data: 'https://duckduckgo.com/?kae=t&q={searchTerms}'}
+
+# - Allow Cloud Search - User Selected
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowCloudSearch', type: REG_DWORD, data: '2'}
+
+# - Allow Cortana above lock screen - Disabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowCortanaAboveLock', type: REG_DWORD, data: '0'}
+
+# - Allow Cortana - Disabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowCortana', type: REG_DWORD, data: '1'}
+
+# - Allow Cortana Page in OOBE on an AAD account - Disabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowCortanaInAAD', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowCortanaInAADPathOOBE', type: REG_DWORD, data: '0'}
+
+# - Allow search and Cortana to use location - Disabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'AllowSearchToUseLocation', type: REG_DWORD, data: '0'}
+
+# - Don't search the web or display web results in Search - Enabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchUseWeb', type: REG_DWORD, data: '0'}
+
+# - Don't search the web or display web results in Search over metered connections - Enabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchUseWebOverMeteredConnections', type: REG_DWORD, data: '0'}
+
+# - Do not allow web search - Enabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'DisableWebSearch', type: REG_DWORD, data: '1'}
+
+# - Set the SafeSearch setting for Search - Off (Disabled)
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchSafeSearch', type: REG_DWORD, data: '3'}
+
+# - Set what information is shared in Search - Anonymous info
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'ConnectedSearchPrivacy', type: REG_DWORD, data: '3'}
+
+# - Disable Bing Integration in the Start Menu
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search', value: 'CortanaConsent', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search', value: 'BingSearchEnabled', type: REG_DWORD, data: '0'}
+
+# - Automatic Update of Speech Data - Off
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences', value: 'ModelDownloadAllowed', type: REG_DWORD, data: '0'}
+
+# - Cortana on Lock Screen - Disabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\Preferences', value: 'VoiceActivationEnableAboveLockscreen', type: REG_DWORD, data: '0'}
+
+# - Respect Power Settings when Indexing - Enabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Search\Gather\Windows\SystemIndex', value: 'RespectPowerModes', type: REG_DWORD, data: '1'}
+
+# - Prevent indexing when running on battery power to conserve energy - Enabled
+- !registryValue: {path: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'PreventIndexOnBattery', type: REG_DWORD, data: '1'}
+
+# - Disable search indexing
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences', value: 'WholeFileSystem', type: REG_DWORD, data: '1'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences', value: 'SystemFolders', type: REG_DWORD, data: '0'}

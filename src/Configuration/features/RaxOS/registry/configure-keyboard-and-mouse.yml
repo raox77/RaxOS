@@ -1,0 +1,21 @@
+---
+title: configure-keyboard-and-mouse
+description: configure-keyboard-and-mouse
+privilege: TrustedInstaller
+actions:
+
+# - Configure Keyboard and Mouse
+- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Keyboard', value: 'InitialKeyboardIndicators', type: REG_SZ, data: '0'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Keyboard', value: 'KeyboardDelay', type: REG_SZ, data: '0'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Keyboard', value: 'KeyboardSpeed', type: REG_SZ, data: '31'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7', value: 'EnableAutocorrection', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7', value: 'EnableAutoShiftEngage', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7', value: 'EnableKeyAudioFeedback', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Software\Microsoft\TabletTip\1.7', value: 'EnableShiftLock', type: REG_DWORD, data: '0'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Mouse', value: 'MouseSpeed', type: REG_SZ, data: '0'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Mouse', value: 'MouseThreshold1', type: REG_SZ, data: '0'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Mouse', value: 'MouseThreshold2', type: REG_SZ, data: '0'}
+
+# - Removes Ease of Access -> MouseKeys features tied to alteration of Sensitivity, so that it'll never change even when using MouseKeys
+- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Accessibility\MouseKeys', value: 'MaximumSpeed', type: REG_SZ, data: '-'}
+- !registryValue: {path: 'HKEY_CURRENT_USER\Control Panel\Accessibility\MouseKeys', value: 'TimeToMaximumSpeed', type: REG_SZ, data: '-'}

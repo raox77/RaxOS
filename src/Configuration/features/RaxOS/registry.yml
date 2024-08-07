@@ -1,0 +1,27 @@
+---
+title: Registry
+description: RaxOS registry
+privilege: TrustedInstaller
+actions: 
+- !writeStatus: {status: "Configuring Registry"}
+- !task: {path: 'features\RaxOS\registry\add-take-ownership.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-context-menu.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-explorer.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-keyboard-and-mouse.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-privacy.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-search-and-cortana.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-security.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-start-menu-and-taskbar-notifications.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-windows-update.yml'}
+- !task: {path: 'features\RaxOS\registry\disable-ease-of-access-features.yml'}
+- !task: {path: 'features\RaxOS\registry\disable-uac.yml'}
+- !task: {path: 'features\RaxOS\registry\oem-information.yml'}
+- !task: {path: 'features\RaxOS\registry\restore-old-context-menu.yml'}
+- !task: {path: 'features\RaxOS\registry\restore-photo-viewer.yml'}
+- !task: {path: 'features\RaxOS\registry\windows-settings.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-deprovisioned-apps.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-crash-control.yml'}
+- !task: {path: 'features\RaxOS\registry\fixes.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-power-control.yml'}
+- !task: {path: 'features\RaxOS\registry\configure-ifeo.yml'}
+- !task: {path: 'features\RaxOS\registry\disable-prefetcher-superfetch-and-readyboost.yml'}

@@ -1,0 +1,134 @@
+---
+title: Final Tasks
+description: Finalizing The RaxOS Playbook Installation
+privilege: TrustedInstaller
+actions:
+
+
+- !writeStatus: {status: "Copying Files"}
+- !run:
+  exeDir: true
+  exe: "Copy.CMD"
+
+- !writeStatus: {status: "Applying WallPaper"}
+- !run: 
+  exeDir: true
+  exe: "WALLPAPER.CMD"
+  weight: 90
+  option: "apply-wallpaper"
+
+- !writeStatus: {status: "Disabling Printer"}
+- !run: 
+  exeDir: true
+  exe: "PRINTER.CMD"
+  weight: 90
+  option: "disable-print"
+
+- !writeStatus: {status: "Disable Bluetooth"}
+- !run: 
+  exeDir: true
+  exe: "BLUETOOTH.CMD"
+  weight: 90
+  option: "disable-bluetooth"
+
+- !writeStatus: {status: "Refreshing"}
+- !taskKill: {name: "explorer", ignoreErrors: true}
+- !taskKill: {name: "SearchApp", ignoreErrors: true}
+- !taskKill: {name: "SearchHost", ignoreErrors: true}
+- !taskKill: {name: "RuntimeBroker", ignoreErrors: true}
+- !taskKill: {name: "TextInputHost", ignoreErrors: true}
+- !taskKill: {name: "ShellExperienceHost", ignoreErrors: true}
+- !taskKill: {name: "backgroundTaskHost", ignoreErrors: true}
+- !taskKill: {name: "Widgets", ignoreErrors: true}
+
+- !run:
+  exeDir: true
+  exe: "PowerShell"
+  args: '-NoP -ExecutionPolicy Bypass -File SVCGROUP.ps1'
+  weight: 50
+
+- !writeStatus: {status: "Removing logs"}
+- !run:
+  exeDir: true
+  exe: "PowerShell"
+  args: '-NoP -ExecutionPolicy Bypass -File CLEANER.ps1'
+  weight: 150
+
+- !writeStatus: {status: "Configuring Power Settings"}
+- !run: 
+  exeDir: true
+  exe: "POW.CMD"
+  weight: 30
+
+- !writeStatus: {status: "Installing Visual CPP"}
+- !run: 
+  exeDir: true
+  exe: "install.CMD"
+  weight: 100
+
+- !writeStatus: {status: "Configuring StartMenu"}
+- !run:
+  exeDir: true
+  exe: "STARTMENU.CMD"
+  weight: 100
+
+- !writeStatus: {status: "Disabling Process Mitigations"}
+- !run:
+  exeDir: true
+  exe: "disable-process-mitigations.CMD"  
+  weight: 40
+  option: "disable-process-mitigations"
+
+- !writeStatus: {status: "Configuring Laptop Settings"}
+- !run: 
+  exeDir: true
+  exe: "Laptop.CMD"
+
+- !writeStatus: {status: "Configuring DeviceManager"}
+- !run: 
+  exeDir: true
+  exe: "DEVMANVIEW.CMD"
+
+- !writeStatus: {status: "Disabling NX"}
+- !run: 
+  exeDir: true
+  exe: "DisableNX.CMD"
+  option: "disable-nx"
+
+- !writeStatus: {status: "Disabling Spectre And Meltdown"}
+- !run: 
+  exeDir: true
+  exe: "SpectreANDMeltdown.CMD"
+  option: "disable-spectre-meltdown"
+
+- !writeStatus: {status: "Disabling Defender"}
+- !run:
+  exeDir: true
+  exe: "Defender.CMD"
+  weight: 40
+  option: "disable-defender"
+
+- !writeStatus: {status: "Configuring Optional features"}
+- !run:
+  exeDir: true
+  exe: "PowerShell"
+  args: '-NoP -ExecutionPolicy Bypass -File DISM-FEATURES.ps1'
+  weight: 270
+
+- !writeStatus: {status: "FINALIZE"}
+- !run: 
+  exeDir: true
+  exe: "FINALIZE.CMD"
+  weight: 150
+
+  # Necessary to refresh start menu entries etc.
+- !appx: {operation: clearCache, name: '*Client.CBS*'}
+- !appx: {operation: clearCache, name: '*StartMenuExperienceHost*'}
+- !appx: {operation: clearCache, name: '*Windows.Search*'}
+- !appx: {operation: clearCache, name: '*TCUI*'}
+  # Workaround for KGL versions to match
+- !appx: {operation: clearCache, name: '*XboxGameCallableUI*'}
+- !appx: {operation: clearCache, name: '*XboxGameOverlay*'}
+- !appx: {operation: clearCache, name: '*XboxGamingOverlay*'}
+- !appx: {operation: clearCache, name: '*XboxIdentityProvider*'}
+- !appx: {operation: clearCache, name: '*XboxSpeechToTextOverlay*'}
