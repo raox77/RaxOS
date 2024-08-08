@@ -84,6 +84,7 @@ actions:
 - !service: {name: 'TrkWks', operation: change, startup: 4}
 - !service: {name: 'WSearch', operation: change, startup: 4}
 - !service: {name: 'DsSvc', operation: change, startup: 4}
+- !service: {name: 'NPSMSvc', operation: change, startup: 4}
 
 - !run: 
   exeDir: true
