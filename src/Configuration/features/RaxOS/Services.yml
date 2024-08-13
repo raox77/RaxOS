@@ -31,7 +31,7 @@ actions:
 - !service: {name: 'GpuEnergyDrv', operation: change, startup: 4}
 
   # === NetBT - Disabled
-- !service: {name: 'NetBT', operation: change, startup: 4}
+# - !service: {name: 'NetBT', operation: change, startup: 4}
 
   # === Intel(R) Telemetry Service - Disabled
 - !service: {name: 'Telemetry', operation: change, startup: 4}
