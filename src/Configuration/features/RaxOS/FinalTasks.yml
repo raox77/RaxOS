@@ -135,4 +135,5 @@ actions:
 
   # Force update group policy
 - !run: 
-exe: "gpupdate.exe"
+  exeDir: true
+  exe: "gpupdate.exe"
