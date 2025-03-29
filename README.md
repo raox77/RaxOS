@@ -2,10 +2,27 @@
 
 ## [Server Link](https://discord.gg/6Y5CZqWHFa)
 
-## Supported Builds:
-- Windows 10 22H2 `19045`
-- Windows 11 22H2 `22621`
-- Windows 11 23H2 `22631`
+**Stripped / Not Working Features**:
+- Windows installation from setup.exe
+- BitLocker Drive Encryption
+- Windows Copilot
+- Biometric
+- Microsoft To Do
+- OneDrive
+- Windows Help Content
+- Easy Transfer
+- Windows To Go
+- Cloud Desktop
+- System Reset & Recovery
+- Windows Defender
+- Hyper-V
+- CEIP (SQM)
+
+**:warning:Bugs:warning:**
+
+- **When you get to oobe press <Shift+F10> to open CMD execute oobe\BypassNRO.cmd to make a local account**
+
+- Installing zentimings with choco is bugged
 
 - ### Credits:
 [Amit](https://github.com/amitxv)
