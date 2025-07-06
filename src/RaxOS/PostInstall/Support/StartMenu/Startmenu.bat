@@ -17,7 +17,7 @@ taskkill /f /im explorer.exe
 taskkill /f /im SearchHost.exe
 C:\Modules\NSudo.exe -U:S -P:E cmd.exe /c ren C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.old StartMenuExperienceHost.exe
 C:\Modules\NSudo.exe -U:S -P:E cmd.exe /c ren C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.old SearchHost.exe
-start /b /wait "" "C:\Modules\OpenShellSetup_4_4_194.exe" /qn ADDLOCAL=StartMenu >nul 2>&1
+start /b /wait "" "C:\Modules\OpenShellSetup_4_4_196.exe" /qn ADDLOCAL=StartMenu >nul 2>&1
 start explorer.exe
 cls
 pause

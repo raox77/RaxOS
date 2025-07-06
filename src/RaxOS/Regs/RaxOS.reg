@@ -7,6 +7,14 @@ Windows Registry Editor Version 5.00
 
 ; configure windows updates
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"ExcludeWUDriversInQualityUpdate"=dword:00000001
+"DoNotConnectToWindowsUpdateInternetLocations"=dword:00000001
+"DisableWindowsUpdateAccess"=dword:00000001
+"WUServer"=" "
+"WUStatusServer"=" "
+"UpdateServiceUrlAlternate"=" "
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UpdatePolicy\PolicyState] 
 "DeferQualityUpdates"=dword:00000000
 "DeferFeatureUpdates"=dword:00000000
@@ -51,7 +59,7 @@ Windows Registry Editor Version 5.00
 "UxOption"=dword:00000000
 "InsiderProgramEnabled"=dword:00000000
 "PendingRebootStartTime"="2021-10-05T16:02:16Z
-PauseFeatureUpdatesStartTime"="2021-10-05T16:02:16Z"
+"PauseFeatureUpdatesStartTime"="2021-10-05T16:02:16Z"
 "PauseQualityUpdatesStartTime"="2021-10-05T16:02:16Z"
 "PauseUpdatesExpiryTime"="2050-01-01T10:38:56Z"
 "PauseFeatureUpdatesEndTime"="2050-01-01T10:38:56Z"
@@ -590,6 +598,9 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 "HungAppTimeout"="2000"
 "WaitToKillAppTimeOut"="2000"
 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+"WaitToKillServiceTimeout"="2000"
+
 ; disable touch visual feedback
 
 [HKEY_CURRENT_USER\Control Panel\Cursors]
@@ -1101,6 +1112,9 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 
 ; disable telemetry
 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener]
+"Start"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
 "AllowTelemetry"=dword:00000000
 
@@ -1131,36 +1145,6 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
 "DisableHelpSticker"=dword:00000001
-
-; disable vbs
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
-"EnableVirtualizationBasedSecurity"=dword:00000000
-"RequirePlatformSecurityFeatures"=-
-"HypervisorEnforcedCodeIntegrity"=-
-"HVCIMATRequired"=dword:00000000
-"LsaCfgFlags"=-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\DeviceGuard]
-"EnableVirtualizationBasedSecurity"=dword:00000000
-"RequirePlatformSecurityFeatures"=-
-"HypervisorEnforcedCodeIntegrity"=-
-"HVCIMATRequired"=dword:00000000
-"LsaCfgFlags"=-
-"ConfigureSystemGuardLaunch"=-
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSetControl\DeviceGuard]
-"EnableVirtualizationBasedSecurity"=dword:00000000
-"Locked"=dword:00000000
-"RequirePlatformSecurityFeatures"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\Policies\Microsoft\Windows\DeviceGuard]
-"HVCIMATRequired"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity]
-"Enabled"=dword:00000000
-"HVCIMATRequired"=dword:00000000
-"Locked"=dword:00000000
 
 ; disable device health attestation monitoring and reporting
 
@@ -1761,11 +1745,6 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 "SubscribedContent-338389Enabled"=dword:00000000
 "SubscribedContent-353698Enabled"=dword:00000000
 
-; disable telemetry
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener]
-"Start"=dword:00000000
-
 ; disable LMHOSTS
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
@@ -1798,11 +1777,6 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 "fAllowFullControl"=dword:00000000
 "fAllowToGetHelp"=dword:00000000
 
-; decrease Shutdown Time
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
-"WaitToKillServiceTimeout"="2000"
-
 ; disable diagnostic tracing
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Diagnostics\Performance]
@@ -1816,7 +1790,7 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 ; disable Disk Checkup
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
-"BootExecute"="autocheck autochk /k:C*"
+"BootExecute"=-
 
 ; disable prefetcher/superfetch and readyboost
 
@@ -1838,6 +1812,26 @@ C2,0A,01,D2,1E,26,4D,00,69,00,63,00,72,00,6F,00,73,00,6F,00,66,00,74,00,2E,\
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules]
 "Block-Unified-Telemetry-Client"="v2.31|Action=Block|Active=TRUE|Dir=Out|RA42=IntErnet|RA62=IntErnet|App=%SystemRoot%\system32\svchost.exe|Svc=DiagTrack|Name=Block-Unified-Telemetry-Client|Desc=Block-Unified-Telemetry-Client|EmbedCtxt=DiagTrack|"
 "Block-Windows-Error-Reporting"="v2.31|Action=Block|Active=TRUE|Dir=Out|RA42=IntErnet|RA62=IntErnet|App=%SystemRoot%\system32\svchost.exe|Svc=WerSvc|Name=Block-Unified-Telemetry-Client|Desc=Block-Windows-Error-Reporting|EmbedCtxt=WerSvc|"
+
+; fix downloads folder
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}]
+"GroupAscending"=-
+"GroupBy"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderTypes\{885a186e-a440-4ada-812b-db871b942259}\TopViews\{00000000-0000-0000-0000-000000000000}]
+"PrimaryProperty"="System.ItemNameDisplay"
+"SortByList"="prop:System.ItemName"
+
+; enable powershell scripts unrestricted
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell]
+"ExecutionPolicy"="Unrestricted"
+"EnableScripts"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell]
+"ExecutionPolicy"="Unrestricted"
+"EnableScripts"=dword:00000001
 
 ; oeminformations
 

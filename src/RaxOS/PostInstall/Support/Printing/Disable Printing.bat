@@ -19,6 +19,13 @@ setlocal EnableExtensions DisableDelayedExpansion
     devmanview /disable "Microsoft Print to PDF" > NUL 2>&1
     devmanview /disable "Microsoft XPS Document Writer" > NUL 2>&1
     devmanview /disable "Root Print Queue" > NUL 2>&1
+    powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Printing\PrintJobCleanupTask" >nul 2>&1
+    powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Printing\PrinterCleanupTask" >nul 2>&1
+    powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Printing\EduPrintProv" >nul 2>&1
+    dism /online /disable-feature /featurename:Printing-Foundation-Features
+    dism /online /disable-feature /featurename:Internet-Printing-Client
+    dism /online /disable-feature /featurename:Printing-LPDPrintService
+    dism /online /disable-feature /featurename:Printing-LPRPortMonitor
     cls
     echo Printing has been Disabled
     pause

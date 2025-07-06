@@ -8,21 +8,13 @@
 - Windows Copilot
 - Biometric
 - Microsoft To Do
-- OneDrive
 - Windows Help Content
 - Easy Transfer
 - Windows To Go
 - Cloud Desktop
 - System Reset & Recovery
 - Windows Defender
-- Hyper-V
 - CEIP (SQM)
-
-**:warning:Bugs:warning:**
-
-- **When you get to oobe press <Shift+F10> to open CMD execute oobe\BypassNRO.cmd to make a local account**
-
-- Installing zentimings with choco is bugged
 
 - ### Credits:
 [Amit](https://github.com/amitxv)

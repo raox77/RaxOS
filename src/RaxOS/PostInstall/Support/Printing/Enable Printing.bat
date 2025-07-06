@@ -19,6 +19,13 @@ setlocal EnableExtensions DisableDelayedExpansion
     devmanview /enable "Microsoft Print to PDF" > NUL 2>&1
     devmanview /enable "Microsoft XPS Document Writer" > NUL 2>&1
     devmanview /enable "Root Print Queue" > NUL 2>&1
+    powerrun "schtasks.exe" /change /enable /TN "\Microsoft\Windows\Printing\PrintJobCleanupTask" >nul 2>&1
+    powerrun "schtasks.exe" /change /enable /TN "\Microsoft\Windows\Printing\PrinterCleanupTask" >nul 2>&1
+    powerrun "schtasks.exe" /change /enable /TN "\Microsoft\Windows\Printing\EduPrintProv" >nul 2>&1
+    dism /online /enable-feature /featurename:Printing-Foundation-Features
+    dism /online /enable-feature /featurename:Internet-Printing-Client
+    dism /online /enable-feature /featurename:Printing-LPDPrintService
+    dism /online /enable-feature /featurename:Printing-LPRPortMonitor
     cls
     echo Printing has been Enabled
     pause
