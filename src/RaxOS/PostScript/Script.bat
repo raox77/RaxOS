@@ -66,11 +66,10 @@ cls
 Echo "Editing Bcdedit"
 bcdedit /set {current} nx optin
 label C: RaxOS
-bcdedit /set {current} description "RaxOS W11 V001"
+bcdedit /set {current} description "RaxOS W11 V002"
 bcdedit /set disabledynamictick yes
 bcdedit /deletevalue useplatformclock
 bcdedit /set bootmenupolicy legacy
-bcdedit /set hypervisorlaunchtype off
 bcdedit /deletevalue useplatformtick
 bcdedit /set loadoptions SYSTEMWATCHDOGPOLICY=DISABLED
 bcdedit /timeout 10
@@ -120,15 +119,12 @@ Echo "Disabling Device Manager Devices"
 devmanview /disable "Direct memory access Controller"
 devmanview /disable "High Precision Event Timer"
 devmanview /disable "Microsoft GS Wavetable Synth"
-devmanview /disable "Remote Desktop Device Redirector Bus"
 devmanview /disable "NDIS Virtual Network Adapter Enumerator"
 devmanview /disable "Microsoft Virtual Drive Enumerator"
 devmanview /disable "UMBus Root Bus Enumerator"
 devmanview /disable "Programmable interrupt controller"
 devmanview /disable "Legacy device"
 devmanview /disable "Numeric data processor"
-devmanview /disable "Generic Bluetooth Adapter"
-devmanview /disable "Microsoft Hyper-V Virtualization Infrastructure Driver"
 devmanview /disable "System Speaker"
 devmanview /disable "PCI Encryption/Decryption Controller"
 devmanview /disable "AMD PSP"
@@ -138,10 +134,6 @@ devmanview /disable "PCI Memory Controller"
 devmanview /disable "PCI standard RAM Controller"
 devmanview /disable "System Timer"
 devmanview /disable "Communications Port (COM1)"
-devmanview /disable "Fax"
-devmanview /disable "Microsoft Print to PDF"
-devmanview /disable "Microsoft XPS Document Writer"
-devmanview /disable "Root Print Queue"
 cls
 
 Echo "Optimizing Scheduled Tasks"
@@ -189,6 +181,8 @@ powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsToastT
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Maps\MapsUpdateTask" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" >nul 2>&1
 powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\ResPriStaticDbSync" >nul 2>&1
+powerrun "schtasks.exe" /change /disable /TN "\Microsoft\Windows\Sysmain\WsSwapAssessmentTask" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\TaskScheduler" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WaaSMedic" >nul 2>&1
 powerrun "schtasks.exe" /delete /f /tn "\Microsoft\Windows\WindowsUpdate" >nul 2>&1
@@ -483,7 +477,6 @@ for %%z in (
       cbdhsvc
       BcastDVRUserService
       rdyboost
-      rdpbus
       umbus
       vdrvroot
       CompositeBus
@@ -501,8 +494,6 @@ for %%z in (
       dmwappushservice
       GraphicsPerfSvc
       WMPNetworkSvc
-      TermService
-      UmRdpService
       PimIndexMaintenanceSvc
       UserDataSvc
       3ware
@@ -524,7 +515,6 @@ for %%z in (
       VSTXRAID
       wcnfs
       WindowsTrustedRTProxy
-      SstpSvc
       SSDPSRV
       SmsRouter
       CldFlt
@@ -539,31 +529,6 @@ for %%z in (
       MSDTC
       QWAVE
       RmSvc
-      RFCOMM
-      BthEnum
-      bthleenum
-      BTHMODEM
-      BthA2dp
-      microsoft_bluetooth_avrcptransport
-      BthHFEnum
-      BTAGService
-      bthserv
-      BluetoothUserService
-      BthAvctpSvc
-      TsUsbFlt
-      tsusbhub
-      storflt
-      RDPDR
-      bttflt
-      HidBth
-      BthMini
-      BTHPORT
-      BTHUSB
-      vmicrdv
-      vmictimesync
-      vmicvss
-      hvservice
-      HvHost
       lfsvc
       CldFlt
       defragsvc
@@ -574,21 +539,17 @@ for %%z in (
       lfsvc
       lmhosts
       mslldp
-      microsoft_bluetooth_avrcptransport
       Ndu
       NetTcpPortSharing
       UsoSvc
       PcaSvc
       PimIndexMaintenanceSvc
-      printworkflowusersvc
       PhoneSvc
       rspndr
       rdyboost
       RmSvc
-      RFCOMM
       SharedAccess
       SysMain
-      spooler
       spaceport
       Themes
       TapiSrv
@@ -596,14 +557,6 @@ for %%z in (
       UserDataSvc
       UnistoreSvc
       udfs
-      vmickvpexchange
-      vmicguestinterface
-      vmicshutdown
-      vmicheartbeat
-      vmicvmsession
-      vmicrdv
-      vmictimesync
-      vmicvss
       W32Time
       WaaSMedicSvc
       WSearch
