@@ -25,6 +25,7 @@ Reg.exe add "HKCU\Control Panel\Keyboard" /v "KeyboardSpeed" /t REG_SZ /d "31" /
 Reg.exe add "HKCU\Control Panel\Mouse" /v "MouseSpeed" /t REG_SZ /d "0" /f >nul 2>&1
 Reg.exe add "HKCU\Control Panel\Mouse" /v "MouseThreshold1" /t REG_SZ /d "0" /f >nul 2>&1
 Reg.exe add "HKCU\Control Panel\Mouse" /v "MouseThreshold2" /t REG_SZ /d "0" /f >nul 2>&1
+Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DWM" /v "DWMA_TRANSITTIONS_FORCEDISABLED" /t REG_DWORD /d "1" /f > NUL 2>&1
 cls
 
 Echo "Disabling Write Cache Buffer"
@@ -66,11 +67,9 @@ cls
 Echo "Editing Bcdedit"
 bcdedit /set {current} nx optin
 label C: RaxOS
-bcdedit /set {current} description "RaxOS W11 V002"
+bcdedit /set {current} description "RaxOS W11 24H2 V001"
 bcdedit /set disabledynamictick yes
-bcdedit /deletevalue useplatformclock
 bcdedit /set bootmenupolicy legacy
-bcdedit /deletevalue useplatformtick
 bcdedit /set loadoptions SYSTEMWATCHDOGPOLICY=DISABLED
 bcdedit /timeout 10
 cls
@@ -532,7 +531,6 @@ for %%z in (
       lfsvc
       CldFlt
       defragsvc
-      dispbrokerdesktopsvc
       dam
       FontCache
       FontCache3.0.0.0
@@ -565,10 +563,6 @@ for %%z in (
 ) do (
 PowerRun.exe /SW:0 Reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "4" /f
 )
-cls
-
-Echo "Setting Timer Resolution"
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "TimerResolution" /t REG_SZ /d "C:\Windows\SetTimerResolution.exe --resolution 5067 --no-console" /f
 cls
 
 Echo "Disable powerthorttling on laptop"
